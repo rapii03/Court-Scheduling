@@ -31,4 +31,9 @@ class LectureController extends Controller
 
         return $lecture->update($request->safe()->all());
     }
+
+    public function hapus(Lecture $lecture)
+    {
+        return $lecture->delete();
+    }
 }
