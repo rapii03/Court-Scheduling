@@ -6,6 +6,7 @@ use App\Http\Requests\LectureEditRequest;
 use App\Http\Requests\LectureAddRequest;
 use Illuminate\Http\Request;
 use App\Models\Lecture;
+use Illuminate\Support\Facades\Storage;
 
 class LectureController extends Controller
 {
@@ -37,7 +38,16 @@ class LectureController extends Controller
             }
         }
 
-        return $lecture->update($request->safe()->all());
+        if ($request->hasFile('image')) {
+            if ($lecture->image) {
+                Storage::delete($lecture->image);
+            }
+
+            $image = $request->file('image')->store('lectureImages');
+            $lecture->update(['image' => $image]);
+        }
+
+        return $lecture->update($request->safe()->except('image'));
     }
 
     public function hapus(Lecture $lecture)

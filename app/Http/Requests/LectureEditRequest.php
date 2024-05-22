@@ -29,6 +29,7 @@ class LectureEditRequest extends FormRequest
             'nidn' => 'bail|required|string|max:255',
             'nip' => 'bail|required|string|max:255',
             'kk' => 'bail|required|string|max:255',
+            'image' => 'bail|nullable|file|image',
         ];
     }
 }
