@@ -23,8 +23,8 @@ class LectureEditRequest extends FormRequest
     {
         return [
             'email' => 'bail|required|string|max:255|email',
-            'address' => 'bail|required|string|max:750',
-            'phone' => 'bail|required|string|max:255',
+            'address' => 'bail|nullable|string|max:255',
+            'phone' => 'bail|nullable|string|max:255',
             'name' => 'bail|required|string|max:255',
             'nidn' => 'bail|required|string|max:255',
             'nip' => 'bail|required|string|max:255',

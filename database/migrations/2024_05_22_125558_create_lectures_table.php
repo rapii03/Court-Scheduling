@@ -13,8 +13,8 @@ return new class extends Migration {
         Schema::create('lectures', function (Blueprint $table) {
             $table->uuid('id')->primary();
 
-            $table->string('address', 750);
-            $table->string('phone');
+            $table->string('address')->nullable();
+            $table->string('phone')->nullable();
             $table->string('nidn');
             $table->string('nip');
             $table->string('kk');
