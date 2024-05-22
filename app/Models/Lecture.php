@@ -13,6 +13,7 @@ class Lecture extends Model
     protected $fillable = [
         'address',
         'phone',
+        'image',
         'nidn',
         'nip',
         'kk',

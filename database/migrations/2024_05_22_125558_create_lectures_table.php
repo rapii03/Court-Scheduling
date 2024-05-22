@@ -15,6 +15,7 @@ return new class extends Migration {
 
             $table->string('address')->nullable();
             $table->string('phone')->nullable();
+            $table->text('image')->nullable();
             $table->string('nidn');
             $table->string('nip');
             $table->string('kk');
