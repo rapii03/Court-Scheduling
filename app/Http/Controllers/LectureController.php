@@ -2,8 +2,8 @@
 
 namespace App\Http\Controllers;
 
-use App\Http\Requests\LectureAddRequest;
 use App\Http\Requests\LectureEditRequest;
+use App\Http\Requests\LectureAddRequest;
 use Illuminate\Http\Request;
 use App\Models\Lecture;
 
@@ -11,7 +11,15 @@ class LectureController extends Controller
 {
     public function tambah(LectureAddRequest $request)
     {
-        return Lecture::create($request->safe()->all());
+        $image = null;
+        if ($request->hasFile('image')) {
+            $image = $request->file('image')->store('lectureImages');
+        }
+
+        return Lecture::create([
+            ...$request->safe()->except('image'),
+            'image' => $image,
+        ]);
     }
 
     public function ubah(LectureEditRequest $request, Lecture $lecture)
