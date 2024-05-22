@@ -23,7 +23,7 @@
 <body>
     <x-layoutAdmin />
     <div class="ml-[228px] p-5">
-        <div class="text-[40px] font-bold mb-5">Data Dosen</div>
+        <div class="text-[40px] font-bold mb-5">Buat Penjadwalan</div>
         <div class="gap-5 flex">
             <div class="w-[50%]">
                 <div class="w-full full rounded-lg bg-[#1F5F92] relative">

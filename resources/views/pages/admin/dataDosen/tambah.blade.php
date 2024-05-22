@@ -183,7 +183,7 @@
             </div>
             <div class="mt-[25px] ml-10 mr-10 flex justify-between">
                 <div class="div">
-                    <a href="/DataDosen/Tambah" type="button"
+                    <a href="/DataDosen/AturJadwal" type="button"
                         class="text-white bg-[#C8AC5E] hover:bg-[#C8AC5E]/90 focus:ring-4 focus:outline-none focus:ring-[#3b5998]/50 font-medium rounded-lg text-sm px-5 py-2.5 text-center inline-flex items-center me-2 mb-2 gap-2">
                         <div class="text-[14px]">
                             Atur Jadwal

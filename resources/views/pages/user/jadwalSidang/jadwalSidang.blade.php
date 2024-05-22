@@ -26,8 +26,8 @@
         <div class="h-full pt-5 pb-5">
             <div class="bg-white rounded-lg shadow-lg mt-42 ml-10 mr-10 min-h-[605px]">
                 <div class="p-5">
-                    <div class="text-[40px] font-bold mb-2">Jadwal Sidang</div>
-                    <div class="text-[20px] font-bold mb-10">Berikut Jadwal Sidang Yang Telah Ditentukan</div>
+                    <div class="text-[40px] font-bold mb-5">Jadwal Sidang</div>
+                    <div class="text-[20px] font-bold mb-5">Berikut Jadwal Sidang Yang Telah Ditentukan</div>
                     <div class="relative overflow-x-auto mt-4">
                         <table class="w-full text-sm text-left rtl:text-right text-black">
                             <thead class="text-white bg-[#1F5F92]">

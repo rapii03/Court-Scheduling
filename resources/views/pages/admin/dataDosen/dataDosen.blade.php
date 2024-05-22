@@ -23,7 +23,7 @@
 <body>
     <x-layoutAdmin />
     <div class="ml-[228px] p-5">
-        <div class="text-[40px] font-bold mb-2">Dashboard</div>
+        <div class="text-[40px] font-bold mb-2">Data Dosen</div>
         <a href="/DataDosen/Tambah" type="button"
             class="text-white bg-[#C8AC5E] hover:bg-[#C8AC5E]/90 focus:ring-4 focus:outline-none focus:ring-[#3b5998]/50 font-medium rounded-lg text-sm px-5 py-2.5 text-center inline-flex items-center me-2 mb-2 gap-2">
             <div class="div">

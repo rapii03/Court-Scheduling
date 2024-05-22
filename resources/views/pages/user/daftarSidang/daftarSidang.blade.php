@@ -28,21 +28,21 @@
                 <div class="p-5">
                     <div class="text-[40px] font-bold mb-10">Daftar Sidang</div>
                     <div class="bg-[#1F5F92] rounded-lg shadow-lg h-full">
-                        <div class="p-10">
+                        <div class="p-5">
                             <div class="text-[35px] text-white font-bold mb-5">Pengajuan Daftar Sidang</div>
                             <div class="text-[16px] text-white font-bold mb-2">Berikut ini form untuk mengajukan Seminar
                                 Proposal dan Sidang Akhir</div>
                             <div class="text-[16px] text-white font-bold mb-2">*Pastikan anda sudah memiliki File Draft
                                 Tugas Akhir, PPT, dan File Persetujuan, lalu mengupload dalam
                                 format PDF dan Masimal File 25 Mb.</div>
-                            <div class="flex items-center justify-center mt-16">
+                            <div class="flex items-center justify-center mt-20">
                                 <div class="text-[16px] text-white font-bold mb-2">Klik tombol berikut untuk melakukan
                                     pendaftaran</div>
                             </div>
                             <div class="flex items-center justify-center">
                                 <a href="/DaftarSidang/FormSidang"
                                     class="bg-[#C8AC5E] hover:bg-[#B7A05E] w-[150px] m-auto text-center text-white font-bold py-2 px-4 rounded focus:outline-none focus:shadow-outline">
-                                    Simpan
+                                    Daftar Sempro
                                 </a>
                             </div>
                         </div>
