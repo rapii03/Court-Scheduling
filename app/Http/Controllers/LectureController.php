@@ -52,6 +52,10 @@ class LectureController extends Controller
 
     public function hapus(Lecture $lecture)
     {
+        if ($lecture->image) {
+            Storage::delete($lecture->image);
+        }
+
         return $lecture->delete();
     }
 }
