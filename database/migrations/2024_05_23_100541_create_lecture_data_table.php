@@ -22,7 +22,7 @@ return new class extends Migration {
 
             $table->timestamps();
 
-            $table->foreignUuid('user_id')->constrained('users');
+            $table->foreignUuid('user_id')->unique()->constrained('users');
         });
     }
 
