@@ -57,4 +57,16 @@ class LectureController extends Controller
 
         return true;
     }
+
+    public function hapus(User $account)
+    {
+        if ($account->image) {
+            Storage::delete($account->image);
+        }
+
+        $account->lectureData()->delete();
+        $account->delete();
+
+        return true;
+    }
 }
