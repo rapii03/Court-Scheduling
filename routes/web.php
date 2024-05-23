@@ -18,27 +18,27 @@ use App\Http\Controllers\GeneralPage;
 //     return view('welcome');
 // });
 
-Route::controller(GeneralPage::class) -> group(function () {
+Route::controller(GeneralPage::class)->group(function () {
     // Awal Dahboard Admin
     Route::get('/Login', 'login');
-    
+
     Route::get('/Dashboard', 'dashboard');
 
     Route::get('/DataDosen', 'dataDosen');
     Route::get('/DataDosen/Tambah', 'dataDosenTambah');
     Route::get('/DataDosen/View', 'dataDosenView');
     Route::get('/DataDosen/AturJadwal', 'dataDosenAturJadwal');
-    
+
     Route::get('/DataPendaftaran', 'dataPendaftaran');
     Route::get('/DataPendaftaran/SeminarProposal', 'dataPendaftaranSeminarProposal');
     Route::get('/DataPendaftaran/SeminarProposal/DataDokumen', 'dataPendaftaranSeminarProposalDataDokumen');
     Route::get('/DataPendaftaran/SidangAkhir', 'dataPendaftaranSidangAkhir');
-    Route::get('/DataPendaftaran/SidangAkhir/DataDokumen', 'dataPendaftaranSidangAkhirDataDokumen'); 
+    Route::get('/DataPendaftaran/SidangAkhir/DataDokumen', 'dataPendaftaranSidangAkhirDataDokumen');
 
     Route::get('/BuatPenjadwalan', 'buatPenjadwalan');
 
     Route::get('/Jadwal', 'jadwal');
-    
+
     Route::get('/DataUser', 'dataUser');
     Route::get('/DataUser/Dokumen', 'dataUserDokumen');
 
