@@ -17,7 +17,6 @@ class StudentData extends Model
         'supervisor_2',
         'thesis_title',
         'semester',
-        'status',
         'image',
         'nim',
         'kk',

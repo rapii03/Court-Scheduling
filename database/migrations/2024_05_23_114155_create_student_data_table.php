@@ -16,11 +16,10 @@ return new class extends Migration {
             $table->string('academic_adviser')->nullable();
             $table->string('semester', 2)->nullable();
             $table->text('image')->nullable();
-            $table->string('nim')->unique();
             $table->string('supervisor_1');
             $table->string('supervisor_2');
             $table->string('thesis_title');
-            $table->string('status');
+            $table->string('nim');
             $table->string('kk');
 
             $table->timestamps();
