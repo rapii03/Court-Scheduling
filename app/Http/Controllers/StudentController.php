@@ -42,4 +42,16 @@ class StudentController extends Controller
 
         return true;
     }
+
+    public function hapus(User $account)
+    {
+        if ($account->image) {
+            Storage::delete($account->image);
+        }
+
+        $account->studentData()->delete();
+        $account->delete();
+
+        return true;
+    }
 }
