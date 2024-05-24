@@ -22,7 +22,7 @@ class StudentRegisterReq extends FormRequest
     public function rules(): array
     {
         return [
-            'email' => 'bail|required|max:255|email|unique:users,email',
+            'email' => 'bail|required|max:255|email|unique:users,email|ends_with:@student.itera.ac.id',
             'supervisor_1' => 'bail|required|string|max:255',
             'supervisor_2' => 'bail|required|string|max:255',
             'thesis_title' => 'bail|required|string|max:255',
