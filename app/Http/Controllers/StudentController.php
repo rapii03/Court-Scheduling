@@ -3,6 +3,8 @@
 namespace App\Http\Controllers;
 
 use App\Http\Requests\StudentRegisterReq;
+use Illuminate\Support\Facades\Storage;
+use App\Http\Requests\StudentEditReq;
 use Illuminate\Http\Request;
 use App\Models\StudentData;
 use App\Models\User;
@@ -20,6 +22,23 @@ class StudentController extends Controller
 
         $student->user()->associate($account);
         $student->save();
+
+        return true;
+    }
+
+    public function ubah(StudentEditReq $request, User $account)
+    {
+        $student = StudentData::whereBelongsTo($account)->firstOrFail();
+
+        $account->update($request->safe()->only('name'));
+        $student->update($request->safe()->except('name'));
+
+        if ($request->hasFile('image')) {
+            Storage::delete($student->image);
+
+            $student->image = $request->file('image')->store('studentImages');
+            $student->save();
+        }
 
         return true;
     }
