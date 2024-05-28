@@ -11,7 +11,7 @@ use Illuminate\Support\Facades\Storage;
 
 class LectureController extends Controller
 {
-    public function tambah(LectureAddReq $request)
+    public function add(LectureAddReq $request)
     {
         $account = User::create([
             ...$request->safe()->only('email', 'name'),
@@ -58,7 +58,7 @@ class LectureController extends Controller
         return true;
     }
 
-    public function hapus(User $account)
+    public function delete(User $account)
     {
         if ($account->image) {
             Storage::delete($account->image);

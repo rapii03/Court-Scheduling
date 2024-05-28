@@ -11,7 +11,7 @@ use App\Models\User;
 
 class StudentController extends Controller
 {
-    public function daftar(StudentRegisterReq $request)
+    public function register(StudentRegisterReq $request)
     {
         $account = User::create([
             ...$request->safe()->only('password', 'email', 'name'),
@@ -26,7 +26,7 @@ class StudentController extends Controller
         return true;
     }
 
-    public function ubah(StudentEditReq $request, User $account)
+    public function edit(StudentEditReq $request, User $account)
     {
         $student = StudentData::whereBelongsTo($account)->firstOrFail();
 
@@ -43,7 +43,7 @@ class StudentController extends Controller
         return true;
     }
 
-    public function hapus(User $account)
+    public function delete(User $account)
     {
         if ($account->image) {
             Storage::delete($account->image);
