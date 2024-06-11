@@ -79,7 +79,6 @@
                 </button>
             </div>
             <div class="items-center justify-center text-center mt-5 text-sm">
-                <div class="">Lupa Password?</div>
                 <div class="">Belum Punya Aku? <a href="/Register">Buat Akun!</a></div>
             </div>
         </form>
