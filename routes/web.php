@@ -26,7 +26,7 @@ Route::controller(GeneralPage::class)->group(function () {
 
     Route::get('/DataDosen', 'dataDosen');
     Route::get('/DataDosen/Tambah', 'dataDosenTambah');
-    Route::get('/DataDosen/View', 'dataDosenView');
+    Route::get('/DataDosen/Edit', 'dataDosenEdit');
     Route::get('/DataDosen/AturJadwal', 'dataDosenAturJadwal');
 
     Route::get('/DataPendaftaran', 'dataPendaftaran');
@@ -35,7 +35,7 @@ Route::controller(GeneralPage::class)->group(function () {
     Route::get('/DataPendaftaran/SidangAkhir', 'dataPendaftaranSidangAkhir');
     Route::get('/DataPendaftaran/SidangAkhir/DataDokumen', 'dataPendaftaranSidangAkhirDataDokumen');
 
-    Route::get('/BuatPenjadwalan', 'buatPenjadwalan');
+    // Route::get('/BuatPenjadwalan', 'buatPenjadwalan');
 
     Route::get('/Jadwal', 'jadwal');
 
@@ -59,5 +59,5 @@ Route::controller(GeneralPage::class)->group(function () {
     Route::get('/DaftarSidang/FormSidang', 'daftarSidangFormSidang');
 
     Route::get('/JadwalSidang', 'jadwalSidang');
-    // Akhir User
+    // Akhir User
 });

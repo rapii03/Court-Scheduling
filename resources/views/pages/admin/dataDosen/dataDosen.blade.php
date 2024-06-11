@@ -111,7 +111,7 @@
                         <td class="px-6 py-4"><?php echo $data['Kelompok Keahlian']; ?></td>
                         <td class="px-6 py-4 flex gap-2">
                             <div>
-                                <a href="/DataDosen/View">
+                                <a href="/DataDosen/Edit">
                                     <svg width="22" height="20" viewBox="0 0 22 20" fill="none"
                                         xmlns="http://www.w3.org/2000/svg">
                                         <path

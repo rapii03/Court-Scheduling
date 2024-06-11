@@ -24,10 +24,20 @@
     <x-layoutAdmin />
     <div class="ml-[228px] p-5">
         <div class="text-[40px] font-bold mb-2">Dokumen Data User</div>
-        <div class="mb-2">
-            <div class="text-[20px]">Nama : Rafi Ramadhan Pratama</div>
-            <div class="text-[20px]">Nama : 120140079</div>
-            <div class="text-[20px]">Nama : Seminar Proposal</div>
+        <div class="justify-between flex">
+            <div class="mb-2">
+                <div class="text-[20px]">Nama : Rafi Ramadhan Pratama</div>
+                <div class="text-[20px]">Nama : 120140079</div>
+                <div class="text-[20px]">Nama : Seminar Proposal</div>
+            </div>
+            <div class="mb-2 flex justify-center items-center">
+                <button type="button"
+                    class="text-white bg-[#872929] hover:bg-[#610909]/90 focus:ring-4 focus:outline-none focus:ring-[#3b5998]/50 font-medium rounded-lg text-sm px-5 py-2.5 text-center inline-flex items-center me-2 mb-2 gap-2">
+                    <div class="text-[14px]">
+                        Tolak Pendaftaran
+                    </div>
+                </button>
+            </div>
         </div>
         <div class="relative overflow-x-auto mt-4">
             <table class="w-full text-sm text-left rtl:text-right text-black">

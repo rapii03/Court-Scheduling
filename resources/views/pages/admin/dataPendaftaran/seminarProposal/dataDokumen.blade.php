@@ -24,10 +24,58 @@
     <x-layoutAdmin />
     <div class="ml-[228px] p-5">
         <div class="text-[40px] font-bold mb-2">Data Dokumen Seminar Proposal</div>
-        <div class="mb-2">
-            <div class="text-[20px]">Nama : Rafi Ramadhan Pratama</div>
-            <div class="text-[20px]">Nama : 120140079</div>
-            <div class="text-[20px]">Nama : Seminar Proposal</div>
+        <div class="justify-between flex">
+            <div class="mb-2">
+                <div class="text-[20px]">Nama : Rafi Ramadhan Pratama</div>
+                <div class="text-[20px]">Nama : 120140079</div>
+                <div class="text-[20px]">Nama : Seminar Proposal</div>
+            </div>
+            <div class="mb-2 flex justify-center items-center">
+                <button type="button" data-modal-target="popup-modal" data-modal-toggle="popup-modal"
+                    class="text-white bg-[#872929] hover:bg-[#610909]/90 focus:ring-4 focus:outline-none focus:ring-[#3b5998]/50 font-medium rounded-lg text-sm px-5 py-2.5 text-center inline-flex items-center me-2 mb-2 gap-2">
+                    <div class="text-[14px]">
+                        Tolak Pendaftaran
+                    </div>
+                </button>
+                <div id="popup-modal" tabindex="-1"
+                    class="hidden overflow-y-auto overflow-x-hidden fixed top-0 right-0 left-0 z-50 justify-center items-center w-full md:inset-0 h-[calc(100%-1rem)] max-h-full">
+                    <div class="relative p-4 w-full max-w-md max-h-full">
+                        <div class="relative bg-white rounded-lg shadow">
+                            <button type="button"
+                                class="absolute top-3 end-2.5 text-gray-400 bg-transparent hover:bg-gray-200 hover:text-gray-900 rounded-lg text-sm w-8 h-8 ms-auto inline-flex justify-center items-center"
+                                data-modal-hide="popup-modal">
+                                <svg class="w-3 h-3" aria-hidden="true" xmlns="http://www.w3.org/2000/svg"
+                                    fill="none" viewBox="0 0 14 14">
+                                    <path stroke="currentColor" stroke-linecap="round" stroke-linejoin="round"
+                                        stroke-width="2" d="m1 1 6 6m0 0 6 6M7 7l6-6M7 7l-6 6" />
+                                </svg>
+                                <span class="sr-only">Close modal</span>
+                            </button>
+                            <div class="p-4 md:p-5 text-black">
+                                <svg class="mx-auto mb-4 text-black w-12 h-12" aria-hidden="true"
+                                    xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 20 20">
+                                    <path stroke="currentColor" stroke-linecap="round" stroke-linejoin="round"
+                                        stroke-width="2" d="M10 11V6m0 8h.01M19 10a9 9 0 1 1-18 0 9 9 0 0 1 18 0Z" />
+                                </svg>
+                                <label for="message" class="block mb-2 text-sm font-bold text-black">Catatan</label>
+                                <textarea id="message" rows="4"
+                                    class="block p-2.5 w-full text-sm text-gray-900 bg-gray-50 rounded-lg border border-gray-300 focus:ring-blue-500 focus:border-blue-500"
+                                    placeholder="Masukkan catatan penolakan..."></textarea>
+                                <h3 class="mb-2 mt-2 text-lg font-bold text-black text-center">Tolak Pendaftaran?</h3>
+                                <div class="flex m-auto justify-center items-center">
+                                    <button data-modal-hide="popup-modal" type="button"
+                                        class="text-white bg-[#C8AC5E] hover:bg-[#C8AC5E] focus:ring-4 focus:outline-none focus:ring-[#C8AC5E] 
+                                    font-medium rounded-lg text-sm inline-flex items-center px-5 py-2.5 text-center">
+                                        Yes
+                                    </button>
+                                    <button data-modal-hide="popup-modal" type="button"
+                                        class="py-2.5 px-5 ms-3 text-sm font-medium text-gray-900 focus:outline-none bg-white rounded-lg border border-gray-200 hover:bg-gray-100 hover:text-gray-600 focus:z-10 focus:ring-4 focus:ring-gray-100">No</button>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
         </div>
         <div class="relative overflow-x-auto mt-4">
             <table class="w-full text-sm text-left rtl:text-right text-black">
@@ -117,7 +165,7 @@
                     </a>
                 </div>
                 <div class="div">
-                    <a href="/BuatPenjadwalan"
+                    <a href=""
                         class="text-white bg-[#C8AC5E] hover:bg-[#C8AC5E]/90 focus:ring-4 focus:outline-none focus:ring-[#3b5998]/50 font-medium rounded-lg text-sm px-5 py-2.5 text-center inline-flex items-center me-2 mb-2 gap-2">
                         <div class="text-[14px]">
                             Generate

@@ -94,7 +94,7 @@
                                 $activePagePath2 = [
                                     'DataDosen',
                                     'DataDosen/Tambah',
-                                    'DataDosen/View',
+                                    'DataDosen/Edit',
                                     'DataDosen/AturJadwal',
                                 ];
                                 if (isset($id)) {
@@ -149,7 +149,7 @@
                                 </div>
                             </a>
                         </li>
-                        <li class="flex items-center justify-center inset-x-0 mt-2 bg-[#EBEBEB] rounded-lg">
+                        {{-- <li class="flex items-center justify-center inset-x-0 mt-2 bg-[#EBEBEB] rounded-lg">
                             @php
                                 $activePagePath4 = ['BuatPenjadwalan'];
                                 if (isset($id)) {
@@ -173,7 +173,7 @@
                                     Penjadwalan
                                 </div>
                             </a>
-                        </li>
+                        </li> --}}
                         <li class="flex items-center justify-center inset-x-0 mt-2 bg-[#EBEBEB] rounded-lg">
                             @php
                                 $activePagePath5 = ['Jadwal'];
@@ -224,7 +224,7 @@
                         </li>
                     </div>
                     <li class="absolute w-full -inset-x-0 bottom-0">
-                        <a type="button" id="logOut" href="/logout"
+                        <a type="button" id="logOut" href="/"
                             class="btn border-none gap-3 w-32 py-1 mb-5 flex items-center justify-center m-auto rounded-md bg-[#C8AC5E] hover:bg-[#D51717] text-white p-2 pt-2 pb-2 font-bold">
                             Log Out
                         </a>

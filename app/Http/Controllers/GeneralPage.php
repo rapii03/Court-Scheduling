@@ -19,8 +19,8 @@ class GeneralPage extends Controller
     function dataDosenTambah () {
         return view('pages/admin/dataDosen/tambah');
     }
-    function dataDosenView () {
-        return view('pages/admin/dataDosen/view');
+    function dataDosenEdit () {
+        return view('pages/admin/dataDosen/edit');
     }
     function dataDosenAturJadwal () {
         return view('pages/admin/dataDosen/aturjadwal');
@@ -89,5 +89,5 @@ class GeneralPage extends Controller
     function jadwalSidang () {
         return view('pages/user/jadwalSidang/jadwalSidang');
     }
-    // Akhir User
+    // Akhir User
 }

@@ -4,7 +4,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Data Dosen | Tambah</title>
+    <title>Data Dosen | Edit</title>
     <link rel="icon" type="image/x-icon" href="/assets/">
     {{-- Awal Tailwind --}}
     <script src="https://cdn.tailwindcss.com"></script>
@@ -23,7 +23,7 @@
 <body>
     <x-layoutAdmin />
     <div class="ml-[228px] p-5">
-        <div class="text-[40px] font-bold mb-10">Tambah Data Dosen</div>
+        <div class="text-[40px] font-bold mb-10">Edit Data Dosen</div>
         <div class="w-full h-[600px] rounded-lg bg-[#1F5F92]">
             <div class="p-20">
                 <div class="flex gap-10">
@@ -51,7 +51,7 @@
                                     </svg>
                                 </div>
                                 <img id="selected-image" src="" alt="Selected Image" class="hidden" />
-                                <input id="file-input" type="file" class="hidden" accept="image/*" />
+                                <input id="file-input" type="file" class="hidden" accept="image/*" value="" />
                                 <div id="edit-icon-container" class="absolute bottom-2 right-2">
                                     <svg width="22" height="20" viewBox="0 0 22 20" fill="none"
                                         xmlns="http://www.w3.org/2000/svg">
@@ -63,7 +63,6 @@
                             </label>
                         </div>
                     </div>
-
                     <script>
                         document.getElementById('file-input').addEventListener('change', function(event) {
                             const file = event.target.files[0];
@@ -80,7 +79,6 @@
                                 reader.readAsDataURL(file);
                             }
                         });
-
                         document.getElementById('hapus-icon-container').addEventListener('click', function() {
                             const img = document.getElementById('selected-image');
                             img.src = '';
@@ -91,7 +89,6 @@
                             document.getElementById('file-input').value = '';
                         });
                     </script>
-
                     <div class="w-[70%]">
                         <div class="relative overflow-x-auto overflow-y-auto mt-5">
                             <table class="w-full text-sm text-left rtl:text-right text-gray-500 bg-transparent">
@@ -105,7 +102,7 @@
                                             <div class="flex items-center">
                                                 <form class="w-full">
                                                     <div class="relative">
-                                                        <input type="text" id="phone-input"
+                                                        <input type="text" id="phone-input" value=""
                                                             aria-describedby="helper-text-explanation"
                                                             class="bg-gray-50 border border-black text-black text-sm focus:ring-black focus:border-black block w-[250px] h-[21px] ps-2 p-2.5"
                                                             pattern="[0-9]{3}-[0-9]{3}-[0-9]{4}"
@@ -124,7 +121,7 @@
                                             <div class="flex items-center">
                                                 <form class="w-full">
                                                     <div class="relative">
-                                                        <input type="text" id="phone-input"
+                                                        <input type="text" id="phone-input" value=""
                                                             aria-describedby="helper-text-explanation"
                                                             class="bg-gray-50 border border-black text-black text-sm focus:ring-black focus:border-black block w-[250px] h-[21px] ps-2 p-2.5"
                                                             pattern="[0-9]{3}-[0-9]{3}-[0-9]{4}"
@@ -143,7 +140,7 @@
                                             <div class="flex items-center">
                                                 <form class="w-full">
                                                     <div class="relative">
-                                                        <input type="text" id="phone-input"
+                                                        <input type="text" id="phone-input" value=""
                                                             aria-describedby="helper-text-explanation"
                                                             class="bg-gray-50 border border-black text-black text-sm focus:ring-black focus:border-black block w-[250px] h-[21px] ps-2 p-2.5"
                                                             pattern="[0-9]{3}-[0-9]{3}-[0-9]{4}"
@@ -162,7 +159,7 @@
                                             <div class="flex items-center">
                                                 <form class="w-full">
                                                     <div class="relative">
-                                                        <input type="text" id="phone-input"
+                                                        <input type="text" id="phone-input" value=""
                                                             aria-describedby="helper-text-explanation"
                                                             class="bg-gray-50 border border-black text-black text-sm focus:ring-black focus:border-black block w-[250px] h-[21px] ps-2 p-2.5"
                                                             pattern="[0-9]{3}-[0-9]{3}-[0-9]{4}"
@@ -181,7 +178,7 @@
                                             <div class="flex items-center">
                                                 <form class="w-full">
                                                     <div class="relative">
-                                                        <input type="text" id="phone-input"
+                                                        <input type="text" id="phone-input" value=""
                                                             aria-describedby="helper-text-explanation"
                                                             class="bg-gray-50 border border-black text-black text-sm focus:ring-black focus:border-black block w-[250px] h-[21px] ps-2 p-2.5"
                                                             pattern="[0-9]{3}-[0-9]{3}-[0-9]{4}"
@@ -200,7 +197,7 @@
                                             <div class="flex items-center">
                                                 <form class="w-full">
                                                     <div class="relative">
-                                                        <input type="text" id="phone-input"
+                                                        <input type="text" id="phone-input" value=""
                                                             aria-describedby="helper-text-explanation"
                                                             class="bg-gray-50 border border-black text-black text-sm focus:ring-black focus:border-black block w-[250px] h-[21px] ps-2 p-2.5"
                                                             pattern="[0-9]{3}-[0-9]{3}-[0-9]{4}"
@@ -219,7 +216,7 @@
                                             <div class="flex items-center">
                                                 <form class="w-full">
                                                     <div class="relative">
-                                                        <input type="text" id="phone-input"
+                                                        <input type="text" id="phone-input" value=""
                                                             aria-describedby="helper-text-explanation"
                                                             class="bg-gray-50 border border-black text-black text-sm focus:ring-black focus:border-black block w-[250px] h-[21px] ps-2 p-2.5"
                                                             pattern="[0-9]{3}-[0-9]{3}-[0-9]{4}"
@@ -287,5 +284,6 @@
         </div>
     </div>
 </body>
+
 
 </html>
