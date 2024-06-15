@@ -11,9 +11,20 @@ use Illuminate\Support\Facades\Storage;
 
 class LectureController extends Controller
 {
-    function dataDosen()
+    function dataDosen(Request $request)
     {
-        return view('pages/admin/dataDosen/dataDosen');
+        $data = User::whereHas('lectureData', function ($query) use ($request) {
+            if ($request->search) {
+                $query->whereAny(['email', 'name', 'nidn', 'nip', 'kk'], 'LIKE', "%$request->search%");
+            }
+        })
+            ->select(['id', 'email', 'name'])
+            ->withAggregate('lectureData AS nidn', 'nidn')
+            ->withAggregate('lectureData AS nip', 'nip')
+            ->withAggregate('lectureData AS kk', 'kk')
+            ->get();
+
+        return view('pages/admin/dataDosen/dataDosen', compact('data'));
     }
     function dataDosenTambah()
     {
