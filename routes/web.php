@@ -20,7 +20,7 @@ use App\Http\Controllers\GeneralPage;
 // });
 
 Route::controller(LectureController::class)->group(function () {
-    Route::get('/DataDosen', 'dataDosen');
+    Route::get('/DataDosen', 'dataDosen')->name('data-dosen');
     Route::get('/DataDosen/Tambah', 'dataDosenTambah');
     Route::post('/DataDosen/Tambah', 'add');
     Route::get('/DataDosen/Edit', 'dataDosenEdit');

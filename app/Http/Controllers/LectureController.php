@@ -45,7 +45,7 @@ class LectureController extends Controller
         $lecture->user()->associate($account);
         $lecture->save();
 
-        return redirect('/DataDosen');
+        return redirect()->route('data-dosen');
     }
 
     public function edit(LectureEditReq $request, User $account)

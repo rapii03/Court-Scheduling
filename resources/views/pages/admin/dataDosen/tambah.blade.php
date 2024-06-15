@@ -221,13 +221,13 @@
                 </div>
             </div>
             <div class="ml-10 mr-10 mt-[25px] flex justify-between">
-                <div class="div">
+                {{-- <div class="div">
                     <a href="/DataDosen/AturJadwal" type="button" class="mb-2 me-2 inline-flex items-center gap-2 rounded-lg bg-[#C8AC5E] px-5 py-2.5 text-center text-sm font-medium text-white hover:bg-[#C8AC5E]/90 focus:outline-none focus:ring-4 focus:ring-[#3b5998]/50">
                         <div class="text-[14px]">
                             Atur Jadwal
                         </div>
                     </a>
-                </div>
+                </div> --}}
                 <div class="div">
                     <button id="modal-button" type="button" data-modal-target="popup-modal" data-modal-toggle="popup-modal" class="hidden">
                     </button>
