@@ -11,6 +11,23 @@ use Illuminate\Support\Facades\Storage;
 
 class LectureController extends Controller
 {
+    function dataDosen()
+    {
+        return view('pages/admin/dataDosen/dataDosen');
+    }
+    function dataDosenTambah()
+    {
+        return view('pages/admin/dataDosen/tambah');
+    }
+    function dataDosenEdit()
+    {
+        return view('pages/admin/dataDosen/edit');
+    }
+    function dataDosenAturJadwal()
+    {
+        return view('pages/admin/dataDosen/aturjadwal');
+    }
+
     public function add(LectureAddReq $request)
     {
         $account = User::create([
@@ -28,7 +45,7 @@ class LectureController extends Controller
         $lecture->user()->associate($account);
         $lecture->save();
 
-        return true;
+        return redirect('/DataDosen');
     }
 
     public function edit(LectureEditReq $request, User $account)

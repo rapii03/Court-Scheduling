@@ -1,5 +1,6 @@
 <?php
 
+use App\Http\Controllers\LectureController;
 use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\GeneralPage;
 
@@ -18,16 +19,20 @@ use App\Http\Controllers\GeneralPage;
 //     return view('welcome');
 // });
 
+Route::controller(LectureController::class)->group(function () {
+    Route::get('/DataDosen', 'dataDosen');
+    Route::get('/DataDosen/Tambah', 'dataDosenTambah');
+    Route::post('/DataDosen/Tambah', 'add');
+    Route::get('/DataDosen/Edit', 'dataDosenEdit');
+    Route::get('/DataDosen/AturJadwal', 'dataDosenAturJadwal');
+});
+
 Route::controller(GeneralPage::class)->group(function () {
     // Awal Dahboard Admin
     Route::get('/Login', 'login');
 
     Route::get('/Dashboard', 'dashboard');
 
-    Route::get('/DataDosen', 'dataDosen');
-    Route::get('/DataDosen/Tambah', 'dataDosenTambah');
-    Route::get('/DataDosen/Edit', 'dataDosenEdit');
-    Route::get('/DataDosen/AturJadwal', 'dataDosenAturJadwal');
 
     Route::get('/DataPendaftaran', 'dataPendaftaran');
     Route::get('/DataPendaftaran/SeminarProposal', 'dataPendaftaranSeminarProposal');
