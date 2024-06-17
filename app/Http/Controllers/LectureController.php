@@ -67,16 +67,20 @@ class LectureController extends Controller
         return redirect()->route('data-dosen');
     }
 
-    public function edit(LectureEditReq $request, User $account)
+    public function edit(LectureEditReq $request)
     {
+        $account = User::whereKey($request['id'])
+            ->whereHas('lectureData')
+            ->firstOrFail();
+
         $newEmail = $request['email'];
         if ($newEmail !== $account->email) {
             $exists = User::whereKeyNot($account->id)
                 ->where('email', $newEmail)
-                ->first();
+                ->exists();
 
             if ($exists) {
-                return back()->withErrors(['email', 'email already exists']);
+                return back()->withErrors(['email' => 'email already exists']);
             }
         }
         $lecture = LectureData::whereBelongsTo($account)->firstOrFail();
@@ -91,7 +95,7 @@ class LectureController extends Controller
             $lecture->save();
         }
 
-        return true;
+        return back();
     }
 
     public function delete(User $account)

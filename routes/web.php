@@ -24,6 +24,7 @@ Route::controller(LectureController::class)->group(function () {
     Route::get('/DataDosen/Tambah', 'dataDosenTambah');
     Route::post('/DataDosen/Tambah', 'add');
     Route::get('/DataDosen/Edit', 'dataDosenEdit')->name('data-dosen-edit');
+    Route::put('/DataDosen/Edit', 'edit');
     Route::get('/DataDosen/AturJadwal', 'dataDosenAturJadwal');
 });
 
