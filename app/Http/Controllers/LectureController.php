@@ -30,9 +30,17 @@ class LectureController extends Controller
     {
         return view('pages/admin/dataDosen/tambah');
     }
-    function dataDosenEdit()
+    function dataDosenEdit(Request $request)
     {
-        return view('pages/admin/dataDosen/edit');
+        if ($request->id === null) {
+            abort(404);
+        }
+
+        $user = User::whereKey($request->id)
+            ->whereHas('lectureData')
+            ->firstOrFail();
+
+        return view('pages/admin/dataDosen/edit', compact('user'));
     }
     function dataDosenAturJadwal()
     {
