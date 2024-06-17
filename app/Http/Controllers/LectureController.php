@@ -98,15 +98,21 @@ class LectureController extends Controller
         return back();
     }
 
-    public function delete(User $account)
+    public function delete(Request $request)
     {
-        if ($account->image) {
-            Storage::delete($account->image);
+        $account = User::whereKey($request['id'])
+            ->whereHas('lectureData')
+            ->firstOrFail();
+
+        if ($account->lectureData->image) {
+            if (Storage::exists($account->lectureData->image)) {
+                Storage::delete($account->lectureData->image);
+            }
         }
 
         $account->lectureData()->delete();
         $account->delete();
 
-        return true;
+        return back();
     }
 }

@@ -91,7 +91,7 @@
                                     </a>
                                 </div>
                                 <div class="div">
-                                    <button data-modal-target="popup-modal1" data-modal-toggle="popup-modal1">
+                                    <button type="button" onclick="document.getElementById('id-data-delete').setAttribute('value', '{{ $item['id'] }}')" data-modal-target="popup-modal1" data-modal-toggle="popup-modal1">
                                         <svg width="20" height="20" viewBox="0 0 20 20" fill="none" xmlns="http://www.w3.org/2000/svg">
                                             <path d="M7.5 7.5H8.75V15H7.5V7.5Z" fill="#872929" />
                                             <path d="M11.25 7.5H12.5V15H11.25V7.5Z" fill="#872929" />
@@ -127,12 +127,14 @@
                 <div class="p-10 text-center">
                     <h3 class="mb-5 mt-10 text-[18px] font-bold font-normal text-black">Apakah kamu yakin untuk
                         menghapus data ini?</h3>
-                    <div class="p-4 text-center md:p-5">
-                        <button data-modal-target="popup-modal" data-modal-toggle="popup-modal" type="button" class="inline-flex items-center rounded-lg bg-[#C8AC5E] px-5 py-2.5 text-center text-sm font-medium text-white hover:bg-[#C8AC5E] focus:outline-none focus:ring-4 focus:ring-[#C8AC5E]">
+                    <form action="{{ route('data-dosen-delete') }}" class="p-4 text-center md:p-5">
+                        @csrf
+                        <input type="hidden" name="id" id="id-data-delete">
+                        <button type="submit" class="inline-flex items-center rounded-lg bg-[#C8AC5E] px-5 py-2.5 text-center text-sm font-medium text-white hover:bg-[#C8AC5E] focus:outline-none focus:ring-4 focus:ring-[#C8AC5E]">
                             Yes
                         </button>
                         <button data-modal-hide="popup-modal1" type="button" class="ms-3 rounded-lg border border-gray-200 bg-white px-5 py-2.5 text-sm font-medium text-gray-900 hover:bg-gray-100 hover:text-black focus:z-10 focus:outline-none focus:ring-4 focus:ring-gray-100">No</button>
-                    </div>
+                    </form>
                 </div>
             </div>
         </div>
