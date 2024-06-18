@@ -18,5 +18,27 @@ class DatabaseSeeder extends Seeder
         //     'name' => 'Test User',
         //     'email' => 'test@example.com',
         // ]);
+
+        $days = ['senin', 'selasa', 'rabu', 'kamis', "jum'at"];
+        $times = [
+            '08.00-09.00',
+            '09.00-10.00',
+            '10.00-11.00',
+            '11.00-12.00',
+            '13.00-14.00',
+            '14.00-15.00',
+            '15.00-16.00',
+            '16.00-17.00',
+        ];
+
+        foreach ($days as $num => $day) {
+            foreach ($times as $time) {
+                \App\Models\TimeList::create([
+                    'number' => $num,
+                    'time' => $time,
+                    'day' => $day,
+                ]);
+            }
+        }
     }
 }
