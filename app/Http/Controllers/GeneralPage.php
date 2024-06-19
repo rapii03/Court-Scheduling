@@ -63,37 +63,37 @@ class GeneralPage extends Controller
         return view('pages/user/landingPage');
     }
 
-    function loginUser()
-    {
-        return view('pages/user/loginUser');
-    }
-    function register()
-    {
-        return view('pages/user/register');
-    }
+    // function loginUser()
+    // {
+    //     return view('pages/user/loginUser');
+    // }
+    // function register()
+    // {
+    //     return view('pages/user/register');
+    // }
 
-    function dashboardUser()
-    {
-        return view('pages/user/dashboardUser');
-    }
+    // function dashboardUser()
+    // {
+    //     return view('pages/user/dashboardUser');
+    // }
 
-    function profileUser()
-    {
-        return view('pages/user/profile/profileUser');
-    }
+    // function profileUser()
+    // {
+    //     return view('pages/user/profile/profileUser');
+    // }
 
-    function daftarSidang()
-    {
-        return view('pages/user/daftarSidang/daftarSidang');
-    }
-    function daftarSidangFormSidang()
-    {
-        return view('pages/user/daftarSidang/daftarSidangFormSidang');
-    }
+    // function daftarSidang()
+    // {
+    //     return view('pages/user/daftarSidang/daftarSidang');
+    // }
+    // function daftarSidangFormSidang()
+    // {
+    //     return view('pages/user/daftarSidang/daftarSidangFormSidang');
+    // }
 
-    function jadwalSidang()
-    {
-        return view('pages/user/jadwalSidang/jadwalSidang');
-    }
+    // function jadwalSidang()
+    // {
+    //     return view('pages/user/jadwalSidang/jadwalSidang');
+    // }
     // Akhir User
 }

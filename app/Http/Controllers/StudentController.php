@@ -11,6 +11,39 @@ use App\Models\User;
 
 class StudentController extends Controller
 {
+    function loginUser()
+    {
+        return view('pages/user/loginUser');
+    }
+    function registerView()
+    {
+        return view('pages/user/register');
+    }
+
+    function dashboardUser()
+    {
+        return view('pages/user/dashboardUser');
+    }
+
+    function profileUser()
+    {
+        return view('pages/user/profile/profileUser');
+    }
+
+    function daftarSidang()
+    {
+        return view('pages/user/daftarSidang/daftarSidang');
+    }
+    function daftarSidangFormSidang()
+    {
+        return view('pages/user/daftarSidang/daftarSidangFormSidang');
+    }
+
+    function jadwalSidang()
+    {
+        return view('pages/user/jadwalSidang/jadwalSidang');
+    }
+
     public function register(StudentRegisterReq $request)
     {
         $account = User::create([
@@ -23,7 +56,7 @@ class StudentController extends Controller
         $student->user()->associate($account);
         $student->save();
 
-        return true;
+        return redirect('/LoginUser');
     }
 
     public function edit(StudentEditReq $request, User $account)

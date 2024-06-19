@@ -163,6 +163,7 @@ class LectureController extends Controller
         }
 
         $account->lectureData()->delete();
+        $account->time()->delete();
         $account->delete();
 
         return back();

@@ -1,6 +1,7 @@
 <?php
 
 use App\Http\Controllers\LectureController;
+use App\Http\Controllers\StudentController;
 use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\GeneralPage;
 
@@ -30,6 +31,21 @@ Route::controller(LectureController::class)->group(function () {
     Route::post('/DataDosen/AturJadwal', 'setSchedule');
 });
 
+Route::controller(StudentController::class)->group(function () {
+    Route::get('/LoginUser', 'loginUser');
+    Route::get('/Register', 'registerView');
+    Route::post('/Register', 'register');
+
+    Route::get('/DashboardUser', 'dashboardUser');
+
+    Route::get('/ProfileUser', 'profileUser');
+
+    Route::get('/DaftarSidang', 'daftarSidang');
+    Route::get('/DaftarSidang/FormSidang', 'daftarSidangFormSidang');
+
+    Route::get('/JadwalSidang', 'jadwalSidang');
+});
+
 Route::controller(GeneralPage::class)->group(function () {
     // Awal Dahboard Admin
     Route::get('/Login', 'login');
@@ -56,16 +72,16 @@ Route::controller(GeneralPage::class)->group(function () {
     // Route::get('/LandingPage', 'landingPage');
     Route::get('/', 'landingPage');
 
-    Route::get('/LoginUser', 'loginUser');
-    Route::get('/Register', 'register');
+    // Route::get('/LoginUser', 'loginUser');
+    // Route::get('/Register', 'register');
 
-    Route::get('/DashboardUser', 'dashboardUser');
+    // Route::get('/DashboardUser', 'dashboardUser');
 
-    Route::get('/ProfileUser', 'profileUser');
+    // Route::get('/ProfileUser', 'profileUser');
 
-    Route::get('/DaftarSidang', 'daftarSidang');
-    Route::get('/DaftarSidang/FormSidang', 'daftarSidangFormSidang');
+    // Route::get('/DaftarSidang', 'daftarSidang');
+    // Route::get('/DaftarSidang/FormSidang', 'daftarSidangFormSidang');
 
-    Route::get('/JadwalSidang', 'jadwalSidang');
+    // Route::get('/JadwalSidang', 'jadwalSidang');
     // Akhir User
 });
