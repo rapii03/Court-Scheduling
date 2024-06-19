@@ -27,6 +27,7 @@ Route::controller(LectureController::class)->group(function () {
     Route::put('/DataDosen/Edit', 'edit');
     Route::get('/DataDosen/Delete', 'delete')->name('data-dosen-delete');
     Route::get('/DataDosen/AturJadwal', 'dataDosenAturJadwal')->name('data-dosen-schedule');
+    Route::post('/DataDosen/AturJadwal', 'setSchedule');
 });
 
 Route::controller(GeneralPage::class)->group(function () {

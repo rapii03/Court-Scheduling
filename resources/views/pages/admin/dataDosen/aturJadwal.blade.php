@@ -59,18 +59,24 @@
                                     </td>
                                 </tr>
                                 @foreach ($timeLists as $time => $dayLists)
-                                    <tr class="h-[21px] border border-2 border-black bg-white text-center">
+                                    <tr class="border border-2 border-black bg-white text-center">
                                         @foreach ($days as $day)
                                             @php
                                                 $dataFind = $dayLists->firstWhere('day', $day);
                                             @endphp
                                             @if ($dataFind)
-                                                <td class="h-[21px] cursor-pointer border border-black px-6 py-2">
+                                                @php
+                                                    $check = $user
+                                                        ->time()
+                                                        ->where('time_id', $dataFind['id'])
+                                                        ->exists();
+                                                @endphp
+                                                <td class="border border-black">
                                                     <div class="flex items-center justify-center">
-                                                        <label class="w-full" for="{{ $dataFind['id'] }}" onclick="changeColor(this, '{{ $day }}', '{{ $dataFind['time'] }}')">
+                                                        <label class="{{ $check ? 'bg-[#C8AC5E] text-white' : '' }} w-full cursor-pointer px-6 py-2" for="{{ $dataFind['id'] }}" onclick='changeColor(this, "{{ $day }}", "{{ $dataFind['time'] }}")'>
                                                             {{ $dataFind['time'] }}
-                                                            <input id="{{ $dataFind['id'] }}" type="checkbox" name="schedule[]" value="{{ $dataFind['id'] }}" class="hidden">
                                                         </label>
+                                                        <input id="{{ $dataFind['id'] }}" type="checkbox" name="schedule[]" value="{{ $dataFind['id'] }}" class="hidden" @checked($check)>
                                                     </div>
                                                 </td>
                                             @else

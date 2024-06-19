@@ -4,6 +4,7 @@ namespace App\Http\Controllers;
 
 use App\Http\Requests\LectureAddReq;
 use App\Http\Requests\LectureEditReq;
+use App\Http\Requests\LectureScheduleAddReq;
 use App\Models\TimeList;
 use Illuminate\Http\Request;
 use App\Models\LectureData;
@@ -63,6 +64,27 @@ class LectureController extends Controller
             'days',
             'user',
         ]));
+    }
+
+    public function setSchedule(LectureScheduleAddReq $request)
+    {
+        $user = User::whereKey($request->id)
+            ->whereHas('lectureData')
+            ->firstOrFail();
+
+        $user->time()->delete();
+
+        if ($request->schedule) {
+            foreach ($request->schedule as $key => $value) {
+                $time = TimeList::find($value);
+
+                if ($time) {
+                    $user->time()->create(['time_id' => $value]);
+                }
+            }
+        }
+
+        return back();
     }
 
     public function add(LectureAddReq $request)
