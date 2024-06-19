@@ -31,8 +31,8 @@ class DatabaseSeeder extends Seeder
             '16.00-17.00',
         ];
 
-        foreach ($days as $num => $day) {
-            foreach ($times as $time) {
+        foreach ($times as $num => $time) {
+            foreach ($days as $day) {
                 \App\Models\TimeList::create([
                     'number' => $num,
                     'time' => $time,

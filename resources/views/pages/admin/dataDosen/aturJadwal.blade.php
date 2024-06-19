@@ -23,270 +23,95 @@
 <body>
     <x-layoutAdmin />
     <div class="ml-[228px] p-5">
-        <div class="text-[40px] font-bold mb-5">Profil Andre Febrianto</div>
-        <div class="w-full h-full rounded-lg bg-[#1F5F92]">
+        <div class="mb-5 text-[40px] font-bold">Profil {{ $user->name }}</div>
+        <div class="h-full w-full rounded-lg bg-[#1F5F92]">
             <div class="p-10">
-                <div class="w-full">
+                <form action="" method="POST" class="w-full">
+                    @csrf
                     <div class="text-[25px] text-white">
                         Mengatur Jadwal
                     </div>
-                    <div class="relative overflow-x-auto mt-2">
-                        <table class="w-full text-sm text-left rtl:text-right text-black">
-                            <thead class="text-xs text-white bg-[#C8AC5E] text-center">
+                    <div class="relative mt-2 overflow-x-auto">
+                        <table class="w-full text-left text-sm text-black rtl:text-right">
+                            <thead class="bg-[#C8AC5E] text-center text-xs text-white">
                                 <tr>
-                                    <th scope="col" class="text-[12px] px-6 py-3 rounded-tl-lg">Senin</th>
-                                    <th scope="col" class="text-[12px] px-6 py-3">Selasa</th>
-                                    <th scope="col" class="text-[12px] px-6 py-3">Rabu</th>
-                                    <th scope="col" class="text-[12px] px-6 py-3">Kamis</th>
-                                    <th scope="col" class="text-[12px] px-6 py-3 rounded-tr-lg">Jum'at</th>
+                                    @foreach ($days as $day)
+                                        <th scope="col" @class([
+                                            'px-6 py-3 text-[12px]',
+                                            'rounded-tl-lg' => $loop->iteration === 1,
+                                            'rounded-tr-lg' => $loop->iteration === count($days),
+                                        ])>{{ $day }}</th>
+                                    @endforeach
+                                    {{-- <th scope="col" class="rounded-tl-lg px-6 py-3 text-[12px]">Senin</th>
+                                    <th scope="col" class="px-6 py-3 text-[12px]">Rabu</th>
+                                    <th scope="col" class="px-6 py-3 text-[12px]">Kamis</th>
+                                    <th scope="col" class="rounded-tr-lg px-6 py-3 text-[12px]">Jum'at</th> --}}
                                 </tr>
                             </thead>
                             <tbody class="border border-2 border-black">
-                                <tr class="bg-white border border-2 border-black text-center">
+                                <tr class="border border-2 border-black bg-white text-center">
                                     <td class="border-none" colspan="5">
                                         <div class="w-full">
-                                            <div class="w-full text-black font-bold text-[15px] text-center uppercase">
-                                                Januari
+                                            <div class="w-full text-center text-[15px] font-bold uppercase text-black">
+                                                {{ \Carbon\Carbon::now()->getTranslatedMonthName() }}
                                             </div>
                                         </div>
                                     </td>
                                 </tr>
-                                <tr class="h-[21px] bg-white border border-2 border-black text-center">
-                                    <td class="h-[21px] px-6 py-2 border border-black cursor-pointer"
-                                        onclick="changeColor(this, 'Senin', '08.00-09.00')">
+                                @foreach ($timeLists as $time => $dayLists)
+                                    <tr class="h-[21px] border border-2 border-black bg-white text-center">
+                                        @foreach ($days as $day)
+                                            @php
+                                                $dataFind = $dayLists->firstWhere('day', $day);
+                                            @endphp
+                                            @if ($dataFind)
+                                                <td class="h-[21px] cursor-pointer border border-black px-6 py-2">
+                                                    <div class="flex items-center justify-center">
+                                                        <label class="w-full" for="{{ $dataFind['id'] }}" onclick="changeColor(this, '{{ $day }}', '{{ $dataFind['time'] }}')">
+                                                            {{ $dataFind['time'] }}
+                                                            <input id="{{ $dataFind['id'] }}" type="checkbox" name="schedule[]" value="{{ $dataFind['id'] }}" class="hidden">
+                                                        </label>
+                                                    </div>
+                                                </td>
+                                            @else
+                                                <td></td>
+                                            @endif
+                                        @endforeach
+                                    </tr>
+                                @endforeach
+                                {{-- <tr class="h-[21px] border border-2 border-black bg-white text-center">
+                                    <td class="h-[21px] cursor-pointer border border-black px-6 py-2" onclick="changeColor(this, 'Senin', '08.00-09.00')">
                                         08.00-09.00
                                         <input type="checkbox" name="schedule[Senin][08.00-09.00]" class="hidden">
                                     </td>
-                                    <td class="h-[21px] px-6 py-2 border border-black cursor-pointer"
-                                        onclick="changeColor(this, 'Selasa', '08.00-09.00')">
+                                    <td class="h-[21px] cursor-pointer border border-black px-6 py-2" onclick="changeColor(this, 'Selasa', '08.00-09.00')">
                                         08.00-09.00
                                         <input type="checkbox" name="schedule[Selasa][08.00-09.00]" class="hidden">
                                     </td>
-                                    <td class="h-[21px] px-6 py-2 border border-black cursor-pointer"
-                                        onclick="changeColor(this, 'Rabu', '08.00-09.00')">
+                                    <td class="h-[21px] cursor-pointer border border-black px-6 py-2" onclick="changeColor(this, 'Rabu', '08.00-09.00')">
                                         08.00-09.00
                                         <input type="checkbox" name="schedule[Rabu][08.00-09.00]" class="hidden">
                                     </td>
-                                    <td class="h-[21px] px-6 py-2 border border-black cursor-pointer"
-                                        onclick="changeColor(this, 'Kamis', '08.00-09.00')">
+                                    <td class="h-[21px] cursor-pointer border border-black px-6 py-2" onclick="changeColor(this, 'Kamis', '08.00-09.00')">
                                         08.00-09.00
                                         <input type="checkbox" name="schedule[Kamis][08.00-09.00]" class="hidden">
                                     </td>
-                                    <td class="h-[21px] px-6 py-2 border border-black cursor-pointer"
-                                        onclick="changeColor(this, 'Jumat', '08.00-09.00')">
+                                    <td class="h-[21px] cursor-pointer border border-black px-6 py-2" onclick="changeColor(this, 'Jumat', '08.00-09.00')">
                                         08.00-09.00
                                         <input type="checkbox" name="schedule[Jumat][08.00-09.00]" class="hidden">
                                     </td>
-                                </tr>
-                                <tr class="h-[21px] bg-white border border-2 border-black text-center">
-                                    <td class="h-[21px] px-6 py-2 border border-black cursor-pointer"
-                                        onclick="changeColor(this, 'Senin', '09.00-10.00')">
-                                        09.00-10.00
-                                        <input type="checkbox" name="schedule[Senin][09.00-10.00]" class="hidden">
-                                    </td>
-                                    <td class="h-[21px] px-6 py-2 border border-black cursor-pointer"
-                                        onclick="changeColor(this, 'Selasa', '09.00-10.00')">
-                                        09.00-10.00
-                                        <input type="checkbox" name="schedule[Selasa][09.00-10.00]" class="hidden">
-                                    </td>
-                                    <td class="h-[21px] px-6 py-2 border border-black cursor-pointer"
-                                        onclick="changeColor(this, 'Rabu', '09.00-10.00')">
-                                        09.00-10.00
-                                        <input type="checkbox" name="schedule[Rabu][09.00-10.00]" class="hidden">
-                                    </td>
-                                    <td class="h-[21px] px-6 py-2 border border-black cursor-pointer"
-                                        onclick="changeColor(this, 'Kamis', '09.00-10.00')">
-                                        09.00-10.00
-                                        <input type="checkbox" name="schedule[Kamis][09.00-10.00]" class="hidden">
-                                    </td>
-                                    <td class="h-[21px] px-6 py-2 border border-black cursor-pointer"
-                                        onclick="changeColor(this, 'Jumat', '09.00-10.00')">
-                                        09.00-10.00
-                                        <input type="checkbox" name="schedule[Jumat][09.00-10.00]" class="hidden">
-                                    </td>
-                                </tr>
-                                <tr class="h-[21px] bg-white border border-2 border-black text-center">
-                                    <td class="h-[21px] px-6 py-2 border border-black cursor-pointer"
-                                        onclick="changeColor(this, 'Senin', '10.00-11.00')">
-                                        10.00-11.00
-                                        <input type="checkbox" name="schedule[Senin][10.00-11.00]" class="hidden">
-                                    </td>
-                                    <td class="h-[21px] px-6 py-2 border border-black cursor-pointer"
-                                        onclick="changeColor(this, 'Selasa', '10.00-11.00')">
-                                        10.00-11.00
-                                        <input type="checkbox" name="schedule[Selasa][10.00-11.00]" class="hidden">
-                                    </td>
-                                    <td class="h-[21px] px-6 py-2 border border-black cursor-pointer"
-                                        onclick="changeColor(this, 'Rabu', '10.00-11.00')">
-                                        10.00-11.00
-                                        <input type="checkbox" name="schedule[Rabu][10.00-11.00]" class="hidden">
-                                    </td>
-                                    <td class="h-[21px] px-6 py-2 border border-black cursor-pointer"
-                                        onclick="changeColor(this, 'Kamis', '10.00-11.00')">
-                                        10.00-11.00
-                                        <input type="checkbox" name="schedule[Kamis][10.00-11.00]" class="hidden">
-                                    </td>
-                                    <td class="h-[21px] px-6 py-2 border border-black cursor-pointer"
-                                        onclick="changeColor(this, 'Jumat', '10.00-11.00')">
-                                        10.00-11.00
-                                        <input type="checkbox" name="schedule[Jumat][10.00-11.00]" class="hidden">
-                                    </td>
-                                </tr>
-                                <tr class="h-[21px] bg-white border border-2 border-black text-center">
-                                    <td class="h-[21px] px-6 py-2 border border-black cursor-pointer"
-                                        onclick="changeColor(this, 'Senin', '11.00-12.00')">
-                                        11.00-12.00
-                                        <input type="checkbox" name="schedule[Senin][11.00-12.00]" class="hidden">
-                                    </td>
-                                    <td class="h-[21px] px-6 py-2 border border-black cursor-pointer"
-                                        onclick="changeColor(this, 'Selasa', '11.00-12.00')">
-                                        11.00-12.00
-                                        <input type="checkbox" name="schedule[Selasa][11.00-12.00]" class="hidden">
-                                    </td>
-                                    <td class="h-[21px] px-6 py-2 border border-black cursor-pointer"
-                                        onclick="changeColor(this, 'Rabu', '11.00-12.00')">
-                                        11.00-12.00
-                                        <input type="checkbox" name="schedule[Rabu][11.00-12.00]" class="hidden">
-                                    </td>
-                                    <td class="h-[21px] px-6 py-2 border border-black cursor-pointer"
-                                        onclick="changeColor(this, 'Kamis', '11.00-12.00')">
-                                        11.00-12.00
-                                        <input type="checkbox" name="schedule[Kamis][11.00-12.00]" class="hidden">
-                                    </td>
-                                    <td class="h-[21px] px-6 py-2 border border-black cursor-pointer"
-                                        onclick="changeColor(this, 'Jumat', '11.00-12.00')">
-                                        11.00-12.00
-                                        <input type="checkbox" name="schedule[Jumat][11.00-12.00]" class="hidden">
-                                    </td>
-                                </tr>
-                                {{-- Istirahat --}}
-                                <tr class="bg-white border border-2 border-black">
-                                    <td class="border-none" colspan="5">
-                                        <div class="w-full text-black font-bold text-[15px] text-center">
-                                            ISTIRAHAT
-                                        </div>
-                                    </td>
-                                </tr>
-                                <tr class="h-[21px] bg-white border border-2 border-black text-center">
-                                    <td class="h-[21px] px-6 py-2 border border-black cursor-pointer"
-                                        onclick="changeColor(this, 'Senin', '13.00-14.00')">
-                                        13.00-14.00
-                                        <input type="checkbox" name="schedule[Senin][13.00-14.00]" class="hidden">
-                                    </td>
-                                    <td class="h-[21px] px-6 py-2 border border-black cursor-pointer"
-                                        onclick="changeColor(this, 'Selasa', '13.00-14.00')">
-                                        13.00-14.00
-                                        <input type="checkbox" name="schedule[Selasa][13.00-14.00]" class="hidden">
-                                    </td>
-                                    <td class="h-[21px] px-6 py-2 border border-black cursor-pointer"
-                                        onclick="changeColor(this, 'Rabu', '13.00-14.00')">
-                                        13.00-14.00
-                                        <input type="checkbox" name="schedule[Rabu][13.00-14.00]" class="hidden">
-                                    </td>
-                                    <td class="h-[21px] px-6 py-2 border border-black cursor-pointer"
-                                        onclick="changeColor(this, 'Kamis', '13.00-14.00')">
-                                        13.00-14.00
-                                        <input type="checkbox" name="schedule[Kamis][13.00-14.00]" class="hidden">
-                                    </td>
-                                    <td class="h-[21px] px-6 py-2 border border-black cursor-pointer"
-                                        onclick="changeColor(this, 'Jumat', '13.00-14.00')">
-                                        13.00-14.00
-                                        <input type="checkbox" name="schedule[Jumat][13.00-14.00]" class="hidden">
-                                    </td>
-                                </tr>
-                                <tr class="h-[21px] bg-white border border-2 border-black text-center">
-                                    <td class="h-[21px] px-6 py-2 border border-black cursor-pointer"
-                                        onclick="changeColor(this, 'Senin', '14.00-15.00')">
-                                        14.00-15.00
-                                        <input type="checkbox" name="schedule[Senin][14.00-15.00]" class="hidden">
-                                    </td>
-                                    <td class="h-[21px] px-6 py-2 border border-black cursor-pointer"
-                                        onclick="changeColor(this, 'Selasa', '14.00-15.00')">
-                                        14.00-15.00
-                                        <input type="checkbox" name="schedule[Selasa][14.00-15.00]" class="hidden">
-                                    </td>
-                                    <td class="h-[21px] px-6 py-2 border border-black cursor-pointer"
-                                        onclick="changeColor(this, 'Rabu', '14.00-15.00')">
-                                        14.00-15.00
-                                        <input type="checkbox" name="schedule[Rabu][14.00-15.00]" class="hidden">
-                                    </td>
-                                    <td class="h-[21px] px-6 py-2 border border-black cursor-pointer"
-                                        onclick="changeColor(this, 'Kamis', '14.00-15.00')">
-                                        14.00-15.00
-                                        <input type="checkbox" name="schedule[Kamis][14.00-15.00]" class="hidden">
-                                    </td>
-                                    <td class="h-[21px] px-6 py-2 border border-black cursor-pointer"
-                                        onclick="changeColor(this, 'Jumat', '14.00-15.00')">
-                                        14.00-15.00
-                                        <input type="checkbox" name="schedule[Jumat][14.00-15.00]" class="hidden">
-                                    </td>
-                                </tr>
-                                <tr class="h-[21px] bg-white border border-2 border-black text-center">
-                                    <td class="h-[21px] px-6 py-2 border border-black cursor-pointer"
-                                        onclick="changeColor(this, 'Senin', '15.00-16.00')">
-                                        15.00-16.00
-                                        <input type="checkbox" name="schedule[Senin][15.00-16.00]" class="hidden">
-                                    </td>
-                                    <td class="h-[21px] px-6 py-2 border border-black cursor-pointer"
-                                        onclick="changeColor(this, 'Selasa', '15.00-16.00')">
-                                        15.00-16.00
-                                        <input type="checkbox" name="schedule[Selasa][15.00-16.00]" class="hidden">
-                                    </td>
-                                    <td class="h-[21px] px-6 py-2 border border-black cursor-pointer"
-                                        onclick="changeColor(this, 'Rabu', '15.00-16.00')">
-                                        15.00-16.00
-                                        <input type="checkbox" name="schedule[Rabu][15.00-16.00]" class="hidden">
-                                    </td>
-                                    <td class="h-[21px] px-6 py-2 border border-black cursor-pointer"
-                                        onclick="changeColor(this, 'Kamis', '15.00-16.00')">
-                                        15.00-16.00
-                                        <input type="checkbox" name="schedule[Kamis][15.00-16.00]" class="hidden">
-                                    </td>
-                                    <td class="h-[21px] px-6 py-2 border border-black cursor-pointer"
-                                        onclick="changeColor(this, 'Jumat', '15.00-16.00')">
-                                        15.00-16.00
-                                        <input type="checkbox" name="schedule[Jumat][15.00-16.00]" class="hidden">
-                                    </td>
-                                </tr>
-                                <tr class="h-[21px] bg-white border border-2 border-black text-center">
-                                    <td class="h-[21px] px-6 py-2 border border-black cursor-pointer"
-                                        onclick="changeColor(this, 'Senin', '16.00-17.00')">
-                                        16.00-17.00
-                                        <input type="checkbox" name="schedule[Senin][16.00-17.00]" class="hidden">
-                                    </td>
-                                    <td class="h-[21px] px-6 py-2 border border-black cursor-pointer"
-                                        onclick="changeColor(this, 'Selasa', '16.00-17.00')">
-                                        16.00-17.00
-                                        <input type="checkbox" name="schedule[Selasa][16.00-17.00]" class="hidden">
-                                    </td>
-                                    <td class="h-[21px] px-6 py-2 border border-black cursor-pointer"
-                                        onclick="changeColor(this, 'Rabu', '16.00-17.00')">
-                                        16.00-17.00
-                                        <input type="checkbox" name="schedule[Rabu][16.00-17.00]" class="hidden">
-                                    </td>
-                                    <td class="h-[21px] px-6 py-2 border border-black cursor-pointer"
-                                        onclick="changeColor(this, 'Kamis', '16.00-17.00')">
-                                        16.00-17.00
-                                        <input type="checkbox" name="schedule[Kamis][16.00-17.00]" class="hidden">
-                                    </td>
-                                    <td class="h-[21px] px-6 py-2 border border-black cursor-pointer"
-                                        onclick="changeColor(this, 'Jumat', '16.00-17.00')">
-                                        16.00-17.00
-                                        <input type="checkbox" name="schedule[Jumat][16.00-17.00]" class="hidden">
-                                    </td>
-                                </tr>
+                                </tr> --}}
                             </tbody>
                         </table>
                     </div>
                     <div class="mt-[25px] flex justify-end">
                         <div class="div">
-                            <button type="button" id="saveButton"
-                                class="text-white bg-[#C8AC5E] hover:bg-[#C8AC5E]/90 focus:ring-4 focus:outline-none focus:ring-[#3b5998]/50 font-medium rounded-lg text-sm px-5 py-2.5 text-center inline-flex items-center me-2 mb-2 gap-2">
+                            <button type="submit" id="" class="mb-2 me-2 inline-flex items-center gap-2 rounded-lg bg-[#C8AC5E] px-5 py-2.5 text-center text-sm font-medium text-white hover:bg-[#C8AC5E]/90 focus:outline-none focus:ring-4 focus:ring-[#3b5998]/50">
                                 <div class="text-[14px]">Simpan</div>
                             </button>
                         </div>
                     </div>
-                </div>
+                </form>
             </div>
         </div>
     </div>

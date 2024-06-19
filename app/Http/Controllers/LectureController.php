@@ -4,6 +4,7 @@ namespace App\Http\Controllers;
 
 use App\Http\Requests\LectureAddReq;
 use App\Http\Requests\LectureEditReq;
+use App\Models\TimeList;
 use Illuminate\Http\Request;
 use App\Models\LectureData;
 use App\Models\User;
@@ -42,16 +43,33 @@ class LectureController extends Controller
 
         return view('pages/admin/dataDosen/edit', compact('user'));
     }
-    function dataDosenAturJadwal()
+    function dataDosenAturJadwal(Request $request)
     {
-        return view('pages/admin/dataDosen/aturjadwal');
+        if ($request->id === null) {
+            abort(404);
+        }
+
+        $user = User::whereKey($request->id)
+            ->whereHas('lectureData')
+            ->firstOrFail();
+
+        $timeLists = TimeList::orderBy('number')->get();
+
+        $days = $timeLists->pluck('day')->flatten()->unique()->toArray();
+        $timeLists = $timeLists->groupBy('time');
+
+        return view('pages/admin/dataDosen/aturjadwal', compact([
+            'timeLists',
+            'days',
+            'user',
+        ]));
     }
 
     public function add(LectureAddReq $request)
     {
         $account = User::create([
             ...$request->safe()->only('email', 'name'),
-            'password' => $request['email'],
+            'password' => $request->email,
             'role' => 'lecture',
         ]);
 
@@ -69,11 +87,15 @@ class LectureController extends Controller
 
     public function edit(LectureEditReq $request)
     {
-        $account = User::whereKey($request['id'])
+        if ($request->id === null) {
+            abort(404);
+        }
+
+        $account = User::whereKey($request->id)
             ->whereHas('lectureData')
             ->firstOrFail();
 
-        $newEmail = $request['email'];
+        $newEmail = $request->email;
         if ($newEmail !== $account->email) {
             $exists = User::whereKeyNot($account->id)
                 ->where('email', $newEmail)
@@ -89,7 +111,11 @@ class LectureController extends Controller
         $lecture->update($request->safe()->except('email', 'image', 'name'));
 
         if ($request->hasFile('image')) {
-            Storage::delete($lecture->image);
+            if ($lecture->image !== null) {
+                if (Storage::exists($lecture->image)) {
+                    Storage::delete($lecture->image);
+                }
+            }
 
             $lecture->image = $request->file('image')->store('lectureImages');
             $lecture->save();
@@ -100,7 +126,11 @@ class LectureController extends Controller
 
     public function delete(Request $request)
     {
-        $account = User::whereKey($request['id'])
+        if ($request->id === null) {
+            abort(404);
+        }
+
+        $account = User::whereKey($request->id)
             ->whereHas('lectureData')
             ->firstOrFail();
 
