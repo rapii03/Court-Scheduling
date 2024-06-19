@@ -20,6 +20,7 @@ use App\Http\Controllers\GeneralPage;
 //     return view('welcome');
 // });
 
+// DONE
 Route::controller(LectureController::class)->group(function () {
     Route::get('/DataDosen', 'dataDosen')->name('data-dosen');
     Route::get('/DataDosen/Tambah', 'dataDosenTambah');
@@ -30,11 +31,15 @@ Route::controller(LectureController::class)->group(function () {
     Route::get('/DataDosen/AturJadwal', 'dataDosenAturJadwal')->name('data-dosen-schedule');
     Route::post('/DataDosen/AturJadwal', 'setSchedule');
 });
+// -- DONE
 
 Route::controller(StudentController::class)->group(function () {
     Route::get('/LoginUser', 'loginUser');
+
+    // DONE
     Route::get('/Register', 'registerView');
     Route::post('/Register', 'register');
+    // -- DONE
 
     Route::get('/DashboardUser', 'dashboardUser');
 
