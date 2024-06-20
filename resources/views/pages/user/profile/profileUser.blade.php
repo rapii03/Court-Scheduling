@@ -23,11 +23,12 @@
 <body>
     <x-layoutUser />
     <div class="ml-[228px] mt-24">
-        <div class="h-full pt-5 pb-5">
-            <div class="bg-white rounded-lg shadow-lg mt-42 ml-10 mr-10 min-h-[605px]">
-                <div class="p-5">
-                    <div class="text-[40px] font-bold mb-10">Data User</div>
-                    <div class="justify-between flex gap-5">
+        <div class="h-full pb-5 pt-5">
+            <div class="mt-42 ml-10 mr-10 min-h-[605px] rounded-lg bg-white shadow-lg">
+                <form action="" method="POST" enctype="multipart/form-data" class="p-5">
+                    @csrf
+                    <div class="mb-10 text-[40px] font-bold">Data User</div>
+                    <div class="flex justify-between gap-5">
                         <div class="w-[25%]">
                             <div class="align-center relative m-auto mt-24 flex items-center justify-center">
                                 <div id="hapus-icon-container" class="absolute bottom-2 left-2 z-50 hidden cursor-pointer">
@@ -45,7 +46,7 @@
                                             <path d="M84.9948 21.0013C82.3315 21.0013 79.7011 21.4097 77.1825 22.0592C75.7095 22.4436 74.289 22.9484 72.8686 23.5401C72.3228 23.7703 71.7645 23.9147 71.2259 24.1748C71.0023 24.282 70.8314 24.4858 70.6097 24.5979C69.2735 25.2788 67.9655 26.0673 66.7056 26.9251C66.528 27.0429 66.2643 27.0157 66.0887 27.1367C65.7185 27.3983 65.4245 27.7066 65.0615 27.9826C64.0298 28.7449 62.9467 29.4449 61.9787 30.3101C61.0962 31.1272 60.3386 32.1542 59.5127 33.0601C56.7172 36.0111 54.2939 39.1334 52.3198 42.7926C48.9305 48.9087 46.4001 55.7944 45.3334 62.8907C44.8185 62.779 44.3464 62.7391 43.8946 62.8907C40.4415 64.0484 39.5906 70.8015 41.8396 77.9114C43.1594 82.0837 45.3551 85.3685 47.5936 87.2201C50.6008 99.2558 56.9691 109.289 65.2667 115.572V122.551L58.6907 129.321L45.5386 136.091C34.9032 141.514 24.3085 146.957 13.6856 152.38C7.79921 156.036 5.52147 163.212 6.0824 169.941C6.35639 174.179 4.86926 179.602 8.95942 182.425C12.8452 184.483 17.4813 183.143 21.7005 183.481C34.0411 183.475 46.3501 183.481 58.6907 183.481C76.2421 183.488 93.7475 183.481 111.299 183.481C126.864 183.481 142.384 183.509 157.949 183.481C163 183.116 164.4 177.625 163.907 173.326C163.999 167.017 164.361 159.949 159.593 155.129C155.7 151.053 150.163 149.442 145.415 146.666C138.438 143.112 131.422 139.646 124.451 136.091L111.299 129.321L104.723 122.551V115.572C113.022 109.289 119.387 99.2558 122.399 87.2201C124.635 85.3678 126.832 82.083 128.147 77.9114C130.396 70.8015 129.547 64.0484 126.095 62.8907C125.641 62.7391 125.174 62.779 124.655 62.8907C123.59 55.7944 121.058 48.9087 117.671 42.7926C115.698 39.1334 113.272 36.0111 110.477 33.0601C109.648 32.1542 108.892 31.1272 108.011 30.3101C107.971 30.2729 107.847 30.3473 107.807 30.3101C105.229 27.9413 102.369 26.1199 99.3832 24.5979C98.6269 24.2173 97.8904 23.8631 97.121 23.5401C96.5686 23.3098 96.036 23.1051 95.477 22.9054C93.8001 22.3064 92.0838 21.7304 90.3346 21.4245C90.203 21.4014 90.0584 21.4458 89.9268 21.4245C88.2894 21.1595 86.6717 20.9827 84.9948 21.0013Z" fill="#969BA0" />
                                         </svg>
                                     </div>
-                                    <img id="selected-image" src="" alt="Selected Image" class="hidden" />
+                                    <img id="selected-image" src="{{ auth()->user()->studentData->image !== null ? url(asset('storage/' . auth()->user()->studentData->image)) : '' }}" alt="Selected Image" class="hidden" />
                                     <input id="file-input" type="file" name="image" class="hidden" accept="image/*" />
                                     <div id="edit-icon-container" class="absolute bottom-2 right-2">
                                         <svg width="22" height="20" viewBox="0 0 22 20" fill="none" xmlns="http://www.w3.org/2000/svg">
@@ -54,7 +55,21 @@
                                     </div>
                                 </label>
                             </div>
+                            @if (auth()->user()->studentData->image !== null)
+                                <script>
+                                    document.addEventListener('DOMContentLoaded', () => {
+                                        showImage()
+                                    });
+                                </script>
+                            @endif
                             <script>
+                                function showImage() {
+                                    const img = document.getElementById('selected-image');
+                                    img.classList.remove('hidden');
+                                    document.getElementById('svg-container').classList.add('hidden');
+                                    document.getElementById('edit-icon-container').classList.remove('hidden');
+                                    document.getElementById('hapus-icon-container').classList.remove('hidden');
+                                }
                                 document.getElementById('file-input').addEventListener('change', function(event) {
                                     const file = event.target.files[0];
                                     if (file) {
@@ -84,94 +99,94 @@
                         <div class="w-[75%]">
                             <div class="flex justify-between gap-5">
                                 <div class="mb-4 w-[50%]">
-                                    <label class="block text-gray-700 text-sm font-bold mb-2" for="nama">
+                                    <label class="mb-2 block text-sm font-bold text-gray-700" for="nama">
                                         Nama
                                     </label>
-                                    <input name="" class="shadow appearance-none border rounded w-full text-gray-700 leading-tight focus:outline-none focus:shadow-outline" id="name" type="text" placeholder="Nama" maxlength="20" required>
+                                    <input name="name" value="{{ auth()->user()->name }}" class="focus:shadow-outline w-full appearance-none rounded border leading-tight text-gray-700 shadow focus:outline-none" id="name" type="text" placeholder="Nama" maxlength="20" required>
                                 </div>
                                 <div class="mb-4 w-[50%]">
-                                    <label class="block text-gray-700 text-sm font-bold mb-2" for="nim">
+                                    <label class="mb-2 block text-sm font-bold text-gray-700" for="nim">
                                         NIM
                                     </label>
-                                    <input name="" class="shadow appearance-none border rounded w-full text-gray-700 leading-tight focus:outline-none focus:shadow-outline" id="name" type="text" placeholder="NIM" minlength="8" maxlength="20" required>
+                                    <input name="nim" value="{{ auth()->user()->studentData->nim }}" class="focus:shadow-outline w-full appearance-none rounded border leading-tight text-gray-700 shadow focus:outline-none" id="name" type="text" placeholder="NIM" minlength="8" maxlength="20" required>
                                 </div>
                             </div>
                             <div class="flex justify-between gap-5">
                                 <div class="mb-4 w-[50%]">
-                                    <label class="block text-gray-700 text-sm font-bold mb-2" for="dosenWali">
+                                    <label class="mb-2 block text-sm font-bold text-gray-700" for="dosenWali">
                                         Dosen Wali
                                     </label>
-                                    <input name="" class="shadow appearance-none border rounded w-full text-gray-700 leading-tight focus:outline-none focus:shadow-outline" id="name" type="text" placeholder="Dosen Wali" maxlength="20" required>
+                                    <input name="academic_adviser" value="{{ auth()->user()->studentData->academic_adviser }}" class="focus:shadow-outline w-full appearance-none rounded border leading-tight text-gray-700 shadow focus:outline-none" id="name" type="text" placeholder="Dosen Wali" maxlength="20" required>
                                 </div>
                                 <div class="mb-4 w-[50%]">
-                                    <label class="block text-gray-700 text-sm font-bold mb-2" for="bidangKeahlian">
+                                    <label class="mb-2 block text-sm font-bold text-gray-700" for="bidangKeahlian">
                                         Bidang Keahlian
                                     </label>
-                                    <input name="" class="shadow appearance-none border rounded w-full text-gray-700 leading-tight focus:outline-none focus:shadow-outline" id="bidangKeahlian" type="text" placeholder="Bidang Keahlian" maxlength="20" required>
+                                    <input name="kk" value="{{ auth()->user()->studentData->kk }}" class="focus:shadow-outline w-full appearance-none rounded border leading-tight text-gray-700 shadow focus:outline-none" id="bidangKeahlian" type="text" placeholder="Bidang Keahlian" maxlength="20" required>
                                 </div>
                             </div>
                             <div class="flex justify-between gap-5">
                                 <div class="mb-4 w-[50%]">
-                                    <label class="block text-gray-700 text-sm font-bold mb-2" for="dosenPembimbing1">
+                                    <label class="mb-2 block text-sm font-bold text-gray-700" for="dosenPembimbing1">
                                         Dosen Pembimbing 1
                                     </label>
-                                    <input name="" class="shadow appearance-none border rounded w-full text-gray-700 leading-tight focus:outline-none focus:shadow-outline" id="dosenPembimbing1" type="text" placeholder="Dosen Pembimbing 1" maxlength="100" required>
+                                    <input name="supervisor_1" value="{{ auth()->user()->studentData->supervisor_1 }}" class="focus:shadow-outline w-full appearance-none rounded border leading-tight text-gray-700 shadow focus:outline-none" id="dosenPembimbing1" type="text" placeholder="Dosen Pembimbing 1" maxlength="100" required>
                                 </div>
                                 <div class="mb-4 w-[50%]">
-                                    <label class="block text-gray-700 text-sm font-bold mb-2" for="dosenPembimbing2">
+                                    <label class="mb-2 block text-sm font-bold text-gray-700" for="dosenPembimbing2">
                                         Dosen Pembimbing 2
                                     </label>
-                                    <input name="" class="shadow appearance-none border rounded w-full text-gray-700 leading-tight focus:outline-none focus:shadow-outline" id="dosenPembimbing2" type="email" placeholder="Dosen Pembimbing 2" maxlength="100" required>
+                                    <input name="supervisor_2" value="{{ auth()->user()->studentData->supervisor_2 }}" class="focus:shadow-outline w-full appearance-none rounded border leading-tight text-gray-700 shadow focus:outline-none" id="dosenPembimbing2" type="text" placeholder="Dosen Pembimbing 2" maxlength="100" required>
                                 </div>
                             </div>
                             <div class="flex justify-between gap-5">
                                 <div class="mb-4 w-[50%]">
-                                    <label class="block text-gray-700 text-sm font-bold mb-2" for="status">
+                                    <label class="mb-2 block text-sm font-bold text-gray-700" for="status">
                                         Status
                                     </label>
-                                    <input name="" class="shadow appearance-none border rounded w-full text-gray-700 leading-tight focus:outline-none focus:shadow-outline" id="status" type="text" placeholder="Status" maxlength="100" required>
+                                    <input name="" value="BELUM DI INTEGRASI" class="focus:shadow-outline w-full appearance-none rounded border leading-tight text-gray-700 shadow focus:outline-none" id="status" type="text" placeholder="Status" maxlength="100" required>
                                     <div class="mt-2">
-                                        <label class="block text-gray-700 text-sm font-bold mb-2" for="semester">
+                                        <label class="mb-2 block text-sm font-bold text-gray-700" for="semester">
                                             Semester
                                         </label>
-                                        <input name="" class="shadow appearance-none border rounded w-full text-gray-700 leading-tight focus:outline-none focus:shadow-outline" id="semester" type="text" placeholder="Semester" maxlength="100" required>
+                                        <input name="semester" value="{{ auth()->user()->studentData->semester }}" class="focus:shadow-outline w-full appearance-none rounded border leading-tight text-gray-700 shadow focus:outline-none" id="semester" type="text" placeholder="Semester" maxlength="100" required>
                                     </div>
                                 </div>
                                 <div class="mb-4 w-[50%]">
-                                    <label class="block text-gray-700 text-sm font-bold mb-2" for="judulTugasAkhir">
+                                    <label class="mb-2 block text-sm font-bold text-gray-700" for="judulTugasAkhir">
                                         Judul Tugas Akhir
                                     </label>
-                                    <textarea name="" id="" class="w-full h-28 text-black-50" placeholder="Judul Tugas Akhir"></textarea>
+                                    <textarea name="thesis_title" id="" class="text-black-50 h-28 w-full" placeholder="Judul Tugas Akhir">{{ auth()->user()->studentData->thesis_title }}</textarea>
                                 </div>
                             </div>
                         </div>
                     </div>
-                    <div class="flex items-end justify-end mt-5">
-                        <button data-modal-target="popup-modal" data-modal-toggle="popup-modal" class="bg-[#C8AC5E] hover:bg-[#B7A05E] w-[150px] text-white font-bold py-2 px-4 rounded focus:outline-none focus:shadow-outline" type="button">
+                    <div class="mt-5 flex items-end justify-end">
+                        <button type="submit" class="focus:shadow-outline w-[150px] rounded bg-[#C8AC5E] px-4 py-2 font-bold text-white hover:bg-[#B7A05E] focus:outline-none" type="button">
                             Simpan
                         </button>
                     </div>
-                </div>
+                </form>
             </div>
         </div>
     </div>
 
-    <div id="popup-modal" tabindex="-1" class="hidden overflow-y-auto overflow-x-hidden fixed top-0 right-0 left-0 z-50 justify-center items-center w-full md:inset-0 h-[calc(100%-1rem)] max-h-full">
-        <div class="relative p-4 w-full max-w-md max-h-full">
-            <div class="relative bg-white rounded-lg shadow">
-                <button type="button" class="absolute top-3 end-2.5 text-[#872929] bg-transparent hover:bg-[#C8AC5E] hover:text-white rounded-lg text-sm w-8 h-8 ms-auto inline-flex justify-center items-center" data-modal-hide="popup-modal">
-                    <svg class="w-3 h-3" aria-hidden="true" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 14 14">
+    <div id="popup-modal" tabindex="-1" class="fixed left-0 right-0 top-0 z-50 hidden h-[calc(100%-1rem)] max-h-full w-full items-center justify-center overflow-y-auto overflow-x-hidden md:inset-0">
+        <div class="relative max-h-full w-full max-w-md p-4">
+            <div class="relative rounded-lg bg-white shadow">
+                <button type="button" class="absolute end-2.5 top-3 ms-auto inline-flex h-8 w-8 items-center justify-center rounded-lg bg-transparent text-sm text-[#872929] hover:bg-[#C8AC5E] hover:text-white" data-modal-hide="popup-modal">
+                    <svg class="h-3 w-3" aria-hidden="true" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 14 14">
                         <path stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="m1 1 6 6m0 0 6 6M7 7l6-6M7 7l-6 6" />
                     </svg>
                     <span class="sr-only">Close modal</span>
                 </button>
-                <div class="p-4 md:p-5 text-center">
+                <div class="p-4 text-center md:p-5">
                     <svg width="80" height="65" viewBox="0 0 80 65" fill="none" class="m-auto flex" xmlns="http://www.w3.org/2000/svg">
                         <path d="M70.3177 9.68233C71.7136 11.0783 71.7136 13.2975 70.3177 14.6935L29.7271 55.2841C29.3995 55.6157 29.0093 55.879 28.5792 56.0587C28.1491 56.2384 27.6876 56.3309 27.2215 56.3309C26.7553 56.3309 26.2939 56.2384 25.8637 56.0587C25.4336 55.879 25.0435 55.6157 24.7159 55.2841L9.68233 40.2506C9.35073 39.923 9.08746 39.5328 8.90777 39.1027C8.72809 38.6726 8.63556 38.2111 8.63556 37.745C8.63556 37.2788 8.72809 36.8173 8.90777 36.3872C9.08746 35.9571 9.35073 35.567 9.68233 35.2394C10.0099 34.9078 10.4001 34.6445 10.8302 34.4648C11.2603 34.2851 11.7218 34.1926 12.1879 34.1926C12.654 34.1926 13.1155 34.2851 13.5456 34.4648C13.9758 34.6445 14.3659 34.9078 14.6935 35.2394L27.2215 47.7673L65.3065 9.68233C65.6341 9.35073 66.0242 9.08746 66.4543 8.90777C66.8845 8.72809 67.3459 8.63556 67.8121 8.63556C68.2782 8.63556 68.7397 8.72809 69.1698 8.90777C69.5999 9.08746 69.9901 9.35073 70.3177 9.68233ZM62.7651 2.09396L27.2215 37.6376L17.2349 27.651C14.443 24.8591 9.89709 24.8591 7.10514 27.651L2.09396 32.6622C-0.697987 35.4541 -0.697987 40 2.09396 42.7919L22.1387 62.8367C24.9306 65.6286 29.4765 65.6286 32.2685 62.8367L77.906 17.2349C80.698 14.443 80.698 9.89709 77.906 7.10514L72.8949 2.09396C70.0671 -0.697987 65.557 -0.697987 62.7651 2.09396Z" fill="#26B34D" />
                     </svg>
                     <h3 class="mb-5 mt-5 text-lg font-normal text-gray-500">Your account has been successfully created!
                     </h3>
-                    <button data-modal-hide="popup-modal" type="button" class="text-white bg-[#C8AC5E] hover:bg-[#C8AC5E] focus:ring-4 focus:outline-none focus:ring-red-300 font-medium rounded-lg text-sm inline-flex items-center px-5 py-2.5 text-center">
+                    <button data-modal-hide="popup-modal" type="button" class="inline-flex items-center rounded-lg bg-[#C8AC5E] px-5 py-2.5 text-center text-sm font-medium text-white hover:bg-[#C8AC5E] focus:outline-none focus:ring-4 focus:ring-red-300">
                         Confirm
                     </button>
                 </div>
