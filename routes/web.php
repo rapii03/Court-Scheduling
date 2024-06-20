@@ -43,6 +43,8 @@ Route::controller(SeminarController::class)->group(function () {
 
 Route::controller(StudentController::class)->group(function () {
     // DONE
+    Route::get('/DataUser', 'dataUser');
+
     Route::get('/LoginUser', 'loginUser');
     Route::get('/Register', 'registerView');
     Route::post('/Register', 'register');
@@ -76,7 +78,6 @@ Route::controller(GeneralPage::class)->group(function () {
 
     Route::get('/Jadwal', 'jadwal');
 
-    Route::get('/DataUser', 'dataUser');
     Route::get('/DataUser/Dokumen', 'dataUserDokumen');
 
     // Akhir Dahboard Admin

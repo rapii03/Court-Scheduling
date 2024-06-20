@@ -46,10 +46,10 @@ class GeneralPage extends Controller
         return view('pages/admin/jadwal/jadwal');
     }
 
-    function dataUser()
-    {
-        return view('pages/admin/dataUser/dataUser');
-    }
+    // function dataUser()
+    // {
+    //     return view('pages/admin/dataUser/dataUser');
+    // }
 
     function dataUserDokumen()
     {

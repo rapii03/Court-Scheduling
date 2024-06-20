@@ -3,6 +3,7 @@
 namespace App\Http\Controllers;
 
 use App\Http\Requests\StudentRegisterReq;
+use Illuminate\Database\Eloquent\Builder;
 use Illuminate\Support\Facades\Storage;
 use App\Http\Requests\StudentEditReq;
 use Illuminate\Http\Request;
@@ -11,6 +12,17 @@ use App\Models\User;
 
 class StudentController extends Controller
 {
+    function dataUser(Request $request)
+    {
+        $users = User::whereHas('studentData', function (Builder $query) use ($request) {
+            if ($request->search) {
+                $query->whereAny(['name', 'nim', 'thesis_title', 'supervisor_1', 'supervisor_2'], 'LIKE', "%$request->search%");
+            }
+        })->withCount('seminar AS seminar')->latest()->get();
+        $lecture = User::whereHas('lectureData')->get();
+
+        return view('pages/admin/dataUser/dataUser', compact('users', 'lecture'));
+    }
     function loginUser()
     {
         return view('pages/user/loginUser');
