@@ -28,7 +28,7 @@
 
 <body class="flex h-screen items-center justify-center bg-gray-100">
     <div class="w-full max-w-xs">
-        <form action="" method="POST" class="mb-4 rounded bg-white px-8 pb-8 pt-6 shadow-md">
+        <form action="/Login" method="POST" class="mb-4 rounded bg-white px-8 pb-8 pt-6 shadow-md">
             @csrf
             <div class="mb-4 text-center">
                 <div class="mb-2 text-[46px] font-semibold">SchedulerTI</div>

@@ -1,6 +1,7 @@
 <?php
 
 use App\Http\Controllers\LectureController;
+use App\Http\Controllers\LoginController;
 use App\Http\Controllers\StudentController;
 use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\GeneralPage;
@@ -20,6 +21,8 @@ use App\Http\Controllers\GeneralPage;
 //     return view('welcome');
 // });
 
+Route::post('/Login', [LoginController::class, 'login']);
+
 // DONE
 Route::controller(LectureController::class)->group(function () {
     Route::get('/DataDosen', 'dataDosen')->name('data-dosen');
@@ -34,9 +37,8 @@ Route::controller(LectureController::class)->group(function () {
 // -- DONE
 
 Route::controller(StudentController::class)->group(function () {
-    Route::get('/LoginUser', 'loginUser');
-
     // DONE
+    Route::get('/LoginUser', 'loginUser');
     Route::get('/Register', 'registerView');
     Route::post('/Register', 'register');
     // -- DONE

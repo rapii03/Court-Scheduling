@@ -4,7 +4,7 @@ namespace App\Http\Requests;
 
 use Illuminate\Foundation\Http\FormRequest;
 
-class LectureScheduleAddReq extends FormRequest
+class LoginReq extends FormRequest
 {
     /**
      * Determine if the user is authorized to make this request.
@@ -22,8 +22,8 @@ class LectureScheduleAddReq extends FormRequest
     public function rules(): array
     {
         return [
-            'schedule.*' => 'bail|nullable|string|exists:time_lists,id',
-            'schedule' => 'bail|nullable|array',
+            'email' => 'bail|required|string|email|max:255|exists:users,email',
+            'password' => 'bail|required|string|max:255',
         ];
     }
 }
