@@ -41,11 +41,12 @@ Route::controller(StudentController::class)->group(function () {
     Route::get('/LoginUser', 'loginUser');
     Route::get('/Register', 'registerView');
     Route::post('/Register', 'register');
+    Route::get('/ProfileUser', 'profileUser');
+    Route::post('/ProfileUser', 'edit');
     // -- DONE
 
     Route::get('/DashboardUser', 'dashboardUser');
 
-    Route::get('/ProfileUser', 'profileUser');
 
     Route::get('/DaftarSidang', 'daftarSidang');
     Route::get('/DaftarSidang/FormSidang', 'daftarSidangFormSidang');

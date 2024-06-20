@@ -59,8 +59,10 @@ class StudentController extends Controller
         return redirect('/LoginUser');
     }
 
-    public function edit(StudentEditReq $request, User $account)
+    public function edit(StudentEditReq $request)
     {
+        $account = auth()->user();
+
         $student = StudentData::whereBelongsTo($account)->firstOrFail();
 
         $account->update($request->safe()->only('name'));
@@ -73,7 +75,7 @@ class StudentController extends Controller
             $student->save();
         }
 
-        return true;
+        return back();
     }
 
     public function delete(User $account)
