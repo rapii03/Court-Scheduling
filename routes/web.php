@@ -2,6 +2,7 @@
 
 use App\Http\Controllers\LectureController;
 use App\Http\Controllers\LoginController;
+use App\Http\Controllers\SeminarController;
 use App\Http\Controllers\StudentController;
 use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\GeneralPage;
@@ -36,6 +37,10 @@ Route::controller(LectureController::class)->group(function () {
 });
 // -- DONE
 
+Route::controller(SeminarController::class)->group(function () {
+    Route::post('/DaftarSidang/FormSidang', 'add');
+});
+
 Route::controller(StudentController::class)->group(function () {
     // DONE
     Route::get('/LoginUser', 'loginUser');
@@ -43,13 +48,13 @@ Route::controller(StudentController::class)->group(function () {
     Route::post('/Register', 'register');
     Route::get('/ProfileUser', 'profileUser');
     Route::post('/ProfileUser', 'edit');
+    Route::get('/DaftarSidang/FormSidang', 'daftarSidangFormSidang');
     // -- DONE
 
     Route::get('/DashboardUser', 'dashboardUser');
 
 
     Route::get('/DaftarSidang', 'daftarSidang');
-    Route::get('/DaftarSidang/FormSidang', 'daftarSidangFormSidang');
 
     Route::get('/JadwalSidang', 'jadwalSidang');
 });

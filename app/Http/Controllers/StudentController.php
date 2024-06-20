@@ -36,7 +36,9 @@ class StudentController extends Controller
     }
     function daftarSidangFormSidang()
     {
-        return view('pages/user/daftarSidang/daftarSidangFormSidang');
+        $lectureList = User::whereHas('lectureData')->get();
+
+        return view('pages/user/daftarSidang/daftarSidangFormSidang', compact('lectureList'));
     }
 
     function jadwalSidang()
