@@ -12,6 +12,10 @@ use App\Models\User;
 
 class StudentController extends Controller
 {
+    function login()
+    {
+        return view('pages/login');
+    }
     function dataUser(Request $request)
     {
         $students = User::whereHas('studentData', function (Builder $query) use ($request) {

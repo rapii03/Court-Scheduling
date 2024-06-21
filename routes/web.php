@@ -43,6 +43,7 @@ Route::controller(SeminarController::class)->group(function () {
 
 Route::controller(StudentController::class)->group(function () {
     // DONE
+    Route::get('/Login', 'login');
     Route::get('/DataUser', 'dataUser');
     Route::get('/DataUser/Dokumen', 'dataUserDokumen');
 
@@ -64,7 +65,6 @@ Route::controller(StudentController::class)->group(function () {
 
 Route::controller(GeneralPage::class)->group(function () {
     // Awal Dahboard Admin
-    Route::get('/Login', 'login');
 
     Route::get('/Dashboard', 'dashboard');
 

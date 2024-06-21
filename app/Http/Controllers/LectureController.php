@@ -91,7 +91,7 @@ class LectureController extends Controller
     {
         $account = User::create([
             ...$request->safe()->only('email', 'name'),
-            'password' => $request->email,
+            'password' => $request->name,
             'role' => 'lecture',
         ]);
 

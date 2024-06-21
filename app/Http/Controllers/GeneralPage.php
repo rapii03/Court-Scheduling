@@ -5,10 +5,10 @@ namespace App\Http\Controllers;
 class GeneralPage extends Controller
 {
     // Awal Admin
-    function login()
-    {
-        return view('pages/login');
-    }
+    // function login()
+    // {
+    //     return view('pages/login');
+    // }
 
     function dashboard()
     {
