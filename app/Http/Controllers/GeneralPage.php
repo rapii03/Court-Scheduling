@@ -15,26 +15,26 @@ class GeneralPage extends Controller
         return view('pages/admin/dashboard');
     }
 
-    function dataPendaftaran()
-    {
-        return view('pages/admin/dataPendaftaran/dataPendaftaran');
-    }
-    function dataPendaftaranSeminarProposal()
-    {
-        return view('pages/admin/dataPendaftaran/seminarProposal/seminarProposal');
-    }
-    function dataPendaftaranSeminarProposalDataDokumen()
-    {
-        return view('pages/admin/dataPendaftaran/seminarProposal/dataDokumen');
-    }
-    function dataPendaftaranSidangAkhir()
-    {
-        return view('pages/admin/dataPendaftaran/sidangAkhir/sidangAkhir');
-    }
-    function dataPendaftaranSidangAkhirDataDokumen()
-    {
-        return view('pages/admin/dataPendaftaran/sidangAkhir/dataDokumen');
-    }
+    // function dataPendaftaran()
+    // {
+    //     return view('pages/admin/dataPendaftaran/dataPendaftaran');
+    // }
+    // function dataPendaftaranSeminarProposal()
+    // {
+    //     return view('pages/admin/dataPendaftaran/seminarProposal/seminarProposal');
+    // }
+    // function dataPendaftaranSeminarProposalDataDokumen()
+    // {
+    //     return view('pages/admin/dataPendaftaran/seminarProposal/dataDokumen');
+    // }
+    // function dataPendaftaranSidangAkhir()
+    // {
+    //     return view('pages/admin/dataPendaftaran/sidangAkhir/sidangAkhir');
+    // }
+    // function dataPendaftaranSidangAkhirDataDokumen()
+    // {
+    //     return view('pages/admin/dataPendaftaran/sidangAkhir/dataDokumen');
+    // }
 
     function buatPenjadwalan()
     {

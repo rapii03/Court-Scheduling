@@ -39,6 +39,12 @@ Route::controller(LectureController::class)->group(function () {
 // -- DONE
 
 Route::controller(SeminarController::class)->group(function () {
+    Route::get('/DataPendaftaran', 'dataPendaftaran');
+    Route::get('/DataPendaftaran/SeminarProposal', 'dataPendaftaranSeminarProposal');
+    Route::get('/DataPendaftaran/SeminarProposal/DataDokumen', 'dataPendaftaranSeminarProposalDataDokumen');
+    Route::get('/DataPendaftaran/SidangAkhir', 'dataPendaftaranSidangAkhir');
+    Route::get('/DataPendaftaran/SidangAkhir/DataDokumen', 'dataPendaftaranSidangAkhirDataDokumen');
+
     Route::post('/DaftarSidang/FormSidang', 'add');
 });
 
@@ -70,11 +76,11 @@ Route::controller(GeneralPage::class)->group(function () {
     Route::get('/Dashboard', 'dashboard');
 
 
-    Route::get('/DataPendaftaran', 'dataPendaftaran');
-    Route::get('/DataPendaftaran/SeminarProposal', 'dataPendaftaranSeminarProposal');
-    Route::get('/DataPendaftaran/SeminarProposal/DataDokumen', 'dataPendaftaranSeminarProposalDataDokumen');
-    Route::get('/DataPendaftaran/SidangAkhir', 'dataPendaftaranSidangAkhir');
-    Route::get('/DataPendaftaran/SidangAkhir/DataDokumen', 'dataPendaftaranSidangAkhirDataDokumen');
+    // Route::get('/DataPendaftaran', 'dataPendaftaran');
+    // Route::get('/DataPendaftaran/SeminarProposal', 'dataPendaftaranSeminarProposal');
+    // Route::get('/DataPendaftaran/SeminarProposal/DataDokumen', 'dataPendaftaranSeminarProposalDataDokumen');
+    // Route::get('/DataPendaftaran/SidangAkhir', 'dataPendaftaranSidangAkhir');
+    // Route::get('/DataPendaftaran/SidangAkhir/DataDokumen', 'dataPendaftaranSidangAkhirDataDokumen');
 
     // Route::get('/BuatPenjadwalan', 'buatPenjadwalan');
 

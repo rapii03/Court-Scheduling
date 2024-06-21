@@ -9,6 +9,26 @@ use Illuminate\Support\Facades\Storage;
 
 class SeminarController extends Controller
 {
+    function dataPendaftaran()
+    {
+        return view('pages/admin/dataPendaftaran/dataPendaftaran');
+    }
+    function dataPendaftaranSeminarProposal()
+    {
+        return view('pages/admin/dataPendaftaran/seminarProposal/seminarProposal');
+    }
+    function dataPendaftaranSeminarProposalDataDokumen()
+    {
+        return view('pages/admin/dataPendaftaran/seminarProposal/dataDokumen');
+    }
+    function dataPendaftaranSidangAkhir()
+    {
+        return view('pages/admin/dataPendaftaran/sidangAkhir/sidangAkhir');
+    }
+    function dataPendaftaranSidangAkhirDataDokumen()
+    {
+        return view('pages/admin/dataPendaftaran/sidangAkhir/dataDokumen');
+    }
     public function add(SeminarAddReq $request)
     {
         $exists = Seminar::where('user_id', auth()->user()->id)->where('type', $request->type)->exists();
