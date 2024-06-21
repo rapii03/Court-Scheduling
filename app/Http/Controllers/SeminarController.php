@@ -11,7 +11,10 @@ class SeminarController extends Controller
 {
     function dataPendaftaran()
     {
-        return view('pages/admin/dataPendaftaran/dataPendaftaran');
+        $spCount = Seminar::doesntHave('schedule')->where('type', 'seminar-proposal')->count();
+        $saCount = Seminar::doesntHave('schedule')->where('type', 'seminar-akhir')->count();
+
+        return view('pages/admin/dataPendaftaran/dataPendaftaran', compact(['spCount', 'saCount']));
     }
     function dataPendaftaranSeminarProposal()
     {

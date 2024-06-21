@@ -23,17 +23,17 @@
 <body>
     <x-layoutAdmin />
     <div class="ml-[228px] p-16">
-        <div class="text-[40px] font-bold mb-16">Data Pendaftaran Tugas Akhir</div>
+        <div class="mb-16 text-[40px] font-bold">Data Pendaftaran Tugas Akhir</div>
         <div class="flex gap-10">
             <a href="/DataPendaftaran/SeminarProposal">
-                <div class="w-[260px] h-[220px] bg-[#1F5F92] hover:bg-[#C8AC5E] rounded-md text-white p-5">
-                    <div class="font-bold text-[30px]">087</div>
+                <div class="h-[220px] w-[260px] rounded-md bg-[#1F5F92] p-5 text-white hover:bg-[#C8AC5E]">
+                    <div class="text-[30px] font-bold">{{ $spCount }}</div>
                     <div class="text-[30px]">Seminar Proposal</div>
                 </div>
             </a>
             <a href="/DataPendaftaran/SidangAkhir">
-                <div class="w-[260px] h-[220px] bg-[#1F5F92] hover:bg-[#C8AC5E] rounded-md text-white p-5">
-                    <div class="font-bold text-[30px]">017</div>
+                <div class="h-[220px] w-[260px] rounded-md bg-[#1F5F92] p-5 text-white hover:bg-[#C8AC5E]">
+                    <div class="text-[30px] font-bold">{{ $saCount }}</div>
                     <div class="text-[30px]">Sidang Akhir</div>
                 </div>
             </a>
