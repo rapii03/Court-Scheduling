@@ -23,6 +23,7 @@ use App\Http\Controllers\GeneralPage;
 // });
 
 Route::post('/Login', [LoginController::class, 'login']);
+Route::get('/Logout', [LoginController::class, 'logout']);
 
 // DONE
 Route::controller(LectureController::class)->group(function () {
