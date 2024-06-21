@@ -4,6 +4,7 @@ namespace App\Http\Controllers;
 
 use App\Http\Requests\SeminarAddReq;
 use App\Models\Seminar;
+use App\Models\User;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Storage;
 
@@ -18,7 +19,10 @@ class SeminarController extends Controller
     }
     function dataPendaftaranSeminarProposal()
     {
-        return view('pages/admin/dataPendaftaran/seminarProposal/seminarProposal');
+        $seminars = Seminar::doesntHave('schedule')->where('type', 'seminar-proposal')->oldest()->get();
+        $lectures = User::whereHas('lectureData')->get();
+
+        return view('pages/admin/dataPendaftaran/seminarProposal/seminarProposal', compact(['seminars', 'lectures']));
     }
     function dataPendaftaranSeminarProposalDataDokumen()
     {
