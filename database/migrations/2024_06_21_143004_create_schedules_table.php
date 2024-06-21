@@ -15,7 +15,7 @@ return new class extends Migration {
 
             $table->date('date');
 
-            $table->foreignUuid('seminar_id')->constrained('seminars');
+            $table->foreignUuid('seminar_id')->unique()->constrained('seminars');
             $table->foreignUuid('time_id')->constrained('time_lists');
 
             $table->timestamps();
