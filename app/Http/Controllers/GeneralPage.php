@@ -2,39 +2,16 @@
 
 namespace App\Http\Controllers;
 
+use App\Models\User;
+use App\Models\Schedule;
+use Illuminate\Support\Carbon;
+
 class GeneralPage extends Controller
 {
-    // Awal Admin
-    // function login()
-    // {
-    //     return view('pages/login');
-    // }
-
     function dashboard()
     {
         return view('pages/admin/dashboard');
     }
-
-    // function dataPendaftaran()
-    // {
-    //     return view('pages/admin/dataPendaftaran/dataPendaftaran');
-    // }
-    // function dataPendaftaranSeminarProposal()
-    // {
-    //     return view('pages/admin/dataPendaftaran/seminarProposal/seminarProposal');
-    // }
-    // function dataPendaftaranSeminarProposalDataDokumen()
-    // {
-    //     return view('pages/admin/dataPendaftaran/seminarProposal/dataDokumen');
-    // }
-    // function dataPendaftaranSidangAkhir()
-    // {
-    //     return view('pages/admin/dataPendaftaran/sidangAkhir/sidangAkhir');
-    // }
-    // function dataPendaftaranSidangAkhirDataDokumen()
-    // {
-    //     return view('pages/admin/dataPendaftaran/sidangAkhir/dataDokumen');
-    // }
 
     function buatPenjadwalan()
     {
@@ -46,54 +23,13 @@ class GeneralPage extends Controller
         return view('pages/admin/jadwal/jadwal');
     }
 
-    // function dataUser()
-    // {
-    //     return view('pages/admin/dataUser/dataUser');
-    // }
-
-    // function dataUserDokumen()
-    // {
-    //     return view('pages/admin/dataUser/dataDokumen');
-    // }
-    // Akhir Admin
-
-    // Awal User
     function landingPage()
     {
-        return view('pages/user/landingPage');
+        $currentTime = Carbon::now()->setTimezone('Asia/Jakarta');
+
+        $schedules = Schedule::whereMonth('date', $currentTime)->latest()->get();
+        $lectures = User::whereHas('lectureData')->get();
+
+        return view('pages/user/landingPage', compact('schedules', 'lectures'));
     }
-
-    // function loginUser()
-    // {
-    //     return view('pages/user/loginUser');
-    // }
-    // function register()
-    // {
-    //     return view('pages/user/register');
-    // }
-
-    // function dashboardUser()
-    // {
-    //     return view('pages/user/dashboardUser');
-    // }
-
-    // function profileUser()
-    // {
-    //     return view('pages/user/profile/profileUser');
-    // }
-
-    // function daftarSidang()
-    // {
-    //     return view('pages/user/daftarSidang/daftarSidang');
-    // }
-    // function daftarSidangFormSidang()
-    // {
-    //     return view('pages/user/daftarSidang/daftarSidangFormSidang');
-    // }
-
-    // function jadwalSidang()
-    // {
-    //     return view('pages/user/jadwalSidang/jadwalSidang');
-    // }
-    // Akhir User
 }

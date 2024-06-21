@@ -23,28 +23,25 @@
 <body>
 
 
-    <nav class="bg-white border-gray-200 fixed w-full z-50">
-        <div class="max-w-screen-xl flex flex-wrap items-center justify-between mx-auto p-4">
+    <nav class="fixed z-50 w-full border-gray-200 bg-white">
+        <div class="mx-auto flex max-w-screen-xl flex-wrap items-center justify-between p-4">
             <a href="" class="flex items-center space-x-3 rtl:space-x-reverse">
                 <img src="/logo_if.png" alt="">
             </a>
         </div>
     </nav>
     <aside class="bg-blue-500">
-        <section class="bg-center bg-no-repeat bg-[#1F5F92] bg-blend-multiply">
-            <div class="px-4 mx-auto max-w-screen-xl text-center py-24 lg:py-32">
-                <div class="lg:flex p-5 lg:p-10">
-                    <div class="lg:w-[45%] order-last lg:order-last">
-                        <img src="/wisuda.png" alt=""
-                            class="lg:w-96 lg:h-full w-60 m-auto">
+        <section class="bg-[#1F5F92] bg-center bg-no-repeat bg-blend-multiply">
+            <div class="mx-auto max-w-screen-xl px-4 py-24 text-center lg:py-32">
+                <div class="p-5 lg:flex lg:p-10">
+                    <div class="order-last lg:order-last lg:w-[45%]">
+                        <img src="/wisuda.png" alt="" class="m-auto w-60 lg:h-full lg:w-96">
                     </div>
                     <div class="lg:w-[55%]">
-                        <h1
-                            class="lg:text-left mb-4 text-2xl lg:text-4xl font-extrabold tracking-tight leading-none text-white md:text-5xl lg:text-6xl">
+                        <h1 class="mb-4 text-2xl font-extrabold leading-none tracking-tight text-white md:text-5xl lg:text-left lg:text-4xl lg:text-6xl">
                             Ketentuan Pelaksanaan Tugas Akhir
                         </h1>
-                        <p
-                            class="mb-8 text-sm lg:text-lg font-normal text-gray-300 lg:text-xl w-full text-justify lg:text-left">
+                        <p class="mb-8 w-full text-justify text-sm font-normal text-gray-300 lg:text-left lg:text-lg lg:text-xl">
                             <span>Selamat datang, ini adalah website pendaftaran Sidang Seminar Proposal dan Seminar
                                 Akhir di
                                 Teknik Informatika ITERA. <br>
@@ -57,12 +54,10 @@
                             </span>
                         </p>
                         <div class="flex gap-5 lg:justify-start">
-                            <a href="/Register"
-                                class="w-[50%] lg:w-[20%] inline-flex justify-center items-center py-3 px-5 text-base font-medium text-center text-white rounded-lg bg-[#C8AC5E] hover:bg-[#C8AC5E] focus:ring-4">
+                            <a href="/Register" class="inline-flex w-[50%] items-center justify-center rounded-lg bg-[#C8AC5E] px-5 py-3 text-center text-base font-medium text-white hover:bg-[#C8AC5E] focus:ring-4 lg:w-[20%]">
                                 Daftar
                             </a>
-                            <a href="/LoginUser"
-                                class="w-[50%] lg:w-[20%] inline-flex justify-center items-center py-3 px-5 text-base font-medium text-center text-white rounded-lg bg-[#C8AC5E] hover:bg-[#C8AC5E] focus:ring-4">
+                            <a href="/LoginUser" class="inline-flex w-[50%] items-center justify-center rounded-lg bg-[#C8AC5E] px-5 py-3 text-center text-base font-medium text-white hover:bg-[#C8AC5E] focus:ring-4 lg:w-[20%]">
                                 Masuk
                             </a>
                         </div>
@@ -71,16 +66,14 @@
             </div>
         </section>
         <section class="bg-white">
-            <div class="px-4 mx-auto max-w-screen-xl text-center py-5 lg:py-10">
+            <div class="mx-auto max-w-screen-xl px-4 py-5 text-center lg:py-10">
                 <div class="p-5 lg:p-10">
-                    <h1
-                        class="lg:text-center mb-4 text-2xl lg:text-4xl font-extrabold tracking-tight leading-none text-black md:text-xl lg:text-2xl">
+                    <h1 class="mb-4 text-2xl font-extrabold leading-none tracking-tight text-black md:text-xl lg:text-center lg:text-2xl lg:text-4xl">
                         Ketentuan Pelaksanaan Tugas Akhir
                     </h1>
-                    <div class="lg:w-[80%] bg-[#1F5F92] rounded-lg shadow-lg h-full m-auto justify-center lg:mt-10">
-                        <div class="lg:p-20 p-10">
-                            <ol
-                                class="lg:text-[18px] text-sm space-y-2 text-white text-justify list-decimal list-inside">
+                    <div class="m-auto h-full justify-center rounded-lg bg-[#1F5F92] shadow-lg lg:mt-10 lg:w-[80%]">
+                        <div class="p-10 lg:p-20">
+                            <ol class="list-inside list-decimal space-y-2 text-justify text-sm text-white lg:text-[18px]">
                                 <li>Pendaftaran Seminar Proposal dapat dilakukan dari tanggal 1 - 30 Bulan Berjalan</li>
                                 <li>Penarikan Data dilakukan setiap tanggal 25 Bulan berjalan</li>
                                 <li>Pengumuman Jadwal Seminar Proposal dan Akhir tanggal 26 - 30 Bulan Berjalan</li>
@@ -95,17 +88,16 @@
             </div>
         </section>
         <section class="bg-white">
-            <div class="px-4 mx-auto max-w-screen-xl py-5 lg:py-10">
+            <div class="mx-auto max-w-screen-xl px-4 py-5 lg:py-10">
                 <div class="p-5 lg:p-10">
-                    <div
-                        class="lg:text-left mb-4 text-2xl lg:text-4xl font-extrabold tracking-tight leading-none text-black md:text-xl lg:text-2xl">
+                    <div class="mb-4 text-2xl font-extrabold leading-none tracking-tight text-black md:text-xl lg:text-left lg:text-2xl lg:text-4xl">
                         Jadwal Sidang</div>
-                    <div class="text-[20px] font-bold mb-10">Berikut Jadwal Sidang Yang Telah Ditentukan</div>
-                    <div class="relative overflow-x-auto mt-4">
-                        <table class="w-full text-sm text-left rtl:text-right text-black">
-                            <thead class="text-white bg-[#1F5F92]">
+                    <div class="mb-10 text-[20px] font-bold">Berikut Jadwal Sidang Yang Telah Ditentukan</div>
+                    <div class="relative mt-4 overflow-x-auto">
+                        <table class="w-full text-left text-sm text-black rtl:text-right">
+                            <thead class="bg-[#1F5F92] text-white">
                                 <tr>
-                                    <th scope="col" class="px-3 py-3 rounded-tl-lg">
+                                    <th scope="col" class="rounded-tl-lg px-3 py-3">
                                         Jenis
                                     </th>
                                     <th scope="col" class="px-3 py-3">
@@ -138,72 +130,41 @@
                                     <th scope="col" class="px-3 py-3">
                                         Jam
                                     </th>
-                                    <th scope="col" class="px-3 py-3 rounded-tr-lg">
+                                    <th scope="col" class="rounded-tr-lg px-3 py-3">
                                         Link Meet
                                     </th>
                                 </tr>
                             </thead>
-                            <tbody class="border border-1 border-black">
-                                <?php
-                                $contohData = [
-                                    [
-                                        'id' => 1,
-                                        'jenis' => 'Tugas Akhir',
-                                        'nama' => 'Rafi Ramadhan Pratama',
-                                        'nim' => '120140079',
-                                        'judul' => 'Rancang Bangun Sistem Informasi Manajemen Pengendalian Menara Telekomunikasi (Studi Kasus : Diskominfo Lampung Utara)',
-                                        'dosenPembimbing1' => 'Andika Setiawan, S.Kom., M.Cs.',
-                                        'dosenPembimbing2' => 'Meida Cahyo Untoro, S.Kom., M.Kom.',
-                                        'dosenPenguji1' => 'Aidil Afriansyah, S.Kom., M.Kom.',
-                                        'dosenPenguji2' => 'Radhinka Bagaskara, S.Si.Kom., M.Si., M.Sc.',
-                                        'hari' => 'Senin',
-                                        'tanggal' => '17 April 2024',
-                                        'jam' => '08:00 - 10:00',
-                                        'linkMeet' => 'https://meet.google.com/ive-ceji-yya?authuser=0',
-                                    ],
-                                    [
-                                        'id' => 2,
-                                        'jenis' => 'Tugas Akhir',
-                                        'nama' => 'Rafi Ramadhan Pratama',
-                                        'nim' => '120140079',
-                                        'judul' => 'Rancang Bangun Sistem Informasi Manajemen Pengendalian Menara Telekomunikasi (Studi Kasus : Diskominfo Lampung Utara)',
-                                        'dosenPembimbing1' => 'Andika Setiawan, S.Kom., M.Cs.',
-                                        'dosenPembimbing2' => 'Meida Cahyo Untoro, S.Kom., M.Kom.',
-                                        'dosenPenguji1' => 'Aidil Afriansyah, S.Kom., M.Kom.',
-                                        'dosenPenguji2' => 'Radhinka Bagaskara, S.Si.Kom., M.Si., M.Sc.',
-                                        'hari' => 'Senin',
-                                        'tanggal' => '17 April 2024',
-                                        'jam' => '08:00 - 10:00',
-                                        'linkMeet' => 'https://meet.google.com/ive-ceji-yya?authuser=0',
-                                    ],
-                                ];
-                                ?>
-                                <?php if (empty($contohData)): ?>
-                                <tr class="bg-white border border-1 border-black">
-                                    <td colspan="12" class="text-center pb-20">Data penjadwalan belum ditemukan</td>
-                                </tr>
-                                <?php else: ?>
-                                <?php foreach ($contohData as $data): ?>
-                                <tr class="bg-white border border-1 border-black">
-                                    <td class="px-3 py-3"><?php echo $data['jenis']; ?></td>
-                                    <td class="px-3 py-3"><?php echo $data['nama']; ?></td>
-                                    <td class="px-3 py-3"><?php echo $data['nim']; ?></td>
-                                    <td class="px-3 py-3"><?php echo $data['judul']; ?></td>
-                                    <td class="px-3 py-3"><?php echo $data['dosenPembimbing1']; ?></td>
-                                    <td class="px-3 py-3"><?php echo $data['dosenPembimbing2']; ?></td>
-                                    <td class="px-3 py-3"><?php echo $data['dosenPenguji1']; ?></td>
-                                    <td class="px-3 py-3"><?php echo $data['dosenPenguji2']; ?></td>
-                                    <td class="px-3 py-3"><?php echo $data['hari']; ?></td>
-                                    <td class="px-3 py-3"><?php echo $data['tanggal']; ?></td>
-                                    <td class="px-3 py-3"><?php echo $data['jam']; ?></td>
-                                    <td class="px-3 py-3">
-                                        <a href="<?php echo $data['linkMeet']; ?>" class="underline underline-offset-4">
-                                            <?php echo $data['linkMeet']; ?>
-                                        </a>
-                                    </td>
-                                </tr>
-                                <?php endforeach; ?>
-                                <?php endif; ?>
+                            <tbody class="border-1 border border-black">
+                                @forelse ($schedules as $item)
+                                    <tr class="border-1 border border-black bg-white">
+                                        <td class="px-3 py-3">{{ $item->seminar->type === 'seminar-akhir' ? 'Seminar Akhir' : 'Seminar Proposal' }}</td>
+                                        <td class="px-3 py-3">{{ $item->seminar->user->name }}</td>
+                                        <td class="px-3 py-3">{{ $item->seminar->user->studentData->nim }}</td>
+                                        <td class="px-3 py-3">{{ $item->seminar->thesis_title }}</td>
+                                        @foreach ([$item->seminar->supervisor_1, $item->seminar->supervisor_2, $item->seminar->examiner_1, $item->seminar->examiner_2] as $lectureItem)
+                                            @php
+                                                $lecture = $lectures->firstWhere('id', $lectureItem);
+                                                if ($lecture) {
+                                                    $lecture = $lecture->name;
+                                                }
+                                            @endphp
+                                            <td class="px-3 py-3">{{ $lecture }}</td>
+                                        @endforeach
+                                        <td class="px-3 py-3">{{ $item->time->day }}</td>
+                                        <td class="px-3 py-3">{{ $item->date }}</td>
+                                        <td class="px-3 py-3">{{ $item->time->time }}</td>
+                                        <td class="px-3 py-3">
+                                            <a href="https://meet.google.com/ive-ceji-yya?authuser=0" class="underline underline-offset-4">
+                                                https://meet.google.com/ive-ceji-yya?authuser=0
+                                            </a>
+                                        </td>
+                                    </tr>
+                                @empty
+                                    <tr class="border-1 border border-black bg-white">
+                                        <td colspan="12" class="pb-20 text-center">Data penjadwalan belum ditemukan</td>
+                                    </tr>
+                                @endforelse
                             </tbody>
                         </table>
                     </div>
@@ -213,37 +174,33 @@
     </aside>
 
     <footer class="bg-[#EBEBEB]">
-        <div class="px-4 mx-auto max-w-screen-xl text-center py-5 lg:py-10">
+        <div class="mx-auto max-w-screen-xl px-4 py-5 text-center lg:py-10">
             <div class="p-5 lg:p-10">
                 <div class="mx-auto w-full max-w-screen-xl p-4 py-6 lg:py-8">
-                    <div class="md:flex justify-between">
-                        <div class="grid grid-cols-2 gap-8 sm:gap-6 sm:grid-cols-3">
+                    <div class="justify-between md:flex">
+                        <div class="grid grid-cols-2 gap-8 sm:grid-cols-3 sm:gap-6">
                             <div class="text-left">
-                                <h1
-                                    class="lg:text-left mb-4 text-xl lg:text-[40px] font-extrabold tracking-tight leading-none text-black">
+                                <h1 class="mb-4 text-xl font-extrabold leading-none tracking-tight text-black lg:text-left lg:text-[40px]">
                                     Contact Us
                                 </h1>
-                                <ul class="text-black font-medium">
+                                <ul class="font-medium text-black">
                                     <li class="">
-                                        <a href="https://flowbite.com/" class="hover:underline"><span
-                                                class="font-extrabold tracking-tight">Email : </span>
+                                        <a href="https://flowbite.com/" class="hover:underline"><span class="font-extrabold tracking-tight">Email : </span>
                                             if@itera.ac.id</a>
                                     </li>
                                     <li>
-                                        <a href="https://tailwindcss.com/" class="hover:underline"><span
-                                                class="font-extrabold tracking-tight">Call :</span>
+                                        <a href="https://tailwindcss.com/" class="hover:underline"><span class="font-extrabold tracking-tight">Call :</span>
                                             08888823232</a>
                                     </li>
                                     <li>
-                                        <a href="https://tailwindcss.com/" class="hover:underline"><span
-                                                class="font-extrabold tracking-tight">Instagram :</span>
+                                        <a href="https://tailwindcss.com/" class="hover:underline"><span class="font-extrabold tracking-tight">Instagram :</span>
                                             informatika.itera</a>
                                     </li>
                                 </ul>
                             </div>
                         </div>
-                        <div class="flex justify-end mt-10 lg:mt-0">
-                            <div class="text-right flex m-auto justify-end items-center">
+                        <div class="mt-10 flex justify-end lg:mt-0">
+                            <div class="m-auto flex items-center justify-end text-right">
                                 <img src="/logo_if.png" alt="">
                             </div>
                         </div>
