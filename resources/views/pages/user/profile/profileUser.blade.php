@@ -103,12 +103,18 @@
                                         Nama
                                     </label>
                                     <input name="name" value="{{ auth()->user()->name }}" class="focus:shadow-outline w-full appearance-none rounded border leading-tight text-gray-700 shadow focus:outline-none" id="name" type="text" placeholder="Nama" maxlength="20" required>
+                                    @error('name')
+                                        <p>{{ $message }}</p>
+                                    @enderror
                                 </div>
                                 <div class="mb-4 w-[50%]">
                                     <label class="mb-2 block text-sm font-bold text-gray-700" for="nim">
                                         NIM
                                     </label>
-                                    <input name="nim" value="{{ auth()->user()->studentData->nim }}" class="focus:shadow-outline w-full appearance-none rounded border leading-tight text-gray-700 shadow focus:outline-none" id="name" type="text" placeholder="NIM" minlength="8" maxlength="20" required>
+                                    <input name="nim" value="{{ auth()->user()->studentData->nim }}" class="focus:shadow-outline w-full appearance-none rounded border leading-tight text-gray-700 shadow focus:outline-none" id="name" type="text" placeholder="NIM" minlength="" maxlength="20" required>
+                                    @error('nim')
+                                        <p>{{ $message }}</p>
+                                    @enderror
                                 </div>
                             </div>
                             <div class="flex justify-between gap-5">
@@ -117,12 +123,18 @@
                                         Dosen Wali
                                     </label>
                                     <input name="academic_adviser" value="{{ auth()->user()->studentData->academic_adviser }}" class="focus:shadow-outline w-full appearance-none rounded border leading-tight text-gray-700 shadow focus:outline-none" id="name" type="text" placeholder="Dosen Wali" maxlength="20" required>
+                                    @error('name')
+                                        <p>{{ $message }}</p>
+                                    @enderror
                                 </div>
                                 <div class="mb-4 w-[50%]">
                                     <label class="mb-2 block text-sm font-bold text-gray-700" for="bidangKeahlian">
                                         Bidang Keahlian
                                     </label>
                                     <input name="kk" value="{{ auth()->user()->studentData->kk }}" class="focus:shadow-outline w-full appearance-none rounded border leading-tight text-gray-700 shadow focus:outline-none" id="bidangKeahlian" type="text" placeholder="Bidang Keahlian" maxlength="20" required>
+                                    @error('kk')
+                                        <p>{{ $message }}</p>
+                                    @enderror
                                 </div>
                             </div>
                             <div class="flex justify-between gap-5">
@@ -131,12 +143,18 @@
                                         Dosen Pembimbing 1
                                     </label>
                                     <input name="supervisor_1" value="{{ auth()->user()->studentData->supervisor_1 }}" class="focus:shadow-outline w-full appearance-none rounded border leading-tight text-gray-700 shadow focus:outline-none" id="dosenPembimbing1" type="text" placeholder="Dosen Pembimbing 1" maxlength="100" required>
+                                    @error('supervisor_1')
+                                        <p>{{ $message }}</p>
+                                    @enderror
                                 </div>
                                 <div class="mb-4 w-[50%]">
                                     <label class="mb-2 block text-sm font-bold text-gray-700" for="dosenPembimbing2">
                                         Dosen Pembimbing 2
                                     </label>
                                     <input name="supervisor_2" value="{{ auth()->user()->studentData->supervisor_2 }}" class="focus:shadow-outline w-full appearance-none rounded border leading-tight text-gray-700 shadow focus:outline-none" id="dosenPembimbing2" type="text" placeholder="Dosen Pembimbing 2" maxlength="100" required>
+                                    @error('supervisor_2')
+                                        <p>{{ $message }}</p>
+                                    @enderror
                                 </div>
                             </div>
                             <div class="flex justify-between gap-5">
@@ -144,12 +162,15 @@
                                     <label class="mb-2 block text-sm font-bold text-gray-700" for="status">
                                         Status
                                     </label>
-                                    <input name="" value="BELUM DI INTEGRASI" class="focus:shadow-outline w-full appearance-none rounded border leading-tight text-gray-700 shadow focus:outline-none" id="status" type="text" placeholder="Status" maxlength="100" required>
+                                    <input name="" value="{{ auth()->user()->seminar !== null ? (auth()->user()->seminar->count() === 2 ? 'Lulus' : (auth()->user()->seminar->count() === 1 ? 'Seminar Akhir' : 'Seminar Proposal')) : '' }}" class="focus:shadow-outline w-full appearance-none rounded border leading-tight text-gray-700 shadow focus:outline-none" id="status" type="text" placeholder="Status" maxlength="100" disabled>
                                     <div class="mt-2">
                                         <label class="mb-2 block text-sm font-bold text-gray-700" for="semester">
                                             Semester
                                         </label>
                                         <input name="semester" value="{{ auth()->user()->studentData->semester }}" class="focus:shadow-outline w-full appearance-none rounded border leading-tight text-gray-700 shadow focus:outline-none" id="semester" type="text" placeholder="Semester" maxlength="100" required>
+                                        @error('semester')
+                                            <p>{{ $message }}</p>
+                                        @enderror
                                     </div>
                                 </div>
                                 <div class="mb-4 w-[50%]">
@@ -157,6 +178,9 @@
                                         Judul Tugas Akhir
                                     </label>
                                     <textarea name="thesis_title" id="" class="text-black-50 h-28 w-full" placeholder="Judul Tugas Akhir">{{ auth()->user()->studentData->thesis_title }}</textarea>
+                                    @error('thesis_title')
+                                        <p>{{ $message }}</p>
+                                    @enderror
                                 </div>
                             </div>
                         </div>

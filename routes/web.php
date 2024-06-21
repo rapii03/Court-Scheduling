@@ -63,15 +63,17 @@ Route::controller(StudentController::class)->group(function () {
     Route::get('/DataUser', 'dataUser');
     Route::get('/DataUser/Dokumen', 'dataUserDokumen');
 
-    Route::get('/ProfileUser', 'profileUser');
-    Route::post('/ProfileUser', 'edit');
-
     Route::get('/DaftarSidang', 'daftarSidang');
     Route::get('/DaftarSidang/FormSidang', 'daftarSidangFormSidang');
 
     Route::get('/JadwalSidang', 'jadwalSidang');
 
-    Route::get('/DashboardUser', 'dashboardUser');
+    Route::middleware('student')->group(function () {
+        Route::get('/DashboardUser', 'dashboardUser');
+
+        Route::get('/ProfileUser', 'profileUser');
+        Route::post('/ProfileUser', 'edit');
+    });
 });
 
 Route::controller(GeneralPage::class)->group(function () {
