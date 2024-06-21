@@ -24,9 +24,15 @@ class SeminarController extends Controller
 
         return view('pages/admin/dataPendaftaran/seminarProposal/seminarProposal', compact(['seminars', 'lectures']));
     }
-    function dataPendaftaranSeminarProposalDataDokumen()
+    function dataPendaftaranSeminarProposalDataDokumen(Request $request)
     {
-        return view('pages/admin/dataPendaftaran/seminarProposal/dataDokumen');
+        if ($request->id === null) {
+            abort(404);
+        }
+
+        $seminar = Seminar::whereKey($request->id)->doesntHave('schedule')->where('type', 'seminar-proposal')->firstOrFail();
+
+        return view('pages/admin/dataPendaftaran/seminarProposal/dataDokumen', compact('seminar'));
     }
     function dataPendaftaranSidangAkhir()
     {
