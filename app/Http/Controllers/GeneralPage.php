@@ -51,10 +51,10 @@ class GeneralPage extends Controller
     //     return view('pages/admin/dataUser/dataUser');
     // }
 
-    function dataUserDokumen()
-    {
-        return view('pages/admin/dataUser/dataDokumen');
-    }
+    // function dataUserDokumen()
+    // {
+    //     return view('pages/admin/dataUser/dataDokumen');
+    // }
     // Akhir Admin
 
     // Awal User

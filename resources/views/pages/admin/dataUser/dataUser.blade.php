@@ -64,17 +64,17 @@
                     </tr>
                 </thead>
                 <tbody class="border-1 border border-black">
-                    @foreach ($users as $user)
+                    @foreach ($students as $student)
                         <tr class="border-1 border border-black bg-white">
-                            <td class="px-6 py-4">{{ $user->name }}</td>
-                            <td class="px-6 py-4">{{ $user->studentData->nim }}</td>
-                            <td class="px-6 py-4">{{ $user->studentData->thesis_title }}</td>
-                            <td class="px-6 py-4">{{ $user->seminar === 0 ? 'Seminar Proposal' : ($user->seminar === 1 ? 'Seminar Akhir' : 'Lulus') }}</td>
-                            <td class="px-6 py-4">{{ $user->studentData->supervisor_1 }}</td>
-                            <td class="px-6 py-4">{{ $user->studentData->supervisor_2 }}</td>
+                            <td class="px-6 py-4">{{ $student->name }}</td>
+                            <td class="px-6 py-4">{{ $student->studentData->nim }}</td>
+                            <td class="px-6 py-4">{{ $student->studentData->thesis_title }}</td>
+                            <td class="px-6 py-4">{{ $student->seminar <= 1 ? 'Seminar Proposal' : ($student->seminar === 2 ? 'Seminar Akhir' : 'Lulus') }}</td>
+                            <td class="px-6 py-4">{{ $student->studentData->supervisor_1 }}</td>
+                            <td class="px-6 py-4">{{ $student->studentData->supervisor_2 }}</td>
                             <td class="flex px-6 py-4">
                                 <div>
-                                    <a href="/DataUser/Dokumen?id={{ $user->id }}">
+                                    <a href="/DataUser/Dokumen?id={{ $student->id }}">
                                         <svg width="20" height="20" viewBox="0 0 20 20" fill="none" xmlns="http://www.w3.org/2000/svg">
                                             <path fill-rule="evenodd" clip-rule="evenodd" d="M3.43569 1.875L3.4375 1.875H14.0625L14.0643 1.875C14.4779 1.8762 14.8741 2.04102 15.1666 2.33344C15.459 2.62587 15.6238 3.02214 15.625 3.43569L15.625 3.4375V16.8695H14.375V3.4387C14.3746 3.35563 14.3414 3.27607 14.2827 3.21733C14.2239 3.15859 14.1444 3.12542 14.0614 3.125H3.43865C3.3556 3.12542 3.27606 3.15859 3.21733 3.21733C3.15859 3.27606 3.12542 3.3556 3.125 3.43865V17.1865C3.12596 17.4351 3.22514 17.6732 3.40095 17.849C3.57679 18.0249 3.81501 18.1241 4.06366 18.125H16.875V19.375H4.0625L4.06063 19.375C3.4815 19.3733 2.92658 19.1424 2.51707 18.7329C2.10756 18.3234 1.87673 17.7685 1.875 17.1894L1.875 17.1875V3.4375L1.875 3.43569C1.8762 3.02214 2.04102 2.62587 2.33344 2.33344C2.62587 2.04102 3.02214 1.8762 3.43569 1.875Z" fill="black" />
                                             <path fill-rule="evenodd" clip-rule="evenodd" d="M14.375 5.625C14.375 5.27982 14.6548 5 15 5H17.8125C18.2269 5 18.6243 5.16462 18.9174 5.45765C19.2104 5.75067 19.375 6.1481 19.375 6.5625V16.875C19.375 17.538 19.1116 18.1739 18.6428 18.6428C18.1739 19.1116 17.538 19.375 16.875 19.375C16.212 19.375 15.5761 19.1116 15.1072 18.6428C14.6384 18.1739 14.375 17.538 14.375 16.875V5.625ZM15.625 6.25V16.875C15.625 17.2065 15.7567 17.5245 15.9911 17.7589C16.2255 17.9933 16.5435 18.125 16.875 18.125C17.2065 18.125 17.5245 17.9933 17.7589 17.7589C17.9933 17.5245 18.125 17.2065 18.125 16.875V6.5625C18.125 6.47962 18.0921 6.40013 18.0335 6.34153C17.9749 6.28292 17.8954 6.25 17.8125 6.25H15.625Z" fill="black" />

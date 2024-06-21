@@ -14,14 +14,24 @@ class StudentController extends Controller
 {
     function dataUser(Request $request)
     {
-        $users = User::whereHas('studentData', function (Builder $query) use ($request) {
+        $students = User::whereHas('studentData', function (Builder $query) use ($request) {
             if ($request->search) {
                 $query->whereAny(['name', 'nim', 'thesis_title', 'supervisor_1', 'supervisor_2'], 'LIKE', "%$request->search%");
             }
         })->withCount('seminar AS seminar')->latest()->get();
         $lecture = User::whereHas('lectureData')->get();
 
-        return view('pages/admin/dataUser/dataUser', compact('users', 'lecture'));
+        return view('pages/admin/dataUser/dataUser', compact('students', 'lecture'));
+    }
+    function dataUserDokumen(Request $request)
+    {
+        if ($request->id === null) {
+            abort(404);
+        }
+
+        $student = User::whereKey($request->id)->whereHas('studentData')->firstOrFail();
+
+        return view('pages/admin/dataUser/dataDokumen', compact('student'));
     }
     function loginUser()
     {

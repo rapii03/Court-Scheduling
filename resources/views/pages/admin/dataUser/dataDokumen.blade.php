@@ -23,117 +23,74 @@
 <body>
     <x-layoutAdmin />
     <div class="ml-[228px] p-5">
-        <div class="text-[40px] font-bold mb-2">Dokumen Data User</div>
-        <div class="justify-between flex">
+        <div class="mb-2 text-[40px] font-bold">Dokumen Data User</div>
+        <div class="flex justify-between">
             <div class="mb-2">
-                <div class="text-[20px]">Nama : Rafi Ramadhan Pratama</div>
-                <div class="text-[20px]">Nama : 120140079</div>
-                <div class="text-[20px]">Nama : Seminar Proposal</div>
+                <div class="text-[20px]">Nama : {{ $student->name }}</div>
+                <div class="text-[20px]">NIM : {{ $student->studentData->nim }}</div>
+                <div class="text-[20px]">Status : {{ $student->seminar->count() <= 1 ? 'Seminar Proposal' : ($student->seminar->count() === 2 ? 'Seminar Akhir' : 'Lulus') }}</div>
             </div>
-            <div class="mb-2 flex justify-center items-center">
-                <button type="button"
-                    class="text-white bg-[#872929] hover:bg-[#610909]/90 focus:ring-4 focus:outline-none focus:ring-[#3b5998]/50 font-medium rounded-lg text-sm px-5 py-2.5 text-center inline-flex items-center me-2 mb-2 gap-2">
+            {{-- <div class="mb-2 flex items-center justify-center">
+                <button type="button" class="mb-2 me-2 inline-flex items-center gap-2 rounded-lg bg-[#872929] px-5 py-2.5 text-center text-sm font-medium text-white hover:bg-[#610909]/90 focus:outline-none focus:ring-4 focus:ring-[#3b5998]/50">
                     <div class="text-[14px]">
                         Tolak Pendaftaran
                     </div>
                 </button>
-            </div>
+            </div> --}}
         </div>
-        <div class="relative overflow-x-auto mt-4">
-            <table class="w-full text-sm text-left rtl:text-right text-black">
-                <thead class="text-white bg-[#1F5F92]">
+        <div class="relative mt-4 overflow-x-auto">
+            <table class="w-full text-left text-sm text-black rtl:text-right">
+                <thead class="bg-[#1F5F92] text-white">
                     <tr>
-                        <th scope="col"
-                            class="text-[12px] px-4 py-4 rounded-tl-lg text-center items-center justify-center m-auto font-bold">
+                        <th scope="col" class="m-auto items-center justify-center rounded-tl-lg px-4 py-4 text-center text-[12px] font-bold">
                             Nama Dokumen
                         </th>
-                        <th scope="col"
-                            class="text-[12px] rounded-tr-lg px-4 py-4 text-center items-center justify-center m-auto font-bold">
+                        <th scope="col" class="m-auto items-center justify-center rounded-tr-lg px-4 py-4 text-center text-[12px] font-bold">
                             File
                         </th>
                     </tr>
                 </thead>
-                <tbody class="border border-1 border-black">
-                    <?php
-                    $contohData = [
-                        [
-                            'id' => 1,
-                            'nama' => 'Bukti Mengikuti Seminar Proposal 1',
-                            'file' => 'bukti1.pdf',
-                            'url' => 'https://media.neliti.com/media/publications/249244-none-837c3dfb.pdf',
-                        ],
-                        [
-                            'id' => 2,
-                            'nama' => 'Bukti Mengikuti Seminar Proposal 2',
-                            'file' => 'bukti2.pdf',
-                            'url' => 'https://media.neliti.com/media/publications/249244-none-837c3dfb.pdf',
-                        ],
-                        [
-                            'id' => 3,
-                            'nama' => 'Bukti Mengikuti Seminar Proposal 3',
-                            'file' => 'bukti3.pdf',
-                            'url' => 'https://media.neliti.com/media/publications/249244-none-837c3dfb.pdf',
-                        ],
-                        [
-                            'id' => 4,
-                            'nama' => 'Bukti Mengikuti Seminar Proposal 4',
-                            'file' => 'bukti4.pdf',
-                            'url' => 'https://media.neliti.com/media/publications/249244-none-837c3dfb.pdf',
-                        ],
-                        [
-                            'id' => 5,
-                            'nama' => 'Bukti Mengikuti Seminar Proposal 5',
-                            'file' => 'bukti5.pdf',
-                            'url' => 'https://media.neliti.com/media/publications/249244-none-837c3dfb.pdf',
-                        ],
-                    ];
-                    ?>
-                    <?php foreach ($contohData as $data): ?>
-                    <tr class="bg-white border border-1 border-black">
-                        <td class="py-2 text-center items-center justify-center m-auto font-bold text-[12px]">
-                            <?php echo $data['nama']; ?>
-                        </td>
-                        <td
-                            class="px-10 py-2 text-center items-center justify-center m-auto font-bold text-[12px] file-cell">
-                            <a href="<?php echo $data['url']; ?>" target="_blank">Klik Disini</a>
-                        </td>
-                        <script>
-                            function getFileNameFromUrl(url) {
-                                var parts = url.split('/');
-                                var fileName = parts[parts.length - 1];
-                                fileName = fileName.split('?')[0];
-                                return fileName;
-                            }
-                            document.addEventListener('DOMContentLoaded', function() {
-                                var links = document.querySelectorAll('td.file-cell a');
-                                links.forEach(function(link) {
-                                    var url = link.getAttribute('href');
-                                    var fileName = getFileNameFromUrl(url);
-                                    link.textContent = fileName;
-                                });
-                            });
-                        </script>
-                    </tr>
-                    <?php endforeach; ?>
+                <tbody class="border-1 border border-black">
+                    @foreach ($student->seminar as $item)
+                        <tr class="border-1 border border-black bg-white">
+                            <td class="p-1.5 text-center font-bold uppercase" colspan="2">{{ $item['type'] === 'seminar-akhir' ? 'Seminar Akhir' : 'Seminar Proposal' }}</td>
+                        </tr>
+                        @foreach ([
+        'seminar_attending_file' => 'Bukti Mengikuti Seminar',
+        'lecture_approval_file' => 'Surat Persetujuan Dosen',
+        'approval_file' => 'Surat Persetujuan',
+        'guidance_file' => 'Logsheet Bimbingan',
+        'revision_file' => 'Form Revisi Seminar',
+        'docs_file' => 'File Word',
+        'ppt_file' => 'File PPT',
+    ] as $key => $fileName)
+                            <tr class="border-1 border border-black bg-white">
+                                <td class="m-auto items-center justify-center py-2 text-center text-[12px] font-bold">
+                                    {{ $fileName }}
+                                </td>
+                                <td class="file-cell m-auto items-center justify-center px-10 py-2 text-center text-[12px] font-bold">
+                                    <a href="{{ url(asset('storage/' . $item[$key])) }}" download="">Download</a>
+                                </td>
+                            </tr>
+                        @endforeach
+                    @endforeach
                 </tbody>
             </table>
             <div class="mt-[25px] flex justify-between">
                 <div class="div">
-                    <a href="/DataUser" type="button"
-                        class="text-white bg-[#C8AC5E] hover:bg-[#C8AC5E]/90 focus:ring-4 focus:outline-none focus:ring-[#3b5998]/50 font-medium rounded-lg text-sm px-5 py-2.5 text-center inline-flex items-center me-2 mb-2 gap-2">
+                    <a href="/DataUser" type="button" class="mb-2 me-2 inline-flex items-center gap-2 rounded-lg bg-[#C8AC5E] px-5 py-2.5 text-center text-sm font-medium text-white hover:bg-[#C8AC5E]/90 focus:outline-none focus:ring-4 focus:ring-[#3b5998]/50">
                         <div class="text-[14px]">
                             Back
                         </div>
                     </a>
                 </div>
-                <div class="div">
-                    <button type="button" data-modal-target="popup-modal" data-modal-toggle="popup-modal"
-                        class="text-white bg-[#C8AC5E] hover:bg-[#C8AC5E]/90 focus:ring-4 focus:outline-none focus:ring-[#3b5998]/50 font-medium rounded-lg text-sm px-5 py-2.5 text-center inline-flex items-center me-2 mb-2 gap-2">
+                {{-- <div class="div">
+                    <button type="button" data-modal-target="popup-modal" data-modal-toggle="popup-modal" class="mb-2 me-2 inline-flex items-center gap-2 rounded-lg bg-[#C8AC5E] px-5 py-2.5 text-center text-sm font-medium text-white hover:bg-[#C8AC5E]/90 focus:outline-none focus:ring-4 focus:ring-[#3b5998]/50">
                         <div class="text-[14px]">
                             Generate
                         </div>
                     </button>
-                </div>
+                </div> --}}
             </div>
         </div>
     </div>
