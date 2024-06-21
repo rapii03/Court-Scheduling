@@ -109,7 +109,7 @@
                         </div>
                     </a>
                 </div>
-                <form action="" method="POST" class="div">
+                <form action="/SeminarProposal/BuatJadwal?id={{ $seminar->id }}" method="POST" class="div">
                     @csrf
                     <button type="submit" class="mb-2 me-2 inline-flex items-center gap-2 rounded-lg bg-[#C8AC5E] px-5 py-2.5 text-center text-[14px] text-sm font-medium text-white hover:bg-[#C8AC5E]/90 focus:outline-none focus:ring-4 focus:ring-[#3b5998]/50">
                         Generate

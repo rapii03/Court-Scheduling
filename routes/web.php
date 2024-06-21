@@ -2,6 +2,7 @@
 
 use App\Http\Controllers\LectureController;
 use App\Http\Controllers\LoginController;
+use App\Http\Controllers\ScheduleController;
 use App\Http\Controllers\SeminarController;
 use App\Http\Controllers\StudentController;
 use Illuminate\Support\Facades\Route;
@@ -37,6 +38,10 @@ Route::controller(LectureController::class)->group(function () {
     Route::post('/DataDosen/AturJadwal', 'setSchedule');
 });
 // -- DONE
+
+Route::controller(ScheduleController::class)->group(function () {
+    Route::post('/SeminarProposal/BuatJadwal', 'spMakeSchedule');
+});
 
 Route::controller(SeminarController::class)->group(function () {
     Route::get('/DataPendaftaran', 'dataPendaftaran');
