@@ -134,4 +134,81 @@ class ScheduleController extends Controller
 
         return back();
     }
+
+    public function saMakeSchedule(Request $request)
+    {
+        if ($request->id === null) {
+            abort(404);
+        }
+        $dayLists = collect([
+            'minggu' => 0,
+            'senin' => 1,
+            'selasa' => 2,
+            'rabu' => 3,
+            'kamis' => 4,
+            "jum'at" => 5,
+            'sabtu' => 6,
+        ]);
+
+        $currentTime = Carbon::now()->setTimezone('Asia/Jakarta');
+        $currentDate = (int) $currentTime->format('d');
+
+        $seminar = Seminar::whereKey($request->id)->doesntHave('schedule')->where('type', 'seminar-akhir')->firstOrFail();
+
+        $supervisor1 = User::whereKey($seminar->supervisor_1)->whereHas('lectureData')->firstOrFail();
+        $supervisor2 = User::whereKey($seminar->supervisor_2)->whereHas('lectureData')->firstOrFail();
+        $examiner1 = User::whereKey($seminar->examiner_1)->whereHas('lectureData')->firstOrFail();
+        $examiner2 = User::whereKey($seminar->examiner_2)->whereHas('lectureData')->firstOrFail();
+
+        $supervisor1Time = $supervisor1->time()->pluck('time_id');
+        $supervisor2Time = $supervisor2->time()->pluck('time_id');
+        $examiner1Time = $examiner1->time()->pluck('time_id');
+        $examiner2Time = $examiner2->time()->pluck('time_id');
+
+        $mergeTime = $supervisor1Time->filter(function ($time) use ($supervisor2Time, $examiner1Time, $examiner2Time) {
+            return $supervisor2Time->contains($time) && $examiner1Time->contains($time) && $examiner2Time->contains($time);
+        });
+
+        foreach ($mergeTime as $key => $time) {
+            $timeInstance = TimeList::find($time);
+
+            if ($timeInstance) {
+                $day = $dayLists->get(strtolower($timeInstance->day));
+
+                if ($day !== null) {
+                    $loopTime = Carbon::now()->setTimezone('Asia/Jakarta')->setDaysFromStartOfWeek($day);
+                    $loopDate = (int) $loopTime->format('d');
+
+                    if ($loopDate <= $currentDate) {
+                        $loopDate += 7;
+                    } else if ($loopDate > $currentTime->daysInMonth) {
+                        $loopDate -= 7;
+                    }
+
+                    while ($currentDate < $loopDate && $loopDate <= $currentTime->daysInMonth) {
+                        $loopTime->setDay($loopDate);
+
+                        $available = collect();
+                        foreach ([$supervisor1, $supervisor2, $examiner1, $examiner2] as $key => $lecture) {
+                            $scheduleExists = $this->lectureScheduleCheck($lecture, $loopTime);
+
+                            if (!$scheduleExists) {
+                                $available->push($lecture);
+
+                                if ($available->count() === 4) {
+                                    $this->makeSchedule($seminar, $available, $timeInstance, $loopTime);
+
+                                    return redirect('/DataPendaftaran/SidangAkhir');
+                                }
+                            }
+                        }
+
+                        $loopDate += 7;
+                    }
+                }
+            }
+        }
+
+        return back();
+    }
 }
