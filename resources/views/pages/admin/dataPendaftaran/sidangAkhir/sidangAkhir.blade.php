@@ -74,6 +74,8 @@
                                     $lecture = $lectures->firstWhere('id', $supervisor);
                                     if ($lecture) {
                                         $lecture = $lecture->name;
+                                    } else {
+                                        $lecture = $supervisor;
                                     }
                                 @endphp
                                 <td class="px-6 py-4">{{ $lecture }}</td>
