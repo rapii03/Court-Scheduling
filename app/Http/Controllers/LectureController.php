@@ -5,6 +5,7 @@ namespace App\Http\Controllers;
 use App\Http\Requests\LectureAddReq;
 use App\Http\Requests\LectureEditReq;
 use App\Http\Requests\LectureScheduleAddReq;
+use App\Models\Seminar;
 use App\Models\TimeList;
 use Illuminate\Http\Request;
 use App\Models\LectureData;
@@ -135,6 +136,11 @@ class LectureController extends Controller
         }
         $lecture = LectureData::whereBelongsTo($account)->firstOrFail();
 
+        Seminar::has('schedule')->where('supervisor_1', $account->id)->update(['supervisor_1' => $account->name]);
+        Seminar::has('schedule')->where('supervisor_2', $account->id)->update(['supervisor_2' => $account->name]);
+        Seminar::has('schedule')->where('examiner_1', $account->id)->update(['examiner_1' => $account->name]);
+        Seminar::has('schedule')->where('examiner_2', $account->id)->update(['examiner_2' => $account->name]);
+
         $account->update($request->safe()->only('email', 'name'));
         $lecture->update($request->safe()->except('email', 'image', 'name'));
 
@@ -167,6 +173,16 @@ class LectureController extends Controller
                 Storage::delete($account->lectureData->image);
             }
         }
+
+        Seminar::has('schedule')->where('supervisor_1', $account->id)->update(['supervisor_1' => $account->name]);
+        Seminar::has('schedule')->where('supervisor_2', $account->id)->update(['supervisor_2' => $account->name]);
+        Seminar::has('schedule')->where('examiner_1', $account->id)->update(['examiner_1' => $account->name]);
+        Seminar::has('schedule')->where('examiner_2', $account->id)->update(['examiner_2' => $account->name]);
+
+        Seminar::doesntHave('schedule')->where('supervisor_1', $account->id)->delete();
+        Seminar::doesntHave('schedule')->where('supervisor_2', $account->id)->delete();
+        Seminar::doesntHave('schedule')->where('examiner_1', $account->id)->delete();
+        Seminar::doesntHave('schedule')->where('examiner_2', $account->id)->delete();
 
         $account->lectureData()->delete();
         $account->time()->delete();
