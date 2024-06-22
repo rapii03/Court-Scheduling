@@ -31,7 +31,7 @@ Route::controller(LectureController::class)->group(function () {
 
     Route::get('/DataDosen/Delete', 'delete');
 
-    Route::get('/DataDosen/AturJadwal', 'dataDosenAturJadwal')->name('data-dosen-schedule');
+    Route::get('/DataDosen/AturJadwal', 'dataDosenAturJadwal');
     Route::post('/DataDosen/AturJadwal', 'setSchedule');
 
     Route::middleware('lecture')->group(function () {
