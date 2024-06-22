@@ -23,16 +23,16 @@
 <body>
     <x-layoutUser />
     <div class="ml-[228px] mt-24">
-        <div class="h-full pt-5 pb-5">
-            <div class="bg-white rounded-lg shadow-lg mt-42 ml-10 mr-10 min-h-[605px]">
+        <div class="h-full pb-5 pt-5">
+            <div class="mt-42 ml-10 mr-10 min-h-[605px] rounded-lg bg-white shadow-lg">
                 <div class="p-5">
-                    <div class="text-[40px] font-bold mb-5">Jadwal Sidang</div>
-                    <div class="text-[20px] font-bold mb-5">Berikut Jadwal Sidang Yang Telah Ditentukan</div>
-                    <div class="relative overflow-x-auto mt-4">
-                        <table class="w-full text-sm text-left rtl:text-right text-black">
-                            <thead class="text-white bg-[#1F5F92]">
+                    <div class="mb-5 text-[40px] font-bold">Jadwal Sidang</div>
+                    <div class="mb-5 text-[20px] font-bold">Berikut Jadwal Sidang Yang Telah Ditentukan</div>
+                    <div class="relative mt-4 overflow-x-auto">
+                        <table class="w-full text-left text-sm text-black rtl:text-right">
+                            <thead class="bg-[#1F5F92] text-white">
                                 <tr>
-                                    <th scope="col" class="px-3 py-3 rounded-tl-lg">
+                                    <th scope="col" class="rounded-tl-lg px-3 py-3">
                                         Jenis
                                     </th>
                                     <th scope="col" class="px-3 py-3">
@@ -65,72 +65,53 @@
                                     <th scope="col" class="px-3 py-3">
                                         Jam
                                     </th>
-                                    <th scope="col" class="px-3 py-3 rounded-tr-lg">
+                                    <th scope="col" class="rounded-tr-lg px-3 py-3">
                                         Link Meet
                                     </th>
                                 </tr>
                             </thead>
-                            <tbody class="border border-1 border-black">
-                                <?php
-                                $contohData = [
-                                    [
-                                        'id' => 1,
-                                        'jenis' => 'Tugas Akhir',
-                                        'nama' => 'Rafi Ramadhan Pratama',
-                                        'nim' => '120140079',
-                                        'judul' => 'Rancang Bangun Sistem Informasi Manajemen Pengendalian Menara Telekomunikasi (Studi Kasus : Diskominfo Lampung Utara)',
-                                        'dosenPembimbing1' => 'Andika Setiawan, S.Kom., M.Cs.',
-                                        'dosenPembimbing2' => 'Meida Cahyo Untoro, S.Kom., M.Kom.',
-                                        'dosenPenguji1' => 'Aidil Afriansyah, S.Kom., M.Kom.',
-                                        'dosenPenguji2' => 'Radhinka Bagaskara, S.Si.Kom., M.Si., M.Sc.',
-                                        'hari' => 'Senin',
-                                        'tanggal' => '17 April 2024',
-                                        'jam' => '08:00 - 10:00',
-                                        'linkMeet' => 'https://meet.google.com/ive-ceji-yya?authuser=0',
-                                    ],
-                                    [
-                                        'id' => 2,
-                                        'jenis' => 'Tugas Akhir',
-                                        'nama' => 'Rafi Ramadhan Pratama',
-                                        'nim' => '120140079',
-                                        'judul' => 'Rancang Bangun Sistem Informasi Manajemen Pengendalian Menara Telekomunikasi (Studi Kasus : Diskominfo Lampung Utara)',
-                                        'dosenPembimbing1' => 'Andika Setiawan, S.Kom., M.Cs.',
-                                        'dosenPembimbing2' => 'Meida Cahyo Untoro, S.Kom., M.Kom.',
-                                        'dosenPenguji1' => 'Aidil Afriansyah, S.Kom., M.Kom.',
-                                        'dosenPenguji2' => 'Radhinka Bagaskara, S.Si.Kom., M.Si., M.Sc.',
-                                        'hari' => 'Senin',
-                                        'tanggal' => '17 April 2024',
-                                        'jam' => '08:00 - 10:00',
-                                        'linkMeet' => 'https://meet.google.com/ive-ceji-yya?authuser=0',
-                                    ],
-                                ];
-                                ?>
-                                <?php if (empty($contohData)): ?>
-                                <tr class="bg-white border border-1 border-black">
-                                    <td colspan="12" class="text-center pb-20">Data penjadwalan belum ditemukan</td>
-                                </tr>
-                                <?php else: ?>
-                                <?php foreach ($contohData as $data): ?>
-                                <tr class="bg-white border border-1 border-black">
-                                    <td class="px-3 py-3"><?php echo $data['jenis']; ?></td>
-                                    <td class="px-3 py-3"><?php echo $data['nama']; ?></td>
-                                    <td class="px-3 py-3"><?php echo $data['nim']; ?></td>
-                                    <td class="px-3 py-3"><?php echo $data['judul']; ?></td>
-                                    <td class="px-3 py-3"><?php echo $data['dosenPembimbing1']; ?></td>
-                                    <td class="px-3 py-3"><?php echo $data['dosenPembimbing2']; ?></td>
-                                    <td class="px-3 py-3"><?php echo $data['dosenPenguji1']; ?></td>
-                                    <td class="px-3 py-3"><?php echo $data['dosenPenguji2']; ?></td>
-                                    <td class="px-3 py-3"><?php echo $data['hari']; ?></td>
-                                    <td class="px-3 py-3"><?php echo $data['tanggal']; ?></td>
-                                    <td class="px-3 py-3"><?php echo $data['jam']; ?></td>
-                                    <td class="px-3 py-3">
-                                        <a href="<?php echo $data['linkMeet']; ?>" class="underline underline-offset-4">
-                                            <?php echo $data['linkMeet']; ?>
-                                        </a>
-                                    </td>
-                                </tr>
-                                <?php endforeach; ?>
-                                <?php endif; ?>
+                            <tbody class="border-1 border border-black">
+                                @forelse (auth()->user()->seminar as $seminar)
+                                    <tr class="border-1 border border-black bg-white">
+                                        <td class="px-3 py-3">{{ $seminar->type === 'seminar-akhir' ? 'Seminar Akhir' : 'Seminar Proposal' }}</td>
+                                        <td class="px-3 py-3">{{ auth()->user()->name }}</td>
+                                        <td class="px-3 py-3">{{ auth()->user()->studentData->nim }}</td>
+                                        <td class="px-3 py-3">{{ $seminar->thesis_title }}</td>
+                                        @foreach ([$seminar->supervisor_1, $seminar->supervisor_2, $seminar->examiner_1, $seminar->examiner_2] as $lectureItem)
+                                            @php
+                                                $lecture = $lectures->firstWhere('id', $lectureItem);
+                                                if ($lecture) {
+                                                    $lecture = $lecture->name;
+                                                }
+                                            @endphp
+                                            <td class="px-3 py-3">{{ $lecture }}</td>
+                                        @endforeach
+                                        @php
+                                            $schedule = $seminar->schedule;
+
+                                            $day = '';
+                                            $date = '';
+                                            $time = '';
+                                            if ($schedule) {
+                                                $day = $schedule->time->day;
+                                                $date = $schedule->date;
+                                                $time = $schedule->time->time;
+                                            }
+                                        @endphp
+                                        <td class="px-3 py-3">{{ $day }}</td>
+                                        <td class="px-3 py-3">{{ $date }}</td>
+                                        <td class="px-3 py-3">{{ $time }}</td>
+                                        <td class="px-3 py-3">
+                                            <a href="https://meet.google.com/ive-ceji-yya?authuser=0" class="underline underline-offset-4">
+                                                https://meet.google.com/ive-ceji-yya?authuser=0
+                                            </a>
+                                        </td>
+                                    </tr>
+                                @empty
+                                    <tr class="border-1 border border-black bg-white">
+                                        <td colspan="12" class="pb-20 text-center">Data penjadwalan belum ditemukan</td>
+                                    </tr>
+                                @endforelse
                             </tbody>
                         </table>
                     </div>

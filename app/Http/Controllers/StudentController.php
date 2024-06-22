@@ -69,7 +69,9 @@ class StudentController extends Controller
 
     function jadwalSidang()
     {
-        return view('pages/user/jadwalSidang/jadwalSidang');
+        $lectures = User::whereHas('lectureData')->get();
+
+        return view('pages/user/jadwalSidang/jadwalSidang', compact('lectures'));
     }
 
     public function register(StudentRegisterReq $request)
