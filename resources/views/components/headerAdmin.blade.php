@@ -5,7 +5,7 @@
                 <img src="/logo_if.png" alt="">
             </div>
             <div class="m-auto flex justify-center gap-2">
-                <div class="m-auto flex items-center justify-center text-center font-bold">admin</div>
+                <div class="m-auto flex items-center justify-center text-center font-bold">{{ auth()->user()->name }}</div>
                 <div class="div">
                     @if (auth()->user()->lectureData->image)
                         <img src="{{ url(asset('storage/' . auth()->user()->lectureData->image)) }}" alt="" class="aspect-square w-[40px] rounded-full">

@@ -3,9 +3,11 @@
 namespace App\Http\Controllers;
 
 use App\Http\Requests\SeminarAddReq;
+use App\Mail\DeleteSeminarMail;
 use App\Models\Seminar;
 use App\Models\User;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\Mail;
 use Illuminate\Support\Facades\Storage;
 
 class SeminarController extends Controller
@@ -130,5 +132,30 @@ class SeminarController extends Controller
         ]);
 
         return redirect('/JadwalSidang');
+    }
+
+    public function delete(Request $request)
+    {
+        if ($request->id === null) {
+            abort(404);
+        }
+        $message = $request->message;
+
+        $seminar = Seminar::whereKey($request->id)->doesntHave('schedule')->firstOrFail();
+
+        Mail::to($seminar->user->email)->send(new DeleteSeminarMail([
+            'type' => $seminar->type === 'seminar-akhir' ? 'Seminar Akhir' : 'Seminar Proposal',
+            'nim' => $seminar->user->studentData->nim,
+            'name' => $seminar->user->name,
+            'message' => $message,
+        ]));
+
+        $type = $seminar->type;
+        $seminar->delete();
+
+        if ($type === 'seminar-proposal') {
+            return redirect('/DataPendaftaran/SeminarProposal');
+        }
+        return redirect('/DataPendaftaran/SidangAkhir');
     }
 }

@@ -46,10 +46,15 @@ Route::controller(ScheduleController::class)->group(function () {
 });
 
 Route::controller(SeminarController::class)->group(function () {
-    Route::get('/DataPendaftaran', 'dataPendaftaran');
+    Route::middleware('lecture')->group(function () {
+        Route::get('/DataPendaftaran', 'dataPendaftaran');
 
-    Route::get('/DataPendaftaran/SeminarProposal', 'dataPendaftaranSeminarProposal');
-    Route::get('/DataPendaftaran/SeminarProposal/DataDokumen', 'dataPendaftaranSeminarProposalDataDokumen');
+        Route::get('/DataPendaftaran/SeminarProposal', 'dataPendaftaranSeminarProposal');
+        Route::get('/DataPendaftaran/SeminarProposal/DataDokumen', 'dataPendaftaranSeminarProposalDataDokumen');
+
+        Route::get('/TolakSeminar', 'delete');
+    });
+
 
     Route::get('/DataPendaftaran/SidangAkhir', 'dataPendaftaranSidangAkhir');
     Route::get('/DataPendaftaran/SidangAkhir/DataDokumen', 'dataPendaftaranSidangAkhirDataDokumen');

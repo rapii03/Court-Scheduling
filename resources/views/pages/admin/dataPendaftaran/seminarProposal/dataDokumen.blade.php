@@ -28,7 +28,7 @@
             <div class="mb-2">
                 <div class="text-[20px]">Nama : {{ $seminar->user->name }}</div>
                 <div class="text-[20px]">NIM : {{ $seminar->user->studentData->nim }}</div>
-                <div class="text-[20px]">Jenis : {{ $seminar->type }}</div>
+                <div class="text-[20px]">Jenis : Seminar Proposal</div>
             </div>
             <div class="mb-2 flex items-center justify-center">
                 <button type="button" data-modal-target="popup-modal" data-modal-toggle="popup-modal" class="mb-2 me-2 inline-flex items-center gap-2 rounded-lg bg-[#872929] px-5 py-2.5 text-center text-sm font-medium text-white hover:bg-[#610909]/90 focus:outline-none focus:ring-4 focus:ring-[#3b5998]/50">
@@ -45,20 +45,22 @@
                                 </svg>
                                 <span class="sr-only">Close modal</span>
                             </button>
-                            <div class="p-4 text-black md:p-5">
+                            <form action="/TolakSeminar" class="p-4 text-black md:p-5">
+                                @csrf
+                                <input type="hidden" name="id" value="{{ $seminar->id }}">
                                 <svg class="mx-auto mb-4 h-12 w-12 text-black" aria-hidden="true" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 20 20">
                                     <path stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M10 11V6m0 8h.01M19 10a9 9 0 1 1-18 0 9 9 0 0 1 18 0Z" />
                                 </svg>
                                 <label for="message" class="mb-2 block text-sm font-bold text-black">Catatan</label>
-                                <textarea id="message" rows="4" class="block w-full rounded-lg border border-gray-300 bg-gray-50 p-2.5 text-sm text-gray-900 focus:border-blue-500 focus:ring-blue-500" placeholder="Masukkan catatan penolakan..."></textarea>
+                                <textarea id="message" rows="4" name="message" class="block w-full rounded-lg border border-gray-300 bg-gray-50 p-2.5 text-sm text-gray-900 focus:border-blue-500 focus:ring-blue-500" placeholder="Masukkan catatan penolakan..."></textarea>
                                 <h3 class="mb-2 mt-2 text-center text-lg font-bold text-black">Tolak Pendaftaran?</h3>
                                 <div class="m-auto flex items-center justify-center">
-                                    <button data-modal-hide="popup-modal" type="button" class="inline-flex items-center rounded-lg bg-[#C8AC5E] px-5 py-2.5 text-center text-sm font-medium text-white hover:bg-[#C8AC5E] focus:outline-none focus:ring-4 focus:ring-[#C8AC5E]">
+                                    <button type="submit" class="inline-flex items-center rounded-lg bg-[#C8AC5E] px-5 py-2.5 text-center text-sm font-medium text-white hover:bg-[#C8AC5E] focus:outline-none focus:ring-4 focus:ring-[#C8AC5E]">
                                         Yes
                                     </button>
                                     <button data-modal-hide="popup-modal" type="button" class="ms-3 rounded-lg border border-gray-200 bg-white px-5 py-2.5 text-sm font-medium text-gray-900 hover:bg-gray-100 hover:text-gray-600 focus:z-10 focus:outline-none focus:ring-4 focus:ring-gray-100">No</button>
                                 </div>
-                            </div>
+                            </form>
                         </div>
                     </div>
                 </div>
