@@ -35,6 +35,10 @@ Route::controller(LectureController::class)->group(function () {
 
     Route::get('/DataDosen/AturJadwal', 'dataDosenAturJadwal')->name('data-dosen-schedule');
     Route::post('/DataDosen/AturJadwal', 'setSchedule');
+
+    Route::middleware('lecture')->group(function () {
+        Route::get('/Dashboard', 'dashboard');
+    });
 });
 
 Route::controller(ScheduleController::class)->group(function () {
@@ -81,5 +85,4 @@ Route::controller(StudentController::class)->group(function () {
 Route::controller(GeneralPage::class)->group(function () {
     Route::get('/', 'landingPage');
     Route::get('/Jadwal', 'jadwal');
-    Route::get('/Dashboard', 'dashboard');
 });

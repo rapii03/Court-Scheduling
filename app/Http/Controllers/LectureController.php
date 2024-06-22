@@ -13,6 +13,13 @@ use Illuminate\Support\Facades\Storage;
 
 class LectureController extends Controller
 {
+    function dashboard()
+    {
+        $studentCount = User::whereHas('studentData')->count();
+        $lectureCount = User::whereHas('lectureData')->count();
+
+        return view('pages/admin/dashboard', compact(['studentCount', 'lectureCount']));
+    }
     function dataDosen(Request $request)
     {
         $data = User::whereHas('lectureData', function ($query) use ($request) {

@@ -8,11 +8,6 @@ use Illuminate\Support\Carbon;
 
 class GeneralPage extends Controller
 {
-    function dashboard()
-    {
-        return view('pages/admin/dashboard');
-    }
-
     function buatPenjadwalan()
     {
         return view('pages/admin/buatPenjadwalan/buatPenjadwalan');
