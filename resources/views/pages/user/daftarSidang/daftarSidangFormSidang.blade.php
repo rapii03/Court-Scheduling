@@ -71,6 +71,9 @@
                                                     <div class="flex items-center text-lg font-bold text-white">:
                                                     </div>
                                                     <input name="thesis_title" type="text" value="{{ auth()->user()->studentData->thesis_title }}" id="phone-input" aria-describedby="helper-text-explanation" class="block h-full w-full rounded-sm border border-white bg-white py-1 ps-2 text-sm text-black focus:border-black focus:ring-black" placeholder="Judul Topik TA" required />
+                                                    @error('thesis_title')
+                                                        <p>{{ $message }}</p>
+                                                    @enderror
                                                 </td>
                                             </tr>
                                             <tr class="">
@@ -83,6 +86,9 @@
                                                             <option value="{{ $lecture->id }}">{{ $lecture->name }}</option>
                                                         @endforeach
                                                     </select>
+                                                    @error('supervisor_1')
+                                                        <p>{{ $message }}</p>
+                                                    @enderror
                                                 </td>
                                             </tr>
                                             <tr class="text-white">
@@ -95,6 +101,9 @@
                                                             <option value="{{ $lecture->id }}">{{ $lecture->name }}</option>
                                                         @endforeach
                                                     </select>
+                                                    @error('supervisor_2')
+                                                        <p>{{ $message }}</p>
+                                                    @enderror
                                                 </td>
                                             </tr>
                                             <tr class="text-white">
@@ -121,6 +130,9 @@
                                                         @endforeach
                                                         <span class="sr-only">Notifications</span>
                                                     </select>
+                                                    @error('examiner_1')
+                                                        <p>{{ $message }}</p>
+                                                    @enderror
                                                 </td>
                                             </tr>
                                             <tr class="text-white">
@@ -148,6 +160,9 @@
                                                         @endforeach
                                                         <span class="sr-only">Notifications</span>
                                                     </select>
+                                                    @error('examiner_2')
+                                                        <p>{{ $message }}</p>
+                                                    @enderror
                                                 </td>
                                             </tr>
                                             <tr class="text-white">
@@ -156,6 +171,9 @@
                                                     <div class="flex items-center text-lg font-bold text-white">:
                                                     </div>
                                                     <input name="sks" type="password" id="phone-input" aria-describedby="helper-text-explanation" class="block h-full w-full rounded-sm border border-white bg-white py-1 ps-2 text-sm text-black focus:border-black focus:ring-black" placeholder="Jumlah SKS Mata Kuliah" required />
+                                                    @error('sks')
+                                                        <p>{{ $message }}</p>
+                                                    @enderror
                                                 </td>
                                             </tr>
                                             <tr class="text-white">
@@ -164,6 +182,9 @@
                                                     <div class="flex items-center text-lg font-bold text-white">:</div>
                                                     <div class="w-full">
                                                         <input name="type" type="radio" id="sidang" value="seminar-proposal" required class="checked:bg-[#C8AC5E] hover:bg-[#C8AC5E] focus:bg-[#C8AC5E]" checked>
+                                                        @error('type')
+                                                            <p>{{ $message }}</p>
+                                                        @enderror
                                                         <label for="proposal" class="text-[10px]">Seminar
                                                             Proposal</label>
                                                     </div>
@@ -192,6 +213,9 @@
                                                             berkas</span>
                                                     </label>
                                                     <input name="seminar_attending_file" type="file" id="file-input-seminar" accept=".pdf,.doc,.docx,.txt" class="hidden" required onchange="buktiSeminar()" />
+                                                    @error('seminar_attending_file')
+                                                        <p>{{ $message }}</p>
+                                                    @enderror
                                                     <script>
                                                         function buktiSeminar() {
                                                             const input = document.getElementById('file-input-seminar');
@@ -222,6 +246,9 @@
                                                                     berkas</span>
                                                             </label>
                                                             <input name="ppt_file" type="file" id="file-input-ppt" accept=".pdf,.doc,.docx,.txt" class="hidden" required onchange="draftPPT()" />
+                                                            @error('ppt_file')
+                                                                <p>{{ $message }}</p>
+                                                            @enderror
                                                             <script>
                                                                 function draftPPT() {
                                                                     const input = document.getElementById('file-input-ppt');
@@ -246,6 +273,9 @@
                                                                     berkas</span>
                                                             </label>
                                                             <input name="docs_file" type="file" id="file-input-Word" accept=".pdf,.doc,.docx,.txt" class="hidden" required onchange="draftWORD()" />
+                                                            @error('docs_file')
+                                                        <p>{{ $message }}</p>
+                                                    @enderror
                                                             <script>
                                                                 function draftWORD() {
                                                                     const input = document.getElementById('file-input-Word');
@@ -276,6 +306,9 @@
                                                             berkas</span>
                                                     </label>
                                                     <input name="approval_file" type="file" id="file-input-persetujuan" accept=".pdf,.doc,.docx,.txt" class="hidden" required onchange="buktipersetujuan()" />
+                                                    @error('approval_file')
+                                                        <p>{{ $message }}</p>
+                                                    @enderror
                                                     <script>
                                                         function buktipersetujuan() {
                                                             const input = document.getElementById('file-input-persetujuan');
@@ -304,6 +337,9 @@
                                                             berkas</span>
                                                     </label>
                                                     <input name="guidance_file" type="file" id="file-input-bimbingan" accept=".pdf,.doc,.docx,.txt" class="hidden" required onchange="buktibimbingan()" />
+                                                    @error('guidance_file')
+                                                        <p>{{ $message }}</p>
+                                                    @enderror
                                                     <script>
                                                         function buktibimbingan() {
                                                             const input = document.getElementById('file-input-bimbingan');
@@ -354,6 +390,9 @@
                                                             berkas</span>
                                                     </label>
                                                     <input name="lecture_approval_file" type="file" id="file-input-doswal" accept=".pdf,.doc,.docx,.txt" class="hidden" onchange="buktidoswal()" />
+                                                    @error('lecture_approval')
+                                                        <p>{{ $message }}</p>
+                                                    @enderror
                                                     <script>
                                                         function buktidoswal() {
                                                             const input = document.getElementById('file-input-doswal');
@@ -395,7 +434,10 @@
                                                         <span id="file-name-revisi" class="text-sm">Pilih
                                                             berkas</span>
                                                     </label>
-                                                    <input name="revision_file" type="file" id="file-input-revisi" accept=".pdf,.doc,.docx,.txt" class="hidden" required onchange="buktirevisi()" />
+                                                    <input name="revision_file" type="file" id="file-input-revisi" accept=".pdf,.doc,.docx,.txt" class="hidden"  onchange="buktirevisi()" />
+                                                    @error('revision_fil')
+                                                        <p>{{ $message }}</p>
+                                                    @enderror
                                                     <script>
                                                         function buktirevisi() {
                                                             const input = document.getElementById('file-input-revisi');

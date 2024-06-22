@@ -13,12 +13,12 @@ return new class extends Migration {
         Schema::create('lecture_data', function (Blueprint $table) {
             $table->uuid('id')->primary();
 
-            $table->string('phone_number')->nullable();
-            $table->string('address')->nullable();
+            $table->string('kk');
+            $table->string('nip');
             $table->text('image')->nullable();
             $table->string('nidn');
-            $table->string('nip');
-            $table->string('kk');
+            $table->string('address')->nullable();
+            $table->string('phone_number')->nullable();
 
             $table->timestamps();
 
