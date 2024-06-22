@@ -40,5 +40,22 @@ class DatabaseSeeder extends Seeder
                 ]);
             }
         }
+
+        $user = \App\Models\User::create([
+            'password' => 'admin321',
+            'email' => 'admin@gmail.com',
+            'name' => 'admin',
+            'role' => 'lecture',
+        ]);
+
+        \App\Models\LectureData::create([
+            'phone_number' => '0',
+            'address' => '0',
+            'nidn' => '0',
+            'nip' => '0',
+            'kk' => '0',
+
+            'user_id' => $user->id,
+        ]);
     }
 }
