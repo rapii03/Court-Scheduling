@@ -52,12 +52,11 @@ Route::controller(SeminarController::class)->group(function () {
         Route::get('/DataPendaftaran/SeminarProposal', 'dataPendaftaranSeminarProposal');
         Route::get('/DataPendaftaran/SeminarProposal/DataDokumen', 'dataPendaftaranSeminarProposalDataDokumen');
 
+        Route::get('/DataPendaftaran/SidangAkhir', 'dataPendaftaranSidangAkhir');
+        Route::get('/DataPendaftaran/SidangAkhir/DataDokumen', 'dataPendaftaranSidangAkhirDataDokumen');
+
         Route::get('/TolakSeminar', 'delete');
     });
-
-
-    Route::get('/DataPendaftaran/SidangAkhir', 'dataPendaftaranSidangAkhir');
-    Route::get('/DataPendaftaran/SidangAkhir/DataDokumen', 'dataPendaftaranSidangAkhirDataDokumen');
 
     Route::middleware('student')->group(function () {
         Route::post('/DaftarSidang/FormSidang', 'add');

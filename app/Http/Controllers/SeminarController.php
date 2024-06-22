@@ -38,7 +38,10 @@ class SeminarController extends Controller
     }
     function dataPendaftaranSidangAkhir()
     {
-        return view('pages/admin/dataPendaftaran/sidangAkhir/sidangAkhir');
+        $seminars = Seminar::doesntHave('schedule')->where('type', 'seminar-akhir')->oldest()->get();
+        $lectures = User::whereHas('lectureData')->get();
+
+        return view('pages/admin/dataPendaftaran/sidangAkhir/sidangAkhir', compact(['seminars', 'lectures']));
     }
     function dataPendaftaranSidangAkhirDataDokumen()
     {
