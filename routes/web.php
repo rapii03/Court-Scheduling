@@ -21,6 +21,7 @@ use App\Http\Controllers\ScheduleController;
 
 Route::post('/Login', [LoginController::class, 'login']);
 Route::get('/Logout', [LoginController::class, 'logout']);
+Route::get('/AccountVerification', [LoginController::class, 'verification']);
 
 Route::controller(LectureController::class)->group(function () {
     Route::middleware('lecture')->group(function () {
@@ -73,8 +74,10 @@ Route::controller(StudentController::class)->group(function () {
     Route::get('/Login', 'login');
     Route::get('/LoginUser', 'loginUser');
 
-    Route::get('/DataUser', 'dataUser');
-    Route::get('/DataUser/Dokumen', 'dataUserDokumen');
+    Route::middleware('lecture')->group(function () {
+        Route::get('/DataUser', 'dataUser');
+        Route::get('/DataUser/Dokumen', 'dataUserDokumen');
+    });
 
     Route::middleware('student')->group(function () {
         Route::get('/DashboardUser', 'dashboardUser');

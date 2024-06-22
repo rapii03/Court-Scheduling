@@ -3,7 +3,9 @@
 namespace App\Http\Controllers;
 
 use App\Http\Requests\StudentRegisterReq;
+use App\Mail\AccountVerificationMail;
 use Illuminate\Database\Eloquent\Builder;
+use Illuminate\Support\Facades\Mail;
 use Illuminate\Support\Facades\Storage;
 use App\Http\Requests\StudentEditReq;
 use Illuminate\Http\Request;
@@ -85,6 +87,12 @@ class StudentController extends Controller
 
         $student->user()->associate($account);
         $student->save();
+
+        $account->token = uuid_create();
+        $account->active = false;
+        $account->save();
+
+        Mail::to($account->email)->send(new AccountVerificationMail($account->only('email', 'token')));
 
         return redirect('/LoginUser');
     }

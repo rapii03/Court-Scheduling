@@ -17,6 +17,8 @@ return new class extends Migration {
             $table->string('role', 7);
             $table->string('password');
             $table->string('email')->unique();
+            $table->boolean('active')->default(true);
+            $table->uuid('token')->nullable();
 
             $table->timestamps();
         });
