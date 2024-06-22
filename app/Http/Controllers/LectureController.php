@@ -22,18 +22,17 @@ class LectureController extends Controller
     }
     function dataDosen(Request $request)
     {
-        $data = User::whereHas('lectureData', function ($query) use ($request) {
+        $lectures = collect([auth()->user()]);
+
+        $data = User::whereKeyNot(auth()->user()->id)->whereHas('lectureData', function ($query) use ($request) {
             if ($request->search) {
                 $query->whereAny(['email', 'name', 'nidn', 'nip', 'kk'], 'LIKE', "%$request->search%");
             }
-        })
-            ->select(['id', 'email', 'name'])
-            ->withAggregate('lectureData AS nidn', 'nidn')
-            ->withAggregate('lectureData AS nip', 'nip')
-            ->withAggregate('lectureData AS kk', 'kk')
-            ->get();
+        })->get();
 
-        return view('pages/admin/dataDosen/dataDosen', compact('data'));
+        $lectures->merge($data);
+
+        return view('pages/admin/dataDosen/dataDosen', compact('lectures'));
     }
     function dataDosenTambah()
     {

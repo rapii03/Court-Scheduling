@@ -23,21 +23,21 @@ Route::post('/Login', [LoginController::class, 'login']);
 Route::get('/Logout', [LoginController::class, 'logout']);
 
 Route::controller(LectureController::class)->group(function () {
-    Route::get('/DataDosen', 'dataDosen')->name('data-dosen');
-
     Route::get('/DataDosen/Tambah', 'dataDosenTambah');
     Route::post('/DataDosen/Tambah', 'add');
 
-    Route::get('/DataDosen/Edit', 'dataDosenEdit')->name('data-dosen-edit');
+    Route::get('/DataDosen/Edit', 'dataDosenEdit');
     Route::put('/DataDosen/Edit', 'edit');
 
-    Route::get('/DataDosen/Delete', 'delete')->name('data-dosen-delete');
+    Route::get('/DataDosen/Delete', 'delete');
 
     Route::get('/DataDosen/AturJadwal', 'dataDosenAturJadwal')->name('data-dosen-schedule');
     Route::post('/DataDosen/AturJadwal', 'setSchedule');
 
     Route::middleware('lecture')->group(function () {
         Route::get('/Dashboard', 'dashboard');
+
+        Route::get('/DataDosen', 'dataDosen');
     });
 });
 
