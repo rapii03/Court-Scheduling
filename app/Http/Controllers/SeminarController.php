@@ -46,20 +46,34 @@ class SeminarController extends Controller
     {
         $exists = Seminar::where('user_id', auth()->user()->id)->where('type', $request->type)->exists();
 
+        $examiner_1 = null;
+        $examiner_2 = null;
+
         if ($exists) {
-            // error data sudah ada
-            return back();
+            return back()->withErrors(['seminar' => 'data already exists']);
         }
 
         if ($request->type === 'seminar-akhir') {
-            $exists = Seminar::where('user_id', auth()->user()->id)->where('type', 'seminar-proposal')->exists();
+            $exists = Seminar::where('user_id', auth()->user()->id)->where('type', 'seminar-proposal')->has('schedule')->exists();
 
             if (!$exists) {
-                // error belum ada seminar proposal untuk daftar seminar akhir
-                return back();
+                return back()->withErrors(['seminar' => 'you must register seminar proposal first']);
             }
 
-            // check seminar proposal tervalidasi
+            if ($request->examiner_1 === null) {
+                return back()->withInput()->withErrors(['examiner_1' => 'Penguji 1 is required to fill in seminar akhir registration']);
+            }
+            $examiner_1 = $request->examiner_1;
+            if ($request->examiner_2 === null) {
+                return back()->withInput()->withErrors(['examiner_2' => 'Penguji 2 is required to fill in seminar akhir registration']);
+            }
+            $examiner_2 = $request->examiner_2;
+            if (!$request->hasFile('lecture_approval_file')) {
+                return back()->withInput()->withErrors(['lecture_approval_file' => 'Surat persetujuan dosen is required to fill in seminar akhir registration']);
+            }
+            if (!$request->hasFile('revision_file')) {
+                return back()->withInput()->withErrors(['revision_file' => 'Form revisi is required to fill in seminar akhir registration']);
+            }
         }
 
         $seminar_attending_file = null;
@@ -98,10 +112,14 @@ class SeminarController extends Controller
                 'approval_file',
                 'guidance_file',
                 'revision_file',
+                'examiner_1',
+                'examiner_2',
                 'docs_file',
                 'ppt_file',
             ]),
             'user_id' => auth()->user()->id,
+            'examiner_1' => $examiner_1,
+            'examiner_2' => $examiner_2,
             'seminar_attending_file' => $seminar_attending_file,
             'lecture_approval_file' => $lecture_approval_file,
             'approval_file' => $approval_file,

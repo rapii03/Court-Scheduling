@@ -34,6 +34,9 @@
                         di
                         keluarkan.
                     </div>
+                    @error('seminar')
+                        <p class="text-red-500">{{ $message }}</p>
+                    @enderror
                     <form action="" method="POST" enctype="multipart/form-data" class="h-full rounded-lg bg-[#1F5F92] p-5 shadow-lg">
                         @csrf
                         <div class="flex justify-between gap-5 text-white">
@@ -274,8 +277,8 @@
                                                             </label>
                                                             <input name="docs_file" type="file" id="file-input-Word" accept=".pdf,.doc,.docx,.txt" class="hidden" required onchange="draftWORD()" />
                                                             @error('docs_file')
-                                                        <p>{{ $message }}</p>
-                                                    @enderror
+                                                                <p>{{ $message }}</p>
+                                                            @enderror
                                                             <script>
                                                                 function draftWORD() {
                                                                     const input = document.getElementById('file-input-Word');
@@ -434,7 +437,7 @@
                                                         <span id="file-name-revisi" class="text-sm">Pilih
                                                             berkas</span>
                                                     </label>
-                                                    <input name="revision_file" type="file" id="file-input-revisi" accept=".pdf,.doc,.docx,.txt" class="hidden"  onchange="buktirevisi()" />
+                                                    <input name="revision_file" type="file" id="file-input-revisi" accept=".pdf,.doc,.docx,.txt" class="hidden" onchange="buktirevisi()" />
                                                     @error('revision_fil')
                                                         <p>{{ $message }}</p>
                                                     @enderror

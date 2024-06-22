@@ -50,7 +50,9 @@ Route::controller(SeminarController::class)->group(function () {
     Route::get('/DataPendaftaran/SidangAkhir', 'dataPendaftaranSidangAkhir');
     Route::get('/DataPendaftaran/SidangAkhir/DataDokumen', 'dataPendaftaranSidangAkhirDataDokumen');
 
-    Route::post('/DaftarSidang/FormSidang', 'add');
+    Route::middleware('student')->group(function () {
+        Route::post('/DaftarSidang/FormSidang', 'add');
+    });
 });
 
 Route::controller(StudentController::class)->group(function () {
