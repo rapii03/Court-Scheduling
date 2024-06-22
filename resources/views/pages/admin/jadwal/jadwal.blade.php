@@ -23,17 +23,13 @@
 <body>
     <x-layoutAdmin />
     <div class="ml-[228px] p-5">
-        <div class="text-[40px] font-bold mb-2">Jadwal Peserta Tugas Akhir</div>
-        <div class="flex justify-between">
-            <div class="relative flex justify-center items-center">
-                <input type="search" id="default-search"
-                    class="block w-full p-4 ps-10 text-sm text-gray-900 border border-[#C8AC5E] rounded-lg bg-gray-50 focus:ring-[#C8AC5E] focus:border-[#C8AC5E] h-[32px]"
-                    placeholder="Search here Name" required />
-                <div class="absolute inset-y-0 start-0 flex items-center ps-3 pointer-events-none">
-                    <svg class="w-4 h-4 text-gray-500" aria-hidden="true" xmlns="http://www.w3.org/2000/svg"
-                        fill="none" viewBox="0 0 20 20">
-                        <path stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
-                            d="m19 19-4-4m0-7A7 7 0 1 1 1 8a7 7 0 0 1 14 0Z" />
+        <div class="mb-2 text-[40px] font-bold">Jadwal Peserta Tugas Akhir</div>
+        <form action="" class="flex justify-between">
+            <div class="relative flex items-center justify-center">
+                <input type="search" id="default-search" name="search" class="block h-[32px] w-full rounded-lg border border-[#C8AC5E] bg-gray-50 p-4 ps-10 text-sm text-gray-900 focus:border-[#C8AC5E] focus:ring-[#C8AC5E]" placeholder="Search here Name" />
+                <div class="pointer-events-none absolute inset-y-0 start-0 flex items-center ps-3">
+                    <svg class="h-4 w-4 text-gray-500" aria-hidden="true" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 20 20">
+                        <path stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="m19 19-4-4m0-7A7 7 0 1 1 1 8a7 7 0 0 1 14 0Z" />
                     </svg>
                 </div>
             </div>
@@ -41,63 +37,35 @@
                 {{-- <input name="" type="date" id="DateTime" class="block w-full p-4 ps-10 text-sm text-gray-900 border border-[#C8AC5E] rounded-lg bg-gray-50 focus:ring-[#C8AC5E] focus:border-[#C8AC5E] h-[32px]" placeholder="Masukkan Tanggal" required /> --}}
                 <div>
                     <div class="flex gap-x-2">
-                        <div class="flex flex-col flex-1 mb-4">
+                        <div class="mb-4 flex flex-1 flex-col">
                             {{-- <label for="bulan">Bulan</label> --}}
-                            <select name="bulan" id="bulan"
-                                class="border border-[#297785] text-gray-900 text-sm rounded-md focus:ring-[#297785] focus:border-[#297785] h-9 px-2 w-full"
-                                required>
-                                <option value="januari">Januari</option>
-                                <option value="februari">Februari</option>
-                                <option value="maret">Maret</option>
-                                <option value="april">April</option>
-                                <option value="mei">Mei</option>
-                                <option value="juni">Juni</option>
-                                <option value="juli">Juli</option>
-                                <option value="agustus">Agustus</option>
-                                <option value="september">September</option>
-                                <option value="oktober">Oktober</option>
-                                <option value="november">November</option>
-                                <option value="desember">Desember</option>
+                            <select name="month" id="bulan" class="h-9 w-full rounded-md border border-[#297785] px-2 text-sm text-gray-900 focus:border-[#297785] focus:ring-[#297785]" onchange="this.form.submit()">
+                                @foreach (['Januari', 'Februari', 'Maret', 'April', 'Mei', 'Juni', 'Juli', 'Agustus', 'September', 'Oktober', 'November', 'Desember'] as $num => $item)
+                                    <option value="{{ $num + 1 }}" @selected($num + 1 == $month)>{{ $item }}</option>
+                                @endforeach
                             </select>
                         </div>
                     </div>
                 </div>
                 <div>
                     <div class="flex gap-x-2">
-                        <div class="flex flex-col flex-1 mb-4">
-                            {{-- <label for="tahun">Tahun</label> --}}
-                            <select name="tahun" id="tahun"
-                                class="border border-[#297785] text-gray-900 text-sm rounded-md focus:ring-[#297785] focus:border-[#297785] h-9 px-2 w-full"
-                                required>
+                        <div class="mb-4 flex flex-1 flex-col">
+                            <select name="year" id="tahun" onchange="this.form.submit()" class="h-9 w-full rounded-md border border-[#297785] px-2 text-sm text-gray-900 focus:border-[#297785] focus:ring-[#297785]">
+                                @foreach ($years as $item)
+                                    <option value="{{ $item }}" @selected($item == $year)>{{ $item }}</option>
+                                @endforeach
                             </select>
                         </div>
                     </div>
-                    <script>
-                        function populateTahunOptions() {
-                            var select = document.getElementById("tahun");
-                            var date = new Date();
-                            var year = date.getFullYear();
-                            var month = date.getMonth() + 1;
-                            select.innerHTML = '';
-                            if (month >= 1 && month <= 7) {
-                                select.add(new Option((year - 1) + "/" + year, (year - 1) + "/" + year));
-                                select.add(new Option(year + "/" + (year + 1), year + "/" + (year + 1)));
-                            } else {
-                                select.add(new Option(year + "/" + (year + 1), year + "/" + (year + 1)));
-                                select.add(new Option((year + 1) + "/" + (year + 2), (year + 1) + "/" + (year + 2)));
-                            }
-                        }
-                        window.onload = populateTahunOptions;
-                    </script>
                 </div>
             </div>
-        </div>
+        </form>
 
-        <div class="relative overflow-x-auto mt-4">
-            <table class="w-full text-sm text-left rtl:text-right text-black">
-                <thead class="text-white bg-[#1F5F92]">
+        <div class="relative mt-4 overflow-x-auto">
+            <table class="w-full text-left text-sm text-black rtl:text-right">
+                <thead class="bg-[#1F5F92] text-white">
                     <tr>
-                        <th scope="col" class="px-6 py-3 rounded-tl-lg">
+                        <th scope="col" class="rounded-tl-lg px-6 py-3">
                             Jenis
                         </th>
                         <th scope="col" class="px-6 py-3">
@@ -130,66 +98,39 @@
                         <th scope="col" class="px-6 py-3">
                             Jam
                         </th>
-                        <th scope="col" class="px-6 py-3 rounded-tr-lg">
+                        <th scope="col" class="rounded-tr-lg px-6 py-3">
                             Link Meet
                         </th>
                     </tr>
                 </thead>
-                <tbody class="border border-1 border-black">
-                    <?php
-                    $contohData = [
-                        [
-                            'id' => 1,
-                            'jenis' => 'Tugas Akhir',
-                            'nama' => 'Rafi Ramadhan Pratama',
-                            'nim' => '120140079',
-                            'judul' => 'Rancang Bangun Sistem Informasi Manajemen Pengendalian Menara Telekomunikasi (Studi Kasus : Diskominfo Lampung Utara)',
-                            'dosenPembimbing1' => 'Andika Setiawan, S.Kom., M.Cs.',
-                            'dosenPembimbing2' => 'Meida Cahyo Untoro, S.Kom., M.Kom.',
-                            'dosenPenguji1' => 'Aidil Afriansyah, S.Kom., M.Kom.',
-                            'dosenPenguji2' => 'Radhinka Bagaskara, S.Si.Kom., M.Si., M.Sc.',
-                            'hari' => 'Senin',
-                            'tanggal' => '17 April 2024',
-                            'jam' => '08:00 - 10:00',
-                            'linkMeet' => 'https://meet.google.com/ive-ceji-yya?authuser=0',
-                        ],
-                        [
-                            'id' => 2,
-                            'jenis' => 'Tugas Akhir',
-                            'nama' => 'Rafi Ramadhan Pratama',
-                            'nim' => '120140079',
-                            'judul' => 'Rancang Bangun Sistem Informasi Manajemen Pengendalian Menara Telekomunikasi (Studi Kasus : Diskominfo Lampung Utara)',
-                            'dosenPembimbing1' => 'Andika Setiawan, S.Kom., M.Cs.',
-                            'dosenPembimbing2' => 'Meida Cahyo Untoro, S.Kom., M.Kom.',
-                            'dosenPenguji1' => 'Aidil Afriansyah, S.Kom., M.Kom.',
-                            'dosenPenguji2' => 'Radhinka Bagaskara, S.Si.Kom., M.Si., M.Sc.',
-                            'hari' => 'Senin',
-                            'tanggal' => '17 April 2024',
-                            'jam' => '08:00 - 10:00',
-                            'linkMeet' => 'https://meet.google.com/ive-ceji-yya?authuser=0',
-                        ],
-                    ];
-                    ?>
-                    <?php foreach ($contohData as $data): ?>
-                    <tr class="bg-white border border-1 border-black">
-                        <td class="px-6 py-4"><?php echo $data['jenis']; ?></td>
-                        <td class="px-6 py-4"><?php echo $data['nama']; ?></td>
-                        <td class="px-6 py-4"><?php echo $data['nim']; ?></td>
-                        <td class="px-6 py-4"><?php echo $data['judul']; ?></td>
-                        <td class="px-6 py-4"><?php echo $data['dosenPembimbing1']; ?></td>
-                        <td class="px-6 py-4"><?php echo $data['dosenPembimbing2']; ?></td>
-                        <td class="px-6 py-4"><?php echo $data['dosenPenguji1']; ?></td>
-                        <td class="px-6 py-4"><?php echo $data['dosenPenguji2']; ?></td>
-                        <td class="px-6 py-4"><?php echo $data['hari']; ?></td>
-                        <td class="px-6 py-4"><?php echo $data['tanggal']; ?></td>
-                        <td class="px-6 py-4"><?php echo $data['jam']; ?></td>
-                        <td class="px-6 py-4">
-                            <a href="<?php echo $data['linkMeet']; ?>">
-                                Link Meet
-                            </a>
-                        </td>
-                    </tr>
-                    <?php endforeach; ?>
+                <tbody class="border-1 border border-black">
+                    @foreach ($data as $item)
+                        <tr class="border-1 border border-black bg-white">
+                            <td class="px-6 py-4">{{ $item->seminar->type === 'seminar-akhir' ? 'Seminar Akhir' : 'Seminar Proposal' }}</td>
+                            <td class="px-6 py-4">{{ $item->seminar->user->name }}</td>
+                            <td class="px-6 py-4">{{ $item->seminar->user->studentData->nim }}</td>
+                            <td class="px-6 py-4">{{ $item->seminar->thesis_title }}</td>
+                            @foreach ([$item->seminar->supervisor_1, $item->seminar->supervisor_2, $item->seminar->examiner_1, $item->seminar->examiner_2] as $lectureSeminar)
+                                @php
+                                    $lecture = $lectures->firstWhere('id', $lectureSeminar);
+                                    if ($lecture) {
+                                        $lecture = $lecture->name;
+                                    } else {
+                                        $lecture = $lectureSeminar;
+                                    }
+                                @endphp
+                                <td class="px-6 py-4">{{ $lecture }}</td>
+                            @endforeach
+                            <td class="px-6 py-4">{{ $item->time->day }}</td>
+                            <td class="px-6 py-4">{{ $item->date }}</td>
+                            <td class="px-6 py-4">{{ $item->time->time }}</td>
+                            <td class="px-6 py-4">
+                                <a href="#">
+                                    Link Meet
+                                </a>
+                            </td>
+                        </tr>
+                    @endforeach
                 </tbody>
             </table>
         </div>

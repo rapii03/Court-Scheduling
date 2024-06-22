@@ -31,7 +31,7 @@ class LectureController extends Controller
             }
         })->get();
 
-        $lectures->merge($data);
+        $lectures = $lectures->merge($data);
 
         return view('pages/admin/dataDosen/dataDosen', compact('lectures'));
     }
@@ -111,7 +111,7 @@ class LectureController extends Controller
         $lecture->user()->associate($account);
         $lecture->save();
 
-        return redirect()->route('data-dosen');
+        return redirect('/DataDosen');
     }
 
     public function edit(LectureEditReq $request)

@@ -57,6 +57,8 @@ Route::controller(SeminarController::class)->group(function () {
         Route::get('/DataPendaftaran/SidangAkhir/DataDokumen', 'dataPendaftaranSidangAkhirDataDokumen');
 
         Route::get('/TolakSeminar', 'delete');
+
+        Route::get('/Jadwal', 'jadwal');
     });
 
     Route::middleware('student')->group(function () {
@@ -89,5 +91,4 @@ Route::controller(StudentController::class)->group(function () {
 
 Route::controller(GeneralPage::class)->group(function () {
     Route::get('/', 'landingPage');
-    Route::get('/Jadwal', 'jadwal');
 });

@@ -4,8 +4,10 @@ namespace App\Http\Controllers;
 
 use App\Http\Requests\SeminarAddReq;
 use App\Mail\DeleteSeminarMail;
+use App\Models\Schedule;
 use App\Models\Seminar;
 use App\Models\User;
+use Illuminate\Database\Eloquent\Builder;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Mail;
 use Illuminate\Support\Facades\Storage;
@@ -53,6 +55,42 @@ class SeminarController extends Controller
 
         return view('pages/admin/dataPendaftaran/sidangAkhir/dataDokumen', compact('seminar'));
     }
+
+    function jadwal(Request $request)
+    {
+        $years = Schedule::selectRaw('extract(year FROM created_at) AS year')
+            ->distinct()
+            ->orderBy('year', 'desc')
+            ->pluck('year')
+            ->flatten()
+            ->unique()
+            ->toArray();
+        $year = $request->year !== null ? $request->year : end($years);
+
+        $months = Schedule::selectRaw('extract(month FROM created_at) AS month')
+            ->distinct()
+            ->orderBy('month', 'desc')
+            ->pluck('month')
+            ->flatten()
+            ->unique()
+            ->toArray();
+        $month = $request->month !== null ? $request->month : end($months);
+
+        $data = Schedule::whereMonth('created_at', $month)->whereYear('created_at', $year)->where(function (Builder $query) use ($request) {
+            if ($request->search) {
+                $query->whereHas('seminar', function (Builder $query) use ($request) {
+                    $query->whereAny(['type', 'thesis_title'], 'LIKE', "%{$request->search}%")->orWhereHas('user', function (Builder $query) use ($request) {
+                        $query->where('name', 'LIKE', "%{$request->search}%");
+                    });
+                });
+            }
+        })->oldest()->get();
+
+        $lectures = User::whereHas('lectureData')->get();
+
+        return view('pages/admin/jadwal/jadwal', compact(['years', 'year', 'month', 'data', 'lectures']));
+    }
+
     public function add(SeminarAddReq $request)
     {
         $exists = Seminar::where('user_id', auth()->user()->id)->where('type', $request->type)->exists();
@@ -158,6 +196,14 @@ class SeminarController extends Controller
             'name' => $seminar->user->name,
             'message' => $message,
         ]));
+
+        foreach (['seminar_attending_file', 'lecture_approval_file', 'approval_file', 'guidance_file', 'revision_file', 'docs_file', 'ppt_file'] as $key => $value) {
+            if ($seminar[$value] !== null) {
+                if (Storage::exists($seminar[$value])) {
+                    Storage::delete($seminar[$value]);
+                }
+            }
+        }
 
         $type = $seminar->type;
         $seminar->delete();

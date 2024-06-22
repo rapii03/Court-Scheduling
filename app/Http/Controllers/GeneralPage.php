@@ -13,11 +13,6 @@ class GeneralPage extends Controller
         return view('pages/admin/buatPenjadwalan/buatPenjadwalan');
     }
 
-    function jadwal()
-    {
-        return view('pages/admin/jadwal/jadwal');
-    }
-
     function landingPage()
     {
         $currentTime = Carbon::now()->setTimezone('Asia/Jakarta');
