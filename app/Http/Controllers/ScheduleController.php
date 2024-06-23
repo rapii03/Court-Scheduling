@@ -85,7 +85,7 @@ class ScheduleController extends Controller
         });
 
         foreach ($mergeTime as $key => $time) {
-            $otherLectures = LectureSchedule::where('time_id', $time)->whereNot('user_id', [$supervisor1->id, $supervisor2->id])->pluck('user_id');
+            $otherLectures = LectureSchedule::where('time_id', $time)->whereNot('user_id', $supervisor1->id)->whereNot('user_id', $supervisor2->id)->pluck('user_id');
 
             if ($otherLectures->count() < 2) {
                 continue;
