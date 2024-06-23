@@ -173,7 +173,7 @@
                                                 <td class="flex gap-2 px-1 py-2">
                                                     <div class="flex items-center text-lg font-bold text-white">:
                                                     </div>
-                                                    <input name="sks" type="password" id="phone-input" aria-describedby="helper-text-explanation" class="block h-full w-full rounded-sm border border-white bg-white py-1 ps-2 text-sm text-black focus:border-black focus:ring-black" placeholder="Jumlah SKS Mata Kuliah" required />
+                                                    <input name="sks" type="number" id="phone-input" aria-describedby="helper-text-explanation" class="block h-full w-full rounded-sm border border-white bg-white py-1 ps-2 text-sm text-black focus:border-black focus:ring-black" placeholder="Jumlah SKS Mata Kuliah" required />
                                                     @error('sks')
                                                         <p>{{ $message }}</p>
                                                     @enderror
