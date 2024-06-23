@@ -42,9 +42,162 @@ class DatabaseSeeder extends Seeder
         }
 
         $user = \App\Models\User::create([
-            'password' => 'admin321',
-            'email' => 'admin@gmail.com',
-            'name' => 'admin',
+            'password' => 'meida123',
+            'email' => 'cahyo.untoro@if.itera.ac.id',
+            'name' => 'Meida Cahyo Untoro',
+            'role' => 'lecture',
+        ]);
+
+        \App\Models\LectureData::create([
+            'phone_number' => '0',
+            'address' => '0',
+            'nidn' => '0',
+            'nip' => '0',
+            'kk' => '0',
+
+            'user_id' => $user->id,
+        ]);
+
+        $user = \App\Models\User::create([
+            'password' => 'ilham123',
+            'email' => 'firman.ashari@if.itera.ac.id',
+            'name' => 'Ilham Firman Ashari',
+            'role' => 'lecture',
+        ]);
+
+        \App\Models\LectureData::create([
+            'phone_number' => '0',
+            'address' => '0',
+            'nidn' => '0',
+            'nip' => '0',
+            'kk' => '0',
+
+            'user_id' => $user->id,
+        ]);
+
+        $user = \App\Models\User::create([
+            'password' => 'mugi123',
+            'email' => 'mugi.praseptiawan@if.itera.ac.id',
+            'name' => 'Mugi Praseptiawan',
+            'role' => 'lecture',
+        ]);
+
+        \App\Models\LectureData::create([
+            'phone_number' => '0',
+            'address' => '0',
+            'nidn' => '0',
+            'nip' => '0',
+            'kk' => '0',
+
+            'user_id' => $user->id,
+        ]);
+
+        $user = \App\Models\User::create([
+            'password' => 'andre123',
+            'email' => 'andre.febrianto@if.itera.ac.id',
+            'name' => 'Andre Febrianto',
+            'role' => 'lecture',
+        ]);
+
+        \App\Models\LectureData::create([
+            'phone_number' => '0',
+            'address' => '0',
+            'nidn' => '0',
+            'nip' => '0',
+            'kk' => '0',
+
+            'user_id' => $user->id,
+        ]);
+
+        $user = \App\Models\User::create([
+            'password' => 'radhinka123',
+            'email' => 'radhinka.bagaskara@if.itera.ac.id',
+            'name' => 'Radhinka Bagaskara',
+            'role' => 'lecture',
+        ]);
+
+        \App\Models\LectureData::create([
+            'phone_number' => '0',
+            'address' => '0',
+            'nidn' => '0',
+            'nip' => '0',
+            'kk' => '0',
+
+            'user_id' => $user->id,
+        ]);
+
+        $user = \App\Models\User::create([
+            'password' => 'miranti123',
+            'email' => 'miranti.verdiana@if.itera.ac.id',
+            'name' => 'Miranti Verdiana',
+            'role' => 'lecture',
+        ]);
+
+        \App\Models\LectureData::create([
+            'phone_number' => '0',
+            'address' => '0',
+            'nidn' => '0',
+            'nip' => '0',
+            'kk' => '0',
+
+            'user_id' => $user->id,
+        ]);
+
+        $user = \App\Models\User::create([
+            'password' => 'aidil123',
+            'email' => 'aidil.afriansyah@if.itera.ac.id',
+            'name' => 'Aidil Afriansyah',
+            'role' => 'lecture',
+        ]);
+
+        \App\Models\LectureData::create([
+            'phone_number' => '0',
+            'address' => '0',
+            'nidn' => '0',
+            'nip' => '0',
+            'kk' => '0',
+
+            'user_id' => $user->id,
+        ]);
+
+        $user = \App\Models\User::create([
+            'password' => 'eko123',
+            'email' => 'eko.nugroho@if.itera.ac.id',
+            'name' => 'Eko Nugroho',
+            'role' => 'lecture',
+        ]);
+
+        \App\Models\LectureData::create([
+            'phone_number' => '0',
+            'address' => '0',
+            'nidn' => '0',
+            'nip' => '0',
+            'kk' => '0',
+
+            'user_id' => $user->id,
+        ]);
+
+        $user = \App\Models\User::create([
+            'password' => 'andika123',
+            'email' => 'andika.setiawan@if.itera.ac.id',
+            'name' => 'Andika Setiawan',
+            'role' => 'lecture',
+        ]);
+
+        \App\Models\LectureData::create([
+            'phone_number' => '0',
+            'address' => '0',
+            'nidn' => '0',
+            'nip' => '0',
+            'kk' => '0',
+
+            'user_id' => $user->id,
+        ]);
+
+        $user = \App\Models\User::create([
+            'password' => 'winda123',
+            'email' => 'winda.yulita@if.itera.ac.id',
+            'name' => 'Winda Yulita',
             'role' => 'lecture',
         ]);
 
