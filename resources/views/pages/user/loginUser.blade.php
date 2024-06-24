@@ -72,7 +72,7 @@
                 </button>
             </div>
             <div class="mt-5 items-center justify-center text-center text-sm">
-                <div class="">Belum Punya Aku? <a href="/Register">Buat Akun!</a></div>
+                <div class="">Belum Punya Akun? <a href="/Register">Buat Akun!</a></div>
             </div>
         </form>
     </div>
