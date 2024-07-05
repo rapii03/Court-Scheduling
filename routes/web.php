@@ -42,7 +42,7 @@ Route::controller(LectureController::class)->group(function () {
     });
 });
 
-Route::controller(ScheduleController::class)->group(function () {
+Route::controller(ScheduleController::class)->middleware('lecture')->group(function () {
     Route::post('/SeminarProposal/BuatJadwal', 'spMakeSchedule');
     Route::post('/SidangAkhir/BuatJadwal', 'saMakeSchedule');
 });

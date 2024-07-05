@@ -11,6 +11,7 @@ use App\Http\Requests\StudentEditReq;
 use Illuminate\Http\Request;
 use App\Models\StudentData;
 use App\Models\User;
+use Illuminate\Support\Facades\DB;
 
 class StudentController extends Controller
 {
@@ -83,6 +84,7 @@ class StudentController extends Controller
             'role' => 'student',
         ]);
 
+        DB::beginTransaction();
         $student = new StudentData($request->safe()->except('password', 'email', 'name'));
 
         $student->user()->associate($account);
@@ -92,9 +94,16 @@ class StudentController extends Controller
         $account->active = false;
         $account->save();
 
-        Mail::to($account->email)->send(new AccountVerificationMail($account->only('email', 'token')));
+        try {
+            Mail::to($account->email)->send(new AccountVerificationMail($account->only('email', 'token')));
+            DB::commit();
 
-        return redirect('/LoginUser');
+            return redirect('/LoginUser');
+        } catch (\Exception $e) {
+            DB::rollBack();
+
+            return back();
+        }
     }
 
     public function edit(StudentEditReq $request)

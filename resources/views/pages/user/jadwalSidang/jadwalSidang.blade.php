@@ -100,7 +100,11 @@
                                         @endphp
                                         <td class="px-3 py-3">{{ $day }}</td>
                                         <td class="px-3 py-3">{{ $date }}</td>
-                                        <td class="px-3 py-3">{{ $time }}</td>
+                                        @if ($seminar->type === 'seminar-akhir' && $time !== '')
+                                            <td class="px-3 py-3">{{ substr_replace($time, '3', 9, 1) }}</td>
+                                        @else
+                                            <td class="px-3 py-3">{{ $time }}</td>
+                                        @endif
                                         <td class="px-3 py-3">
                                             <a href="https://meet.google.com/ive-ceji-yya?authuser=0" class="underline underline-offset-4">
                                                 https://meet.google.com/ive-ceji-yya?authuser=0

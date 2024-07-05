@@ -153,7 +153,11 @@
                                         @endforeach
                                         <td class="px-3 py-3">{{ $item->time->day }}</td>
                                         <td class="px-3 py-3">{{ $item->date }}</td>
-                                        <td class="px-3 py-3">{{ $item->time->time }}</td>
+                                        @if ($item->seminar->type === 'seminar-akhir')
+                                            <td class="px-3 py-3">{{ substr_replace($item->time->time, '3', 9, 1) }}</td>
+                                        @else
+                                            <td class="px-3 py-3">{{ $item->time->time }}</td>
+                                        @endif
                                         <td class="px-3 py-3">
                                             <a href="https://meet.google.com/ive-ceji-yya?authuser=0" class="underline underline-offset-4">
                                                 https://meet.google.com/ive-ceji-yya?authuser=0

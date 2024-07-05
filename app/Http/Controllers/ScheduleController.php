@@ -14,16 +14,36 @@ use Illuminate\Support\Collection;
 
 class ScheduleController extends Controller
 {
-    public function lectureScheduleCheck(User $lecture, Carbon $time): bool
+    public function lectureScheduleCheck(User $lecture, Carbon $time, TimeList $timeInstance): bool
     {
-        return Schedule::whereDate('date', $time)->whereHas('seminar', function (Builder $query) use ($lecture) {
-            $query->whereAny([
-                'supervisor_1',
-                'supervisor_2',
-                'examiner_1',
-                'examiner_2',
-            ], $lecture->id);
-        })->exists();
+        $currentExists = Schedule::whereDate('date', $time)
+            ->where('time_id', $timeInstance->id)
+            ->whereHas('seminar', function (Builder $query) use ($lecture) {
+                $query->whereAny([
+                    'supervisor_1',
+                    'supervisor_2',
+                    'examiner_1',
+                    'examiner_2',
+                ], $lecture->id);
+            })->exists();
+        $beforeExists = false;
+
+        $timeBefore = TimeList::where('day', $timeInstance->day)->where('number', $timeInstance->number - 1)->first();
+        if ($timeBefore) {
+            $beforeExists = Schedule::whereDate('date', $time)
+                ->where('time_id', $timeBefore->id)
+                ->whereHas('seminar', function (Builder $query) use ($lecture) {
+                    $query->where('type', 'seminar-akhir')
+                        ->whereAny([
+                            'supervisor_1',
+                            'supervisor_2',
+                            'examiner_1',
+                            'examiner_2',
+                        ], $lecture->id);
+                })->exists();
+        }
+
+        return $currentExists || $beforeExists;
     }
 
     public function makeSchedule(Seminar $seminar, Collection $lectures, TimeList $time, Carbon $carbon)
@@ -113,7 +133,7 @@ class ScheduleController extends Controller
 
                         $available = collect();
                         foreach ([$supervisor1, $supervisor2, ...$otherLectures] as $key => $lecture) {
-                            $scheduleExists = $this->lectureScheduleCheck($lecture, $loopTime);
+                            $scheduleExists = $this->lectureScheduleCheck($lecture, $loopTime, $timeInstance);
 
                             if (!$scheduleExists) {
                                 $available->push($lecture);
@@ -190,7 +210,7 @@ class ScheduleController extends Controller
 
                         $available = collect();
                         foreach ([$supervisor1, $supervisor2, $examiner1, $examiner2] as $key => $lecture) {
-                            $scheduleExists = $this->lectureScheduleCheck($lecture, $loopTime);
+                            $scheduleExists = $this->lectureScheduleCheck($lecture, $loopTime, $timeInstance);
 
                             if (!$scheduleExists) {
                                 $available->push($lecture);
