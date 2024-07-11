@@ -5,7 +5,7 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Data Dosen</title>
-    <link rel="icon" type="image/x-icon" href="/assets/">
+    <link rel="icon" type="image/x-icon" href="/logo_if2.ico">
     {{-- Awal Tailwind --}}
     <script src="https://cdn.tailwindcss.com"></script>
     <script src="https://cdn.tailwindcss.com?plugins=forms,typography,aspect-ratio,line-clamp"></script>
@@ -40,7 +40,7 @@
                 <form class="mx-auto flex max-w-sm items-center">
                     <label for="simple-search" class="sr-only">Search</label>
                     <div class="relative w-full">
-                        <input type="text" id="simple-search" name="search" class="block w-[196px] rounded-xl border border-black bg-gray-50 p-2.5 ps-5 text-sm text-black focus:border-black focus:ring-black" value="{{ request()->query('search') }}" placeholder="Cari Dosen" />
+                        <input type="text" id="simple-search" name="search" class="block h-[32px] w-full rounded-lg border border-[#00000] bg-gray-50 p-4 ps-2 text-sm text-gray-900 focus:border-[#C8AC5E] focus:ring-[#C8AC5E]" value="{{ request()->query('search') }}" placeholder="Cari Nama Dosen" />
                     </div>
                 </form>
             </div>

@@ -5,7 +5,7 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Jadwal</title>
-    <link rel="icon" type="image/x-icon" href="/assets/">
+    <link rel="icon" type="image/x-icon" href="/logo_if2.ico">
     {{-- Awal Tailwind --}}
     <script src="https://cdn.tailwindcss.com"></script>
     <script src="https://cdn.tailwindcss.com?plugins=forms,typography,aspect-ratio,line-clamp"></script>
@@ -26,7 +26,7 @@
         <div class="mb-2 text-[40px] font-bold">Jadwal Peserta Tugas Akhir</div>
         <form action="" class="flex justify-between">
             <div class="relative flex items-center justify-center">
-                <input type="search" id="default-search" name="search" class="block h-[32px] w-full rounded-lg border border-[#C8AC5E] bg-gray-50 p-4 ps-10 text-sm text-gray-900 focus:border-[#C8AC5E] focus:ring-[#C8AC5E]" placeholder="Search here Name" />
+                <input type="search" id="default-search" name="search" class="block h-[32px] w-full rounded-lg border border-[#00000] bg-gray-50 p-4 ps-10 text-sm text-gray-900 focus:border-[#C8AC5E] focus:ring-[#C8AC5E]" placeholder="Cari Berdasarkan Nama" />
                 <div class="pointer-events-none absolute inset-y-0 start-0 flex items-center ps-3">
                     <svg class="h-4 w-4 text-gray-500" aria-hidden="true" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 20 20">
                         <path stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="m19 19-4-4m0-7A7 7 0 1 1 1 8a7 7 0 0 1 14 0Z" />
@@ -129,7 +129,7 @@
                                 <td class="px-3 py-3">{{ $item->time->time }}</td>
                             @endif
                             <td class="px-6 py-4">
-                                <a href="#">
+                                <a href="https://meet.google.com/ive-ceji-yya?authuser=0">
                                     Link Meet
                                 </a>
                             </td>

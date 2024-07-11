@@ -5,7 +5,7 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Data Dosen | Edit</title>
-    <link rel="icon" type="image/x-icon" href="/assets/">
+    <link rel="icon" type="image/x-icon" href="/logo_if2.ico">
     {{-- Awal Tailwind --}}
     <script src="https://cdn.tailwindcss.com"></script>
     <script src="https://cdn.tailwindcss.com?plugins=forms,typography,aspect-ratio,line-clamp"></script>
@@ -57,11 +57,11 @@
                         </div>
                     </div>
                     @if ($user->lectureData->image !== null)
-                        <script>
-                            document.addEventListener('DOMContentLoaded', () => {
-                                showImage()
-                            });
-                        </script>
+                    <script>
+                        document.addEventListener('DOMContentLoaded', () => {
+                            showImage()
+                        });
+                    </script>
                     @endif
                     <script>
                         function showImage() {
@@ -96,119 +96,6 @@
                             document.getElementById('file-input').value = '';
                         });
                     </script>
-                    {{-- <div class="w-[70%]">
-                        <div class="relative mt-5 overflow-x-auto overflow-y-auto">
-                            <table class="w-full bg-transparent text-left text-sm text-gray-500 rtl:text-right">
-                                <tbody>
-                                    <tr class="text-white">
-                                        <td class="px-3 py-2 text-[16px]">
-                                            Email
-                                        </td>
-                                        <td class="flex gap-2 px-5 py-2">
-                                            <div class="flex items-center text-lg font-bold text-black">: </div>
-                                            <div class="flex items-center">
-                                                <form class="w-full">
-                                                    <div class="relative">
-                                                        <input type="text" id="phone-input" value="" aria-describedby="helper-text-explanation" class="block h-[21px] w-[250px] border border-black bg-gray-50 p-2.5 ps-2 text-sm text-black focus:border-black focus:ring-black" pattern="[0-9]{3}-[0-9]{3}-[0-9]{4}" placeholder="Andre Febrianto@if.itera.ac.id" required />
-                                                    </div>
-                                                </form>
-                                            </div>
-                                        </td>
-                                    </tr>
-                                    <tr class="text-white">
-                                        <td class="px-3 py-2 text-[16px]">
-                                            Nama
-                                        </td>
-                                        <td class="flex gap-2 px-5 py-2">
-                                            <div class="flex items-center text-lg font-bold text-black">: </div>
-                                            <div class="flex items-center">
-                                                <form class="w-full">
-                                                    <div class="relative">
-                                                        <input type="text" id="phone-input" value="" aria-describedby="helper-text-explanation" class="block h-[21px] w-[250px] border border-black bg-gray-50 p-2.5 ps-2 text-sm text-black focus:border-black focus:ring-black" pattern="[0-9]{3}-[0-9]{3}-[0-9]{4}" placeholder="Andre Febrianto@if.itera.ac.id" required />
-                                                    </div>
-                                                </form>
-                                            </div>
-                                        </td>
-                                    </tr>
-                                    <tr class="text-white">
-                                        <td class="px-3 py-2 text-[16px]">
-                                            NIP
-                                        </td>
-                                        <td class="flex gap-2 px-5 py-2">
-                                            <div class="flex items-center text-lg font-bold text-black">: </div>
-                                            <div class="flex items-center">
-                                                <form class="w-full">
-                                                    <div class="relative">
-                                                        <input type="text" id="phone-input" value="" aria-describedby="helper-text-explanation" class="block h-[21px] w-[250px] border border-black bg-gray-50 p-2.5 ps-2 text-sm text-black focus:border-black focus:ring-black" pattern="[0-9]{3}-[0-9]{3}-[0-9]{4}" placeholder="Andre Febrianto@if.itera.ac.id" required />
-                                                    </div>
-                                                </form>
-                                            </div>
-                                        </td>
-                                    </tr>
-                                    <tr class="text-white">
-                                        <td class="px-3 py-2 text-[16px]">
-                                            NIDN
-                                        </td>
-                                        <td class="flex gap-2 px-5 py-2">
-                                            <div class="flex items-center text-lg font-bold text-black">: </div>
-                                            <div class="flex items-center">
-                                                <form class="w-full">
-                                                    <div class="relative">
-                                                        <input type="text" id="phone-input" value="" aria-describedby="helper-text-explanation" class="block h-[21px] w-[250px] border border-black bg-gray-50 p-2.5 ps-2 text-sm text-black focus:border-black focus:ring-black" pattern="[0-9]{3}-[0-9]{3}-[0-9]{4}" placeholder="Andre Febrianto@if.itera.ac.id" required />
-                                                    </div>
-                                                </form>
-                                            </div>
-                                        </td>
-                                    </tr>
-                                    <tr class="text-white">
-                                        <td class="px-3 py-2 text-[16px]">
-                                            Kelompok Keahlian
-                                        </td>
-                                        <td class="flex gap-2 px-5 py-2">
-                                            <div class="flex items-center text-lg font-bold text-black">: </div>
-                                            <div class="flex items-center">
-                                                <form class="w-full">
-                                                    <div class="relative">
-                                                        <input type="text" id="phone-input" value="" aria-describedby="helper-text-explanation" class="block h-[21px] w-[250px] border border-black bg-gray-50 p-2.5 ps-2 text-sm text-black focus:border-black focus:ring-black" pattern="[0-9]{3}-[0-9]{3}-[0-9]{4}" placeholder="Andre Febrianto@if.itera.ac.id" required />
-                                                    </div>
-                                                </form>
-                                            </div>
-                                        </td>
-                                    </tr>
-                                    <tr class="text-white">
-                                        <td class="px-3 py-2 text-[16px]">
-                                            Nomor Telpon
-                                        </td>
-                                        <td class="flex gap-2 px-5 py-2">
-                                            <div class="flex items-center text-lg font-bold text-black">: </div>
-                                            <div class="flex items-center">
-                                                <form class="w-full">
-                                                    <div class="relative">
-                                                        <input type="text" id="phone-input" value="" aria-describedby="helper-text-explanation" class="block h-[21px] w-[250px] border border-black bg-gray-50 p-2.5 ps-2 text-sm text-black focus:border-black focus:ring-black" pattern="[0-9]{3}-[0-9]{3}-[0-9]{4}" placeholder="Andre Febrianto@if.itera.ac.id" required />
-                                                    </div>
-                                                </form>
-                                            </div>
-                                        </td>
-                                    </tr>
-                                    <tr class="text-white">
-                                        <td class="px-3 py-2 text-[16px]">
-                                            Alamat
-                                        </td>
-                                        <td class="flex gap-2 px-5 py-2">
-                                            <div class="flex items-center text-lg font-bold text-black">: </div>
-                                            <div class="flex items-center">
-                                                <form class="w-full">
-                                                    <div class="relative">
-                                                        <input type="text" id="phone-input" value="" aria-describedby="helper-text-explanation" class="block h-[21px] w-[250px] border border-black bg-gray-50 p-2.5 ps-2 text-sm text-black focus:border-black focus:ring-black" pattern="[0-9]{3}-[0-9]{3}-[0-9]{4}" placeholder="Andre Febrianto@if.itera.ac.id" required />
-                                                    </div>
-                                                </form>
-                                            </div>
-                                        </td>
-                                    </tr>
-                                </tbody>
-                            </table>
-                        </div>
-                    </div> --}}
                     <div class="w-[70%]">
                         <div class="relative mt-5 overflow-x-auto overflow-y-auto">
                             <table class="w-full bg-transparent text-left text-sm text-gray-500 rtl:text-right">
@@ -222,9 +109,9 @@
                                             <div class="flex items-center">
                                                 <div class="w-full">
                                                     <div class="relative">
-                                                        <input type="text" id="phone-input" name="email" aria-describedby="helper-text-explanation" class="block h-[21px] w-[250px] border border-black bg-gray-50 p-2.5 ps-2 text-sm text-black focus:border-black focus:ring-black" placeholder="Andre Febrianto@if.itera.ac.id" value="{{ $user->email }}" required />
+                                                        <input type="text" id="phone-input" name="email" aria-describedby="helper-text-explanation" class="block h-[21px] w-[250px] border border-black bg-gray-50 p-2.5 ps-2 text-sm text-black focus:border-black focus:ring-black" placeholder="Masukkan Email" value="{{ $user->email }}" required />
                                                         @error('email')
-                                                            <p>{{ $message }}</p>
+                                                        <p>{{ $message }}</p>
                                                         @enderror
                                                     </div>
                                                 </div>
@@ -240,9 +127,9 @@
                                             <div class="flex items-center">
                                                 <div class="w-full">
                                                     <div class="relative">
-                                                        <input type="text" id="phone-input" name="name" aria-describedby="helper-text-explanation" class="block h-[21px] w-[250px] border border-black bg-gray-50 p-2.5 ps-2 text-sm text-black focus:border-black focus:ring-black" placeholder="Andre Febrianto@if.itera.ac.id" value="{{ $user->name }}" required />
+                                                        <input type="text" id="phone-input" name="name" aria-describedby="helper-text-explanation" class="block h-[21px] w-[250px] border border-black bg-gray-50 p-2.5 ps-2 text-sm text-black focus:border-black focus:ring-black" placeholder="Masukkan Nama" value="{{ $user->name }}" required />
                                                         @error('name')
-                                                            <p>{{ $message }}</p>
+                                                        <p>{{ $message }}</p>
                                                         @enderror
                                                     </div>
                                                 </div>
@@ -258,9 +145,9 @@
                                             <div class="flex items-center">
                                                 <div class="w-full">
                                                     <div class="relative">
-                                                        <input type="text" id="phone-input" name="nip" aria-describedby="helper-text-explanation" class="block h-[21px] w-[250px] border border-black bg-gray-50 p-2.5 ps-2 text-sm text-black focus:border-black focus:ring-black" placeholder="Andre Febrianto@if.itera.ac.id" value="{{ $user->lectureData->nip }}" required />
+                                                        <input type="text" id="phone-input" name="nip" aria-describedby="helper-text-explanation" class="block h-[21px] w-[250px] border border-black bg-gray-50 p-2.5 ps-2 text-sm text-black focus:border-black focus:ring-black" placeholder="Masukkan NIP" value="{{ $user->lectureData->nip }}" required />
                                                         @error('nip')
-                                                            <p>{{ $message }}</p>
+                                                        <p>{{ $message }}</p>
                                                         @enderror
                                                     </div>
                                                 </div>
@@ -276,9 +163,9 @@
                                             <div class="flex items-center">
                                                 <div class="w-full">
                                                     <div class="relative">
-                                                        <input type="text" id="phone-input" name="nidn" aria-describedby="helper-text-explanation" class="block h-[21px] w-[250px] border border-black bg-gray-50 p-2.5 ps-2 text-sm text-black focus:border-black focus:ring-black" placeholder="Andre Febrianto@if.itera.ac.id" value="{{ $user->lectureData->nidn }}" required />
+                                                        <input type="text" id="phone-input" name="nidn" aria-describedby="helper-text-explanation" class="block h-[21px] w-[250px] border border-black bg-gray-50 p-2.5 ps-2 text-sm text-black focus:border-black focus:ring-black" placeholder="Masukkan NIDN" value="{{ $user->lectureData->nidn }}" required />
                                                         @error('nidn')
-                                                            <p>{{ $message }}</p>
+                                                        <p>{{ $message }}</p>
                                                         @enderror
                                                     </div>
                                                 </div>
@@ -294,9 +181,9 @@
                                             <div class="flex items-center">
                                                 <div class="w-full">
                                                     <div class="relative">
-                                                        <input type="text" id="phone-input" name="kk" aria-describedby="helper-text-explanation" class="block h-[21px] w-[250px] border border-black bg-gray-50 p-2.5 ps-2 text-sm text-black focus:border-black focus:ring-black" placeholder="Andre Febrianto@if.itera.ac.id" value="{{ $user->lectureData->kk }}" required />
+                                                        <input type="text" id="phone-input" name="kk" aria-describedby="helper-text-explanation" class="block h-[21px] w-[250px] border border-black bg-gray-50 p-2.5 ps-2 text-sm text-black focus:border-black focus:ring-black" placeholder="Masukkan Kelompok Keahlian" value="{{ $user->lectureData->kk }}" required />
                                                         @error('kk')
-                                                            <p>{{ $message }}</p>
+                                                        <p>{{ $message }}</p>
                                                         @enderror
                                                     </div>
                                                 </div>
@@ -312,9 +199,9 @@
                                             <div class="flex items-center">
                                                 <div class="w-full">
                                                     <div class="relative">
-                                                        <input type="text" id="phone-input" name="phone_number" aria-describedby="helper-text-explanation" class="block h-[21px] w-[250px] border border-black bg-gray-50 p-2.5 ps-2 text-sm text-black focus:border-black focus:ring-black" placeholder="Andre Febrianto@if.itera.ac.id" value="{{ $user->lectureData->phone_number }}" required />
+                                                        <input type="text" id="phone-input" name="phone_number" aria-describedby="helper-text-explanation" class="block h-[21px] w-[250px] border border-black bg-gray-50 p-2.5 ps-2 text-sm text-black focus:border-black focus:ring-black" placeholder="Masukkan Nomor Telepon" value="{{ $user->lectureData->phone_number }}" required />
                                                         @error('phone_number')
-                                                            <p>{{ $message }}</p>
+                                                        <p>{{ $message }}</p>
                                                         @enderror
                                                     </div>
                                                 </div>
@@ -330,9 +217,9 @@
                                             <div class="flex items-center">
                                                 <div class="w-full">
                                                     <div class="relative">
-                                                        <input type="text" id="phone-input" name="address" aria-describedby="helper-text-explanation" class="block h-[21px] w-[250px] border border-black bg-gray-50 p-2.5 ps-2 text-sm text-black focus:border-black focus:ring-black" placeholder="Andre Febrianto@if.itera.ac.id" value="{{ $user->lectureData->address }}" required />
+                                                        <input type="text" id="phone-input" name="address" aria-describedby="helper-text-explanation" class="block h-[21px] w-[250px] border border-black bg-gray-50 p-2.5 ps-2 text-sm text-black focus:border-black focus:ring-black" placeholder="Masukkan Alamat" value="{{ $user->lectureData->address }}" required />
                                                         @error('address')
-                                                            <p>{{ $message }}</p>
+                                                        <p>{{ $message }}</p>
                                                         @enderror
                                                     </div>
                                                 </div>

@@ -5,7 +5,7 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Data Dosen | Tambah</title>
-    <link rel="icon" type="image/x-icon" href="/assets/">
+    <link rel="icon" type="image/x-icon" href="/logo_if2.ico">
     {{-- Awal Tailwind --}}
     <script src="https://cdn.tailwindcss.com"></script>
     <script src="https://cdn.tailwindcss.com?plugins=forms,typography,aspect-ratio,line-clamp"></script>
@@ -97,7 +97,7 @@
                                             <div class="flex items-center">
                                                 <div class="w-full">
                                                     <div class="relative">
-                                                        <input type="text" id="phone-input" name="email" aria-describedby="helper-text-explanation" class="block h-[21px] w-[250px] border border-black bg-gray-50 p-2.5 ps-2 text-sm text-black focus:border-black focus:ring-black" placeholder="Andre Febrianto@if.itera.ac.id" value="{{ old('email') }}" required />
+                                                        <input type="text" id="phone-input" name="email" aria-describedby="helper-text-explanation" class="block h-[21px] w-[250px] border border-black bg-gray-50 p-2.5 ps-2 text-sm text-black focus:border-black focus:ring-black" placeholder="Masukkan Email" value="{{ old('email') }}" required />
                                                         @error('email')
                                                             <p>{{ $message }}</p>
                                                         @enderror
@@ -115,7 +115,7 @@
                                             <div class="flex items-center">
                                                 <div class="w-full">
                                                     <div class="relative">
-                                                        <input type="text" id="phone-input" name="name" aria-describedby="helper-text-explanation" class="block h-[21px] w-[250px] border border-black bg-gray-50 p-2.5 ps-2 text-sm text-black focus:border-black focus:ring-black" placeholder="Andre Febrianto@if.itera.ac.id" value="{{ old('name') }}" required />
+                                                        <input type="text" id="phone-input" name="name" aria-describedby="helper-text-explanation" class="block h-[21px] w-[250px] border border-black bg-gray-50 p-2.5 ps-2 text-sm text-black focus:border-black focus:ring-black" placeholder="Masukkan Nama" value="{{ old('name') }}" required />
                                                         @error('name')
                                                             <p>{{ $message }}</p>
                                                         @enderror
@@ -133,7 +133,7 @@
                                             <div class="flex items-center">
                                                 <div class="w-full">
                                                     <div class="relative">
-                                                        <input type="text" id="phone-input" name="nip" aria-describedby="helper-text-explanation" class="block h-[21px] w-[250px] border border-black bg-gray-50 p-2.5 ps-2 text-sm text-black focus:border-black focus:ring-black" placeholder="Andre Febrianto@if.itera.ac.id" value="{{ old('nip') }}" required />
+                                                        <input type="text" id="phone-input" name="nip" aria-describedby="helper-text-explanation" class="block h-[21px] w-[250px] border border-black bg-gray-50 p-2.5 ps-2 text-sm text-black focus:border-black focus:ring-black" placeholder="Masukkan NIP" value="{{ old('nip') }}" required />
                                                         @error('nip')
                                                             <p>{{ $message }}</p>
                                                         @enderror
@@ -151,7 +151,7 @@
                                             <div class="flex items-center">
                                                 <div class="w-full">
                                                     <div class="relative">
-                                                        <input type="text" id="phone-input" name="nidn" aria-describedby="helper-text-explanation" class="block h-[21px] w-[250px] border border-black bg-gray-50 p-2.5 ps-2 text-sm text-black focus:border-black focus:ring-black" placeholder="Andre Febrianto@if.itera.ac.id" value="{{ old('nidn') }}" required />
+                                                        <input type="text" id="phone-input" name="nidn" aria-describedby="helper-text-explanation" class="block h-[21px] w-[250px] border border-black bg-gray-50 p-2.5 ps-2 text-sm text-black focus:border-black focus:ring-black" placeholder="Masukkan NIDN" value="{{ old('nidn') }}" required />
                                                         @error('nidn')
                                                             <p>{{ $message }}</p>
                                                         @enderror
@@ -169,7 +169,7 @@
                                             <div class="flex items-center">
                                                 <div class="w-full">
                                                     <div class="relative">
-                                                        <input type="text" id="phone-input" name="kk" aria-describedby="helper-text-explanation" class="block h-[21px] w-[250px] border border-black bg-gray-50 p-2.5 ps-2 text-sm text-black focus:border-black focus:ring-black" placeholder="Andre Febrianto@if.itera.ac.id" value="{{ old('kk') }}" required />
+                                                        <input type="text" id="phone-input" name="kk" aria-describedby="helper-text-explanation" class="block h-[21px] w-[250px] border border-black bg-gray-50 p-2.5 ps-2 text-sm text-black focus:border-black focus:ring-black" placeholder="Masukkan Kelompok Keahlian" value="{{ old('kk') }}" required />
                                                         @error('kk')
                                                             <p>{{ $message }}</p>
                                                         @enderror
@@ -187,7 +187,7 @@
                                             <div class="flex items-center">
                                                 <div class="w-full">
                                                     <div class="relative">
-                                                        <input type="text" id="phone-input" name="phone_number" aria-describedby="helper-text-explanation" class="block h-[21px] w-[250px] border border-black bg-gray-50 p-2.5 ps-2 text-sm text-black focus:border-black focus:ring-black" placeholder="Andre Febrianto@if.itera.ac.id" value="{{ old('phone_number') }}" required />
+                                                        <input type="text" id="phone-input" name="phone_number" aria-describedby="helper-text-explanation" class="block h-[21px] w-[250px] border border-black bg-gray-50 p-2.5 ps-2 text-sm text-black focus:border-black focus:ring-black" placeholder="Masukkan Nomor Telepon" value="{{ old('phone_number') }}" required />
                                                         @error('phone_number')
                                                             <p>{{ $message }}</p>
                                                         @enderror
@@ -205,7 +205,7 @@
                                             <div class="flex items-center">
                                                 <div class="w-full">
                                                     <div class="relative">
-                                                        <input type="text" id="phone-input" name="address" aria-describedby="helper-text-explanation" class="block h-[21px] w-[250px] border border-black bg-gray-50 p-2.5 ps-2 text-sm text-black focus:border-black focus:ring-black" placeholder="Andre Febrianto@if.itera.ac.id" value="{{ old('address') }}" required />
+                                                        <input type="text" id="phone-input" name="address" aria-describedby="helper-text-explanation" class="block h-[21px] w-[250px] border border-black bg-gray-50 p-2.5 ps-2 text-sm text-black focus:border-black focus:ring-black" placeholder="Masukkan Alamat" value="{{ old('address') }}" required />
                                                         @error('address')
                                                             <p>{{ $message }}</p>
                                                         @enderror

@@ -5,7 +5,7 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Landing Page</title>
-    <link rel="icon" type="image/x-icon" href="/assets/">
+    <link rel="icon" type="image/x-icon" href="/logo_if2.ico">
     {{-- Awal Tailwind --}}
     <script src="https://cdn.tailwindcss.com"></script>
     <script src="https://cdn.tailwindcss.com?plugins=forms,typography,aspect-ratio,line-clamp"></script>
@@ -137,37 +137,37 @@
                             </thead>
                             <tbody class="border-1 border border-black">
                                 @forelse ($schedules as $item)
-                                    <tr class="border-1 border border-black bg-white">
-                                        <td class="px-3 py-3">{{ $item->seminar->type === 'seminar-akhir' ? 'Seminar Akhir' : 'Seminar Proposal' }}</td>
-                                        <td class="px-3 py-3">{{ $item->seminar->user->name }}</td>
-                                        <td class="px-3 py-3">{{ $item->seminar->user->studentData->nim }}</td>
-                                        <td class="px-3 py-3">{{ $item->seminar->thesis_title }}</td>
-                                        @foreach ([$item->seminar->supervisor_1, $item->seminar->supervisor_2, $item->seminar->examiner_1, $item->seminar->examiner_2] as $lectureItem)
-                                            @php
-                                                $lecture = $lectures->firstWhere('id', $lectureItem);
-                                                if ($lecture) {
-                                                    $lecture = $lecture->name;
-                                                }
-                                            @endphp
-                                            <td class="px-3 py-3">{{ $lecture }}</td>
-                                        @endforeach
-                                        <td class="px-3 py-3">{{ $item->time->day }}</td>
-                                        <td class="px-3 py-3">{{ $item->date }}</td>
-                                        @if ($item->seminar->type === 'seminar-akhir')
-                                            <td class="px-3 py-3">{{ substr_replace($item->time->time, '3', 9, 1) }}</td>
-                                        @else
-                                            <td class="px-3 py-3">{{ $item->time->time }}</td>
-                                        @endif
-                                        <td class="px-3 py-3">
-                                            <a href="https://meet.google.com/ive-ceji-yya?authuser=0" class="underline underline-offset-4">
-                                                https://meet.google.com/ive-ceji-yya?authuser=0
-                                            </a>
-                                        </td>
-                                    </tr>
+                                <tr class="border-1 border border-black bg-white">
+                                    <td class="px-3 py-3">{{ $item->seminar->type === 'seminar-akhir' ? 'Seminar Akhir' : 'Seminar Proposal' }}</td>
+                                    <td class="px-3 py-3">{{ $item->seminar->user->name }}</td>
+                                    <td class="px-3 py-3">{{ $item->seminar->user->studentData->nim }}</td>
+                                    <td class="px-3 py-3">{{ $item->seminar->thesis_title }}</td>
+                                    @foreach ([$item->seminar->supervisor_1, $item->seminar->supervisor_2, $item->seminar->examiner_1, $item->seminar->examiner_2] as $lectureItem)
+                                    @php
+                                    $lecture = $lectures->firstWhere('id', $lectureItem);
+                                    if ($lecture) {
+                                    $lecture = $lecture->name;
+                                    }
+                                    @endphp
+                                    <td class="px-3 py-3">{{ $lecture }}</td>
+                                    @endforeach
+                                    <td class="px-3 py-3">{{ $item->time->day }}</td>
+                                    <td class="px-3 py-3">{{ $item->date }}</td>
+                                    @if ($item->seminar->type === 'seminar-akhir')
+                                    <td class="px-3 py-3">{{ substr_replace($item->time->time, '3', 9, 1) }}</td>
+                                    @else
+                                    <td class="px-3 py-3">{{ $item->time->time }}</td>
+                                    @endif
+                                    <td class="px-3 py-3">
+                                        <a href="https://meet.google.com/ive-ceji-yya?authuser=0" class="underline underline-offset-4">
+                                            https://meet.google.com/ive-ceji-yya?authuser=0
+                                        </a>
+                                    </td>
+                                </tr>
                                 @empty
-                                    <tr class="border-1 border border-black bg-white">
-                                        <td colspan="12" class="pb-20 text-center">Data penjadwalan belum ditemukan</td>
-                                    </tr>
+                                <tr class="border-1 border border-black bg-white">
+                                    <td colspan="12" class="pb-20 text-center">Data penjadwalan belum ditemukan</td>
+                                </tr>
                                 @endforelse
                             </tbody>
                         </table>
@@ -188,17 +188,22 @@
                                     Contact Us
                                 </h1>
                                 <ul class="font-medium text-black">
+
                                     <li class="">
-                                        <a href="https://flowbite.com/" class="hover:underline"><span class="font-extrabold tracking-tight">Email : </span>
-                                            if@itera.ac.id</a>
+                                        <a class="hover:font-bold"><span class="font-extrabold tracking-tight">Email : </span>
+                                            informatika@itera.ac.id</a>
                                     </li>
                                     <li>
-                                        <a href="https://tailwindcss.com/" class="hover:underline"><span class="font-extrabold tracking-tight">Call :</span>
-                                            08888823232</a>
+                                        <a href="http://if.itera.ac.id" class="hover:font-bold"><span class="font-extrabold tracking-tight">Website :</span>
+                                            if.itera.ac.id</a>
                                     </li>
                                     <li>
-                                        <a href="https://tailwindcss.com/" class="hover:underline"><span class="font-extrabold tracking-tight">Instagram :</span>
-                                            informatika.itera</a>
+                                        <a href="https://api.whatsapp.com/send/?phone=6283838485199&text&type=phone_number&app_absent=0" class="hover:font-bold"><span class="font-extrabold tracking-tight">Call :</span>
+                                            6283838485199</a>
+                                    </li>
+                                    <li>
+                                        <a href="https://www.instagram.com/informatikaitera/" class="hover:font-bold"><span class="font-extrabold tracking-tight">Instagram :</span>
+                                            @informatikaitera</a>
                                     </li>
                                 </ul>
                             </div>

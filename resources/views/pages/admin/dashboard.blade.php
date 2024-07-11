@@ -5,7 +5,7 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Dashboard</title>
-    <link rel="icon" type="image/x-icon" href="/assets/">
+    <link rel="icon" type="image/x-icon" href="/logo_if2.ico">
     {{-- Awal Tailwind --}}
     <script src="https://cdn.tailwindcss.com"></script>
     <script src="https://cdn.tailwindcss.com?plugins=forms,typography,aspect-ratio,line-clamp"></script>
@@ -25,7 +25,7 @@
     <div class="ml-[228px] p-16">
         <div class="mb-16 text-[40px] font-bold">Dashboard</div>
         <div class="flex gap-10">
-            <a href="">
+            <a href="/DataUser">
                 <div class="h-[220px] w-[260px] rounded-md bg-[#1F5F92] p-5 text-white hover:bg-[#C8AC5E]">
                     <div class="text-[30px] font-bold">{{ $studentCount }}</div>
                     <div class="text-[30px] font-bold">Mahasiswa</div>
@@ -36,7 +36,7 @@
                     </div>
                 </div>
             </a>
-            <a href="">
+            <a href="/DataDosen">
                 <div class="h-[220px] w-[260px] rounded-md bg-[#1F5F92] p-5 text-white hover:bg-[#C8AC5E]">
                     <div class="text-[30px] font-bold">{{ $lectureCount }}</div>
                     <div class="text-[30px] font-bold">Dosen</div>

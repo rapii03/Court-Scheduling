@@ -4,8 +4,8 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Data User | Data Dokumen</title>
-    <link rel="icon" type="image/x-icon" href="/assets/">
+    <title>Data Mahasiswa | Data Dokumen</title>
+    <link rel="icon" type="image/x-icon" href="/logo_if2.ico">
     {{-- Awal Tailwind --}}
     <script src="https://cdn.tailwindcss.com"></script>
     <script src="https://cdn.tailwindcss.com?plugins=forms,typography,aspect-ratio,line-clamp"></script>
@@ -23,7 +23,7 @@
 <body>
     <x-layoutAdmin />
     <div class="ml-[228px] p-5">
-        <div class="mb-2 text-[40px] font-bold">Dokumen Data User</div>
+        <div class="mb-2 text-[40px] font-bold">Dokumen Data Mahasiswa</div>
         <div class="flex justify-between">
             <div class="mb-2">
                 <div class="text-[20px]">Nama : {{ $student->name }}</div>
