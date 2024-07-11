@@ -151,7 +151,7 @@
                                     @endphp
                                     <td class="px-3 py-3">{{ $lecture }}</td>
                                     @endforeach
-                                    <td class="px-3 py-3">{{ $item->time->day }}</td>
+                                    <td class="px-3 py-3">{{ ucfirst($item->time->day ?? '') }}</td>
                                     <td class="px-3 py-3">{{ $item->date }}</td>
                                     @if ($item->seminar->type === 'seminar-akhir')
                                     <td class="px-3 py-3">{{ substr_replace($item->time->time, '3', 9, 1) }}</td>
@@ -210,7 +210,7 @@
                         </div>
                         <div class="mt-10 flex justify-end lg:mt-0">
                             <div class="m-auto flex items-center justify-end text-right">
-                                <img src="/logo_if.png" alt="">
+                                <img class="w-40 h-40" src="/logo_if2.png" alt="">
                             </div>
                         </div>
                     </div>

@@ -52,8 +52,8 @@
         <div class="h-full bg-[#1F5F92] py-6">
             <div class="mb-5">
                 <a href="#">
-                    <div class="m-auto flex justify-center text-center text-[30px] font-bold text-black">SchedulerTI
-                    </div>
+                <div class="m-auto flex justify-center text-center text-[30px] font-bold text-black">Scheduler <span class="text-white">IF</span>
+                </div>
                 </a>
             </div>
             <div class="m-auto flex items-center justify-center text-white">

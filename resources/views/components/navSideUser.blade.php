@@ -52,7 +52,7 @@
         <div class="h-full bg-[#1F5F92] py-6">
             <div class="mb-5">
                 <a href="#">
-                    <div class="m-auto flex justify-center text-center text-[30px] font-bold text-black">Scheduler <span class="text-white">TI</span>
+                    <div class="m-auto flex justify-center text-center text-[30px] font-bold text-black">Scheduler <span class="text-white">IF</span>
                     </div>
                 </a>
             </div>

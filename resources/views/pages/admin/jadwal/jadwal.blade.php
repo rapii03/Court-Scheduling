@@ -121,7 +121,7 @@
                                 @endphp
                                 <td class="px-6 py-4">{{ $lecture }}</td>
                             @endforeach
-                            <td class="px-6 py-4">{{ $item->time->day }}</td>
+                            <td class="px-6 py-4">{{ ucfirst($item->time->day ?? '') }}</td>
                             <td class="px-6 py-4">{{ $item->date }}</td>
                             @if ($item->seminar->type === 'seminar-akhir')
                                 <td class="px-3 py-3">{{ substr_replace($item->time->time, '3', 9, 1) }}</td>
