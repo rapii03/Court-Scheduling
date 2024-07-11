@@ -98,7 +98,7 @@
                                                 $time = $schedule->time->time;
                                             }
                                         @endphp
-                                        <td class="px-3 py-3">{{ $day }}</td>
+                                        <td class="px-3 py-3">{{ ucfirst($day ?? '') }}</td>
                                         <td class="px-3 py-3">{{ $date }}</td>
                                         @if ($seminar->type === 'seminar-akhir' && $time !== '')
                                             <td class="px-3 py-3">{{ substr_replace($time, '3', 9, 1) }}</td>
