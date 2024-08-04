@@ -28,7 +28,7 @@
 
 <body class="flex h-screen items-center justify-center bg-gray-100">
     <div class="w-full max-w-xs">
-        <form action="/Login" method="POST" class="mb-4 rounded bg-white px-8 pb-8 pt-6 shadow-md">
+        <form action="" method="POST" class="mb-4 rounded bg-white px-8 pb-8 pt-6 shadow-md">
             @csrf
             <div class="mb-4 text-center">
                 <div class="mb-2 text-[46px] font-semibold">SchedulerIF</div>
@@ -39,11 +39,13 @@
                     Kode OTP Anda
                 </label>
                 <input class="focus:shadow-outline w-full appearance-none rounded border px-3 py-2 leading-tight text-gray-700 shadow focus:outline-none" id="otp" type="otp" placeholder="Masukkan Kode OTP Anda" name="otp" value="">
-                    <p></p>
+                @error('otp')
+                    <p>{{ $message }}</p>
+                @enderror
             </div>
             <div class="flex items-center justify-center">
                 <button class="focus:shadow-outline w-[150px] rounded bg-[#C8AC5E] px-4 py-2 font-bold text-white hover:bg-[#B7A05E] focus:outline-none" type="submit">
-                <div class=""><a href="/ubahPassword">Kirim</a></div>
+                    Kirim
                 </button>
         </form>
     </div>

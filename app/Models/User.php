@@ -26,6 +26,7 @@ class User extends Authenticatable
         'token',
         'name',
         'role',
+        'otp',
     ];
 
     /**

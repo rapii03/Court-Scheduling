@@ -74,9 +74,12 @@ Route::controller(StudentController::class)->group(function () {
     Route::get('/Login', 'login');
     Route::get('/LoginUser', 'loginUser');
 
-    Route::get('/lupaPassword', 'lupaPassword');
+    Route::get('/lupaPassword', 'forgetPasswordView');
+    Route::post('/lupaPassword', 'forgetPassword');
     Route::get('/otpPassword', 'otpPassword');
+    Route::post('/otpPassword', 'otpVerification');
     Route::get('/ubahPassword', 'ubahPassword');
+    Route::post('/ubahPassword', 'changePassword');
 
     Route::middleware('lecture')->group(function () {
         Route::get('/DataUser', 'dataUser');

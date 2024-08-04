@@ -2,8 +2,10 @@
 
 namespace App\Http\Controllers;
 
+use App\Http\Requests\ForgetPasswordReq;
 use App\Http\Requests\StudentRegisterReq;
 use App\Mail\AccountVerificationMail;
+use App\Mail\OtpMail;
 use Illuminate\Database\Eloquent\Builder;
 use Illuminate\Support\Facades\Mail;
 use Illuminate\Support\Facades\Storage;
@@ -12,6 +14,7 @@ use Illuminate\Http\Request;
 use App\Models\StudentData;
 use App\Models\User;
 use Illuminate\Support\Facades\DB;
+use Illuminate\Support\Str;
 
 class StudentController extends Controller
 {
@@ -49,19 +52,79 @@ class StudentController extends Controller
         return view('pages/user/register');
     }
 
-    function lupaPassword()
+    function forgetPasswordView()
     {
         return view('pages/user/lupaPassword');
     }
 
-    function otpPassword()
+    function forgetPassword(ForgetPasswordReq $request)
     {
-        return view('pages/user/otpPassword');
+        $user = User::where('email', $request->email)->where('active', true)->first();
+
+        if ($user) {
+            $otp = Str::random(6);
+            $user->update(['otp' => $otp]);
+
+            try {
+                Mail::to($user->email)->send(new OtpMail(['otp' => $otp]));
+
+                return redirect('/otpPassword?email=' . $user->email);
+            } catch (\Exception $e) {
+                $user->update(['otp' => null]);
+                return back()->withInput()->withErrors(['email' => 'Something went wrong, please try again or chat admin']);
+            }
+        }
+
+        return back()->withInput()->withErrors(['email' => 'The selected email is invalid.']);
     }
 
-    function ubahPassword()
+    function otpPassword(Request $request)
     {
-        return view('pages/user/ubahPassword');
+        $user = User::where('email', $request->query('email'))->where('active', true)->whereNotNull('otp')->first();
+
+        if ($user) {
+            return view('pages/user/otpPassword');
+        }
+
+        return redirect('/lupaPassword');
+    }
+
+    function otpVerification(Request $request)
+    {
+        $user = User::where('email', $request->query('email'))->where('active', true)->where('otp', $request->otp)->whereNotNull('otp')->first();
+
+        if ($user) {
+            return redirect('/ubahPassword?email=' . $user->email . '&otp=' . $user->otp);
+        }
+        // $user->update(['otp' => null]); // more secure
+        return redirect('/lupaPassword');
+    }
+
+    function ubahPassword(Request $request)
+    {
+        $user = User::where('email', $request->query('email'))->where('active', true)->where('otp', $request->query('otp'))->whereNotNull('otp')->first();
+
+        if ($user) {
+            return view('pages/user/ubahPassword');
+        }
+        // $user->update(['otp' => null]); // more secure
+        return redirect('/lupaPassword');
+    }
+
+    function changePassword(Request $request)
+    {
+        $user = User::where('email', $request->query('email'))->where('active', true)->where('otp', $request->query('otp'))->whereNotNull('otp')->first();
+
+        if ($user) {
+            if (strlen($request->password) >= 6) {
+                $user->update(['password' => $request->password, 'otp' => null]);
+
+                return redirect('/LoginUser');
+            }
+            return back()->withErrors(['password' => 'Password must have min 6 char length']);
+        }
+        // $user->update(['otp' => null]); // more secure
+        return redirect('/lupaPassword');
     }
 
     function dashboardUser()

@@ -28,23 +28,24 @@
 
 <body class="flex h-screen items-center justify-center bg-gray-100">
     <div class="w-full max-w-xs">
-        <form action="/Login" method="POST" class="mb-4 rounded bg-white px-8 pb-8 pt-6 shadow-md">
+        <form action="" method="POST" class="mb-4 rounded bg-white px-8 pb-8 pt-6 shadow-md">
             @csrf
             <div class="mb-4 text-center">
                 <div class="mb-2 text-[46px] font-semibold">SchedulerIF</div>
                 <img src="/logo_if.png" alt="Logo" class="mx-auto mb-4">
             </div>
             <div class="mb-4">
-                <label class="mb-2 block text-sm font-bold text-gray-700" for="email">
+                <label class="mb-2 block text-sm font-bold text-gray-700" for="password">
                     Masukkan Password Baru
                 </label>
-                <input class="focus:shadow-outline w-full appearance-none rounded border px-3 py-2 leading-tight text-gray-700 shadow focus:outline-none" id="email" type="email" placeholder="Masukkan Password" name="email" value="{{ old('email') }}" required>
-                    <p></p>
+                <input class="focus:shadow-outline w-full appearance-none rounded border px-3 py-2 leading-tight text-gray-700 shadow focus:outline-none" id="password" type="password" placeholder="Masukkan Password" name="password" required>
+                @error('password')
+                    <p>{{ $message }}</p>
                 @enderror
             </div>
             <div class="flex items-center justify-center">
                 <button class="focus:shadow-outline w-[150px] rounded bg-[#C8AC5E] px-4 py-2 font-bold text-white hover:bg-[#B7A05E] focus:outline-none" type="submit">
-                Kirim
+                    Kirim
                 </button>
         </form>
     </div>
