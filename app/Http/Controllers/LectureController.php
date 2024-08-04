@@ -66,7 +66,7 @@ class LectureController extends Controller
         $days = $timeLists->pluck('day')->flatten()->unique()->toArray();
         $timeLists = $timeLists->groupBy('time');
 
-        return view('pages/admin/dataDosen/aturjadwal', compact([
+        return view('pages/admin/dataDosen/aturJadwal', compact([
             'timeLists',
             'days',
             'user',

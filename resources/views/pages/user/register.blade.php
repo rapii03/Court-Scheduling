@@ -31,8 +31,8 @@
         <form action="" method="POST" class="m-5 rounded bg-white p-5 px-8 shadow-md">
             @csrf
             <div class="mb-4 text-center">
-                <div class="mb-2 text-[46px] font-semibold">SchedulerTI</div>
-                <img src="https://i.ibb.co/ZzD9dzs/logo-if.png" alt="Logo" class="mx-auto mb-4">
+                <div class="mb-2 text-[46px] font-semibold">SchedulerIF</div>
+                <img src="/logo_if.png" alt="Logo" class="mx-auto mb-4">
             </div>
             <div class="flex justify-between gap-5">
                 <div class="mb-4 w-[50%]">

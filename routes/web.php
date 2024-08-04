@@ -74,6 +74,10 @@ Route::controller(StudentController::class)->group(function () {
     Route::get('/Login', 'login');
     Route::get('/LoginUser', 'loginUser');
 
+    Route::get('/lupaPassword', 'lupaPassword');
+    Route::get('/otpPassword', 'otpPassword');
+    Route::get('/ubahPassword', 'ubahPassword');
+
     Route::middleware('lecture')->group(function () {
         Route::get('/DataUser', 'dataUser');
         Route::get('/DataUser/Dokumen', 'dataUserDokumen');

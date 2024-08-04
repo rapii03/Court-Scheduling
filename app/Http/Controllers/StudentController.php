@@ -49,6 +49,21 @@ class StudentController extends Controller
         return view('pages/user/register');
     }
 
+    function lupaPassword()
+    {
+        return view('pages/user/lupaPassword');
+    }
+
+    function otpPassword()
+    {
+        return view('pages/user/otpPassword');
+    }
+
+    function ubahPassword()
+    {
+        return view('pages/user/ubahPassword');
+    }
+
     function dashboardUser()
     {
         return view('pages/user/dashboardUser');

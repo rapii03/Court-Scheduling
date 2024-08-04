@@ -24,8 +24,9 @@ class ScheduleController extends Controller
                     'supervisor_2',
                     'examiner_1',
                     'examiner_2',
-                ], $lecture->id);
+                ], $lecture->id); //pengecekan tidak adanya duplikat jadwal terhadap dosen
             })->exists();
+
         $beforeExists = false;
 
         $timeBefore = TimeList::where('day', $timeInstance->day)->where('number', $timeInstance->number - 1)->first();
@@ -86,7 +87,7 @@ class ScheduleController extends Controller
             'kamis' => 4,
             "jum'at" => 5,
             'sabtu' => 6,
-        ]);
+        ]); // mapping day
 
         $currentTime = Carbon::now()->setTimezone('Asia/Jakarta');
         $currentDate = (int) $currentTime->format('d');
@@ -107,39 +108,39 @@ class ScheduleController extends Controller
         foreach ($mergeTime as $key => $time) {
             $otherLectures = LectureSchedule::where('time_id', $time)->whereNot('user_id', $supervisor1->id)->whereNot('user_id', $supervisor2->id)->pluck('user_id');
 
-            if ($otherLectures->count() < 2) {
+            if ($otherLectures->count() < 2) { //cek jika kandidat kurang dari 2 tidak lanjut
                 continue;
             }
 
-            $timeInstance = TimeList::find($time);
+            $timeInstance = TimeList::find($time); //ambil data di database berdasarkan time_id
 
             if ($timeInstance) {
-                $day = $dayLists->get(strtolower($timeInstance->day));
+                $day = $dayLists->get(strtolower($timeInstance->day)); //mapping hari (day)
 
-                if ($day !== null) {
-                    $otherLectures = User::findMany($otherLectures->toArray());
+                if ($day !== null) { //untuk cek day itu tidak null
+                    $otherLectures = User::findMany($otherLectures->toArray()); //untuk baca data dosen
 
-                    $loopTime = Carbon::now()->setTimezone('Asia/Jakarta')->setDaysFromStartOfWeek($day);
+                    $loopTime = Carbon::now()->setTimezone('Asia/Jakarta')->setDaysFromStartOfWeek($day); 
                     $loopDate = (int) $loopTime->format('d');
-
+                    //untuk waktu yang akan berputar (berpindah ke mingdep)
                     if ($loopDate <= $currentDate) {
-                        $loopDate += 7;
+                        $loopDate += 7; // untuk melempar waktu ke minggu depan 
                     } else if ($loopDate > $currentTime->daysInMonth) {
-                        $loopDate -= 7;
+                        $loopDate -= 7; //kondisi jika lewat dari akhir bulan
                     }
 
                     while ($currentDate < $loopDate && $loopDate <= $currentTime->daysInMonth) {
-                        $loopTime->setDay($loopDate);
+                        $loopTime->setDay($loopDate); //untuk menembak waktu setelah hari pembuatan
 
-                        $available = collect();
+                        $available = collect(); //deklarasi pengecekan yang dosen yang tersedia (pasti)
                         foreach ([$supervisor1, $supervisor2, ...$otherLectures] as $key => $lecture) {
                             $scheduleExists = $this->lectureScheduleCheck($lecture, $loopTime, $timeInstance);
-
+                            //pengecekan jadwal pasti (dosen tersedia), dengan mengambil fungsi lectureschedulecheck 
                             if (!$scheduleExists) {
-                                $available->push($lecture);
+                                $available->push($lecture);//push data tersedia dari dosen
 
                                 if ($available->count() === 4) {
-                                    $this->makeSchedule($seminar, $available, $timeInstance, $loopTime);
+                                    $this->makeSchedule($seminar, $available, $timeInstance, $loopTime); //penetapan schedule dari seminar (4 dosen)
 
                                     return redirect('/DataPendaftaran/SeminarProposal');
                                 }

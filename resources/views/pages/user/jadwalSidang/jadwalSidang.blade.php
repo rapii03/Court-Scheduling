@@ -77,14 +77,16 @@
                                         <td class="px-3 py-3">{{ auth()->user()->name }}</td>
                                         <td class="px-3 py-3">{{ auth()->user()->studentData->nim }}</td>
                                         <td class="px-3 py-3">{{ $seminar->thesis_title }}</td>
-                                        @foreach ([$seminar->supervisor_1, $seminar->supervisor_2, $seminar->examiner_1, $seminar->examiner_2] as $lectureItem)
+                                        @foreach ([$seminar->supervisor_1, $seminar->supervisor_2, $seminar->examiner_1, $seminar->examiner_2] as $lectureSeminar)
                                             @php
-                                                $lecture = $lectures->firstWhere('id', $lectureItem);
+                                                $lecture = $lectures->firstWhere('id', $lectureSeminar);
                                                 if ($lecture) {
                                                     $lecture = $lecture->name;
+                                                } else {
+                                                    $lecture = $lectureSeminar;
                                                 }
                                             @endphp
-                                            <td class="px-3 py-3">{{ $lecture }}</td>
+                                            <td class="px-6 py-4">{{ $lecture }}</td>
                                         @endforeach
                                         @php
                                             $schedule = $seminar->schedule;
