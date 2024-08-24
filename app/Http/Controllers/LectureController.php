@@ -91,7 +91,7 @@ class LectureController extends Controller
             }
         }
 
-        return back();
+        return redirect('/DataDosen');
     }
 
     public function add(LectureAddReq $request)
@@ -155,7 +155,7 @@ class LectureController extends Controller
             $lecture->save();
         }
 
-        return back();
+        return redirect('/DataDosen');
     }
 
     public function delete(Request $request)
