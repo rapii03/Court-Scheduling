@@ -22,4 +22,8 @@ class GeneralPage extends Controller
 
         return view('pages/user/landingPage', compact('schedules', 'lectures'));
     }
+
+    function editJadwal() {
+        return view('pages/admin/jadwal/editJadwal');
+    }
 }

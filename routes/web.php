@@ -101,4 +101,5 @@ Route::controller(StudentController::class)->group(function () {
 
 Route::controller(GeneralPage::class)->group(function () {
     Route::get('/', 'landingPage');
+Route::get('/EditJadwal', 'editJadwal');
 });

@@ -23,7 +23,7 @@
 <body>
     <x-layoutAdmin />
     <div class="ml-[228px] p-16">
-        <div class="mb-16 text-[40px] font-bold">Data Pendaftaran Tugas Akhir</div>
+        <div class="mb-16 text-[40px] font-bold">Dashboard Data Pendaftaran Tugas Akhir</div>
         <div class="flex gap-10">
             <a href="/DataPendaftaran/SeminarProposal">
                 <div class="h-[220px] w-[260px] rounded-md bg-[#1F5F92] p-5 text-white hover:bg-[#C8AC5E]">

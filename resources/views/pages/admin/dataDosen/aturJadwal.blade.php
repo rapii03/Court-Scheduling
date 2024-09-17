@@ -36,10 +36,8 @@
                             <thead class="bg-[#C8AC5E] text-center text-xs text-white">
                                 <tr>
                                     @foreach ($days as $day)
-                                        <th scope="col" @class([
-                                            'px-6 py-3 text-[12px]',
-                                            'rounded-tl-lg' => $loop->iteration === 1,
-                                            'rounded-tr-lg' => $loop->iteration === count($days),
+                                    <th scope="col" @class([ 'px-6 py-3 text-[12px]' , 'rounded-tl-lg'=> $loop->iteration === 1,
+                                        'rounded-tr-lg' => $loop->iteration === count($days),
                                         ])>{{ $day }}</th>
                                     @endforeach
                                     {{-- <th scope="col" class="rounded-tl-lg px-6 py-3 text-[12px]">Senin</th>
@@ -59,31 +57,31 @@
                                     </td>
                                 </tr>
                                 @foreach ($timeLists as $time => $dayLists)
-                                    <tr class="border border-2 border-black bg-white text-center">
-                                        @foreach ($days as $day)
-                                            @php
-                                                $dataFind = $dayLists->firstWhere('day', $day);
-                                            @endphp
-                                            @if ($dataFind)
-                                                @php
-                                                    $check = $user
-                                                        ->time()
-                                                        ->where('time_id', $dataFind['id'])
-                                                        ->exists();
-                                                @endphp
-                                                <td class="border border-black">
-                                                    <div class="flex items-center justify-center">
-                                                        <label class="{{ $check ? 'bg-[#C8AC5E] text-white' : '' }} w-full cursor-pointer px-6 py-2" for="{{ $dataFind['id'] }}" onclick='changeColor(this, "{{ $day }}", "{{ $dataFind['time'] }}")'>
-                                                            {{ $dataFind['time'] }}
-                                                        </label>
-                                                        <input id="{{ $dataFind['id'] }}" type="checkbox" name="schedule[]" value="{{ $dataFind['id'] }}" class="hidden" @checked($check)>
-                                                    </div>
-                                                </td>
-                                            @else
-                                                <td></td>
-                                            @endif
-                                        @endforeach
-                                    </tr>
+                                <tr class="border border-2 border-black bg-white text-center">
+                                    @foreach ($days as $day)
+                                    @php
+                                    $dataFind = $dayLists->firstWhere('day', $day);
+                                    @endphp
+                                    @if ($dataFind)
+                                    @php
+                                    $check = $user
+                                    ->time()
+                                    ->where('time_id', $dataFind['id'])
+                                    ->exists();
+                                    @endphp
+                                    <td class="border border-black">
+                                        <div class="flex items-center justify-center">
+                                            <label class="{{ $check ? 'bg-[#C8AC5E] text-white' : '' }} w-full cursor-pointer px-6 py-2" for="{{ $dataFind['id'] }}" onclick='changeColor(this, "{{ $day }}", "{{ $dataFind['time'] }}")'>
+                                                {{ $dataFind['time'] }}
+                                            </label>
+                                            <input id="{{ $dataFind['id'] }}" type="checkbox" name="schedule[]" value="{{ $dataFind['id'] }}" class="hidden" @checked($check)>
+                                        </div>
+                                    </td>
+                                    @else
+                                    <td></td>
+                                    @endif
+                                    @endforeach
+                                </tr>
                                 @endforeach
                                 {{-- <tr class="h-[21px] border border-2 border-black bg-white text-center">
                                     <td class="h-[21px] cursor-pointer border border-black px-6 py-2" onclick="changeColor(this, 'Senin', '08.00-09.00')">
@@ -109,6 +107,9 @@
                                 </tr> --}}
                             </tbody>
                         </table>
+                    </div>
+                    <div class="text-[14px] text-white font-bold">
+                        Note : Klik jam yang sesuai dengan waktu kosong, jika kotak berwarna putih menandakan tidak aktif, sedangkan jika berwarna maka jam menjadi aktif
                     </div>
                     <div class="mt-[25px] flex justify-end">
                         <div class="div">

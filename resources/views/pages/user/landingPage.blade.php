@@ -143,16 +143,16 @@
                                     <td class="px-3 py-3">{{ $item->seminar->user->studentData->nim }}</td>
                                     <td class="px-3 py-3">{{ $item->seminar->thesis_title }}</td>
                                     @foreach ([$item->seminar->supervisor_1, $item->seminar->supervisor_2, $item->seminar->examiner_1, $item->seminar->examiner_2] as $lectureSeminar)
-                                            @php
-                                                $lecture = $lectures->firstWhere('id', $lectureSeminar);
-                                                if ($lecture) {
-                                                    $lecture = $lecture->name;
-                                                } else {
-                                                    $lecture = $lectureSeminar;
-                                                }
-                                            @endphp
-                                            <td class="px-6 py-4">{{ $lecture }}</td>
-                                        @endforeach
+                                    @php
+                                    $lecture = $lectures->firstWhere('id', $lectureSeminar);
+                                    if ($lecture) {
+                                    $lecture = $lecture->name;
+                                    } else {
+                                    $lecture = $lectureSeminar;
+                                    }
+                                    @endphp
+                                    <td class="px-6 py-4">{{ $lecture }}</td>
+                                    @endforeach
                                     <td class="px-3 py-3">{{ ucfirst($item->time->day ?? '') }}</td>
                                     <td class="px-3 py-3">{{ $item->date }}</td>
                                     @if ($item->seminar->type === 'seminar-akhir')

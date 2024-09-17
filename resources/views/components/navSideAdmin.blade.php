@@ -1,4 +1,4 @@
-    <style>
+<style>
         .iconDashboard {
             transition: stroke 0.3s;
         }
@@ -148,7 +148,7 @@
                         </li> --}}
                         <li class="inset-x-0 mt-2 flex items-center justify-center rounded-lg bg-[#EBEBEB]">
                             @php
-                                $activePagePath5 = ['Jadwal'];
+                                $activePagePath5 = ['Jadwal', 'EditJadwal'];
                                 if (isset($id)) {
                                     array_push($activePagePath5, 'Jadwal/edit/' . $id);
                                 }

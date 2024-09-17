@@ -23,7 +23,7 @@
 <body>
     <x-layoutAdmin />
     <div class="ml-[228px] p-5">
-        <div class="mb-2 text-[40px] font-bold">Dokumen Data Mahasiswa</div>
+        <div class="mb-2 text-[40px] font-bold">Dokumen Data Pendaftar Mahasiswa Tugas Akhir</div>
         <div class="flex justify-between">
             <div class="mb-2">
                 <div class="text-[20px]">Nama : {{ $student->name }}</div>

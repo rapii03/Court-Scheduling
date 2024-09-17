@@ -59,7 +59,7 @@
                             Dosen Pembimbing 2
                         </th>
                         <th scope="col" class="rounded-tr-lg px-6 py-3">
-                            Dokumen
+                            Dokumen Pendaftar
                         </th>
                     </tr>
                 </thead>

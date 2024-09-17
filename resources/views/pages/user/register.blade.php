@@ -41,7 +41,7 @@
                     </label>
                     <input name="email" class="focus:shadow-outline w-full appearance-none rounded border leading-tight text-gray-700 shadow focus:outline-none" id="email" type="email" placeholder="Email" value="{{ old('email') }}" required>
                     @error('email')
-                        <p>{{ $message }}</p>
+                    <p>{{ $message }}</p>
                     @enderror
                 </div>
                 <div class="mb-4 w-[50%]">
@@ -50,7 +50,7 @@
                     </label>
                     <input name="nim" class="focus:shadow-outline w-full appearance-none rounded border leading-tight text-gray-700 shadow focus:outline-none" id="email" type="number" placeholder="NIM" minlength="8" maxlength="20" value="{{ old('nim') }}" required>
                     @error('nim')
-                        <p>{{ $message }}</p>
+                    <p>{{ $message }}</p>
                     @enderror
                 </div>
             </div>
@@ -61,7 +61,7 @@
                     </label>
                     <input name="name" class="focus:shadow-outline w-full appearance-none rounded border leading-tight text-gray-700 shadow focus:outline-none" id="email" type="text" placeholder="Nama" maxlength="100" value="{{ old('name') }}" required>
                     @error('name')
-                        <p>{{ $message }}</p>
+                    <p>{{ $message }}</p>
                     @enderror
                 </div>
                 <div class="mb-4 w-[50%]">
@@ -69,9 +69,9 @@
                         Password
                     </label>
                     <div class="relative">
-                        <input name="password" class="focus:shadow-outline w-full appearance-none rounded border leading-tight text-gray-700 shadow focus:outline-none" id="password" type="password" placeholder="Password" minlength="8" maxlength="12" required>
+                        <input name="password" class="focus:shadow-outline w-full appearance-none rounded border leading-tight text-gray-700 shadow focus:outline-none" id="password" type="password" placeholder="Password" minlength="8" maxlength="24" required>
                         @error('password')
-                            <p>{{ $message }}</p>
+                        <p>{{ $message }}</p>
                         @enderror
                         <i class="fas fa-eye-slash eye-icon absolute right-0 top-0 mr-3 mt-1 cursor-pointer text-gray-500">
                             <svg width="25" height="25" viewBox="0 0 28 28" fill="none" xmlns="http://www.w3.org/2000/svg">
@@ -90,7 +90,7 @@
                     </label>
                     <input name="supervisor_1" class="focus:shadow-outline w-full appearance-none rounded border leading-tight text-gray-700 shadow focus:outline-none" id="dosenPembimbing1" type="text" placeholder="Dosen Pembimbing 1" maxlength="100" value="{{ old('supervisor_1') }}" required>
                     @error('supervisor_1')
-                        <p>{{ $message }}</p>
+                    <p>{{ $message }}</p>
                     @enderror
                 </div>
                 <div class="mb-4 w-[50%]">
@@ -99,7 +99,7 @@
                     </label>
                     <input name="supervisor_2" class="focus:shadow-outline w-full appearance-none rounded border leading-tight text-gray-700 shadow focus:outline-none" id="dosenPembimbing2" type="text" placeholder="Dosen Pembimbing 2" maxlength="100" value="{{ old('supervisor_2') }}" required>
                     @error('supervisor_2')
-                        <p>{{ $message }}</p>
+                    <p>{{ $message }}</p>
                     @enderror
                 </div>
             </div>
@@ -108,18 +108,24 @@
                     <label class="mb-2 block text-sm font-bold text-gray-700" for="bidangKeahlian">
                         Bidang Keahlian
                     </label>
-                    <input name="kk" class="focus:shadow-outline w-full appearance-none rounded border leading-tight text-gray-700 shadow focus:outline-none" id="bidangKeahlian" type="text" placeholder="Bidang Keahlian" maxlength="100" value="{{ old('kk') }}" required>
+                    <select name="kk" class="focus:shadow-outline w-full appearance-none rounded border leading-tight text-gray-700 shadow focus:outline-none" id="bidangKeahlian" required>
+                        <option value="" disabled selected>Pilih Bidang Keahlian</option>
+                        <option value="rplsi">Rekayasa Perangkat Lunak Sistem Informasi</option>
+                        <option value="aide">Artificial Intelligence dan Data Engineering</option>
+                        <option value="casper">Keamanan Siber dan Pervasif</option>
+                    </select>
                     @error('kk')
-                        <p>{{ $message }}</p>
+                    <p>{{ $message }}</p>
                     @enderror
                 </div>
+
                 <div class="mb-4 w-[50%]">
                     <label class="mb-2 block text-sm font-bold text-gray-700" for="judulTugasAkhir">
                         Judul Tugas Akhir
                     </label>
                     <input name="thesis_title" class="focus:shadow-outline w-full appearance-none rounded border leading-tight text-gray-700 shadow focus:outline-none" id="judulTugasAkhir" type="text" placeholder="Judul Tugas AKhir" maxlength="100" value="{{ old('thesis_title') }}" required>
                     @error('thesis_title')
-                        <p>{{ $message }}</p>
+                    <p>{{ $message }}</p>
                     @enderror
                 </div>
             </div>
