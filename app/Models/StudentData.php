@@ -18,6 +18,7 @@ class StudentData extends Model
         'thesis_title',
         'semester',
         'image',
+        'year',
         'nim',
         'kk',
 

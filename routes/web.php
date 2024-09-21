@@ -60,6 +60,9 @@ Route::controller(SeminarController::class)->group(function () {
         Route::get('/TolakSeminar', 'delete');
 
         Route::get('/Jadwal', 'jadwal');
+        Route::get('/EditJadwal', 'editJadwal');
+        Route::post('/EditJadwal', 'gantiJadwal');
+        Route::delete('/EditJadwal', 'hapusJadwal');
     });
 
     Route::middleware('student')->group(function () {
@@ -101,5 +104,4 @@ Route::controller(StudentController::class)->group(function () {
 
 Route::controller(GeneralPage::class)->group(function () {
     Route::get('/', 'landingPage');
-Route::get('/EditJadwal', 'editJadwal');
 });

@@ -6,9 +6,11 @@ use App\Http\Requests\SeminarAddReq;
 use App\Mail\DeleteSeminarMail;
 use App\Models\Schedule;
 use App\Models\Seminar;
+use App\Models\TimeList;
 use App\Models\User;
 use Illuminate\Database\Eloquent\Builder;
 use Illuminate\Http\Request;
+use Illuminate\Support\Carbon;
 use Illuminate\Support\Facades\Mail;
 use Illuminate\Support\Facades\Storage;
 
@@ -58,7 +60,7 @@ class SeminarController extends Controller
 
     function jadwal(Request $request)
     {
-        $years = Schedule::selectRaw('extract(year FROM created_at) AS year')
+        $years = Schedule::selectRaw('extract(year FROM date) AS year')
             ->distinct()
             ->orderBy('year', 'desc')
             ->pluck('year')
@@ -67,7 +69,7 @@ class SeminarController extends Controller
             ->toArray();
         $year = $request->year !== null ? $request->year : end($years);
 
-        $months = Schedule::selectRaw('extract(month FROM created_at) AS month')
+        $months = Schedule::selectRaw('extract(month FROM date) AS month')
             ->distinct()
             ->orderBy('month', 'desc')
             ->pluck('month')
@@ -76,7 +78,7 @@ class SeminarController extends Controller
             ->toArray();
         $month = $request->month !== null ? $request->month : end($months);
 
-        $data = Schedule::whereMonth('created_at', $month)->whereYear('created_at', $year)->where(function (Builder $query) use ($request) {
+        $data = Schedule::whereMonth('date', $month)->whereYear('date', $year)->where(function (Builder $query) use ($request) {
             if ($request->search) {
                 $query->whereHas('seminar', function (Builder $query) use ($request) {
                     $query->whereAny(['type', 'thesis_title'], 'LIKE', "%{$request->search}%")->orWhereHas('user', function (Builder $query) use ($request) {
@@ -84,11 +86,68 @@ class SeminarController extends Controller
                     });
                 });
             }
+            if ($request->date) {
+                $query->whereDate('date', $request->date);
+            }
         })->oldest()->get();
 
         $lectures = User::whereHas('lectureData')->get();
 
         return view('pages/admin/jadwal/jadwal', compact(['years', 'year', 'month', 'data', 'lectures']));
+    }
+
+    function editJadwal(Request $request)
+    {
+        if ($request->id === null) {
+            abort(404);
+        }
+
+        $times = TimeList::pluck('time')->flatten()->unique()->toArray();
+        $lectures = User::whereHas('lectureData')->get();
+        $data = Schedule::findOrFail($request->id);
+
+        return view('pages/admin/jadwal/editJadwal', compact('lectures', 'times', 'data'));
+    }
+
+    function hapusJadwal(Request $request)
+    {
+        if ($request->id === null) {
+            abort(404);
+        }
+
+        $schedule = Schedule::findOrFail($request->id);
+
+        $schedule->delete();
+
+        return redirect('/Jadwal');
+    }
+
+    function gantiJadwal(Request $request)
+    {
+        if ($request->id === null) {
+            abort(404);
+        }
+
+        $request->validate([
+            'time' => 'bail|required|string|min:11|max:11',
+            'date' => 'bail|required|date'
+        ]);
+
+        $schedule = Schedule::findOrFail($request->id);
+
+        $days = ["minggu", 'senin', 'selasa', 'rabu', 'kamis', "jum'at", "sabtu"];
+        $date = Carbon::parse($request->date);
+
+        $day = $days[$date->getDaysFromStartOfWeek()];
+
+        $time = TimeList::where('time', $request->time)->where('day', $day)->firstOrFail();
+
+        $schedule->date = $request->date;
+        $schedule->time()->associate($time);
+
+        $schedule->save();
+
+        return redirect("/EditJadwal?id={$request->id}");
     }
 
     public function add(SeminarAddReq $request)

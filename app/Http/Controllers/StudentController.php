@@ -28,10 +28,14 @@ class StudentController extends Controller
             if ($request->search) {
                 $query->whereAny(['name', 'nim', 'thesis_title', 'supervisor_1', 'supervisor_2'], 'LIKE', "%$request->search%");
             }
+            if ($request->year) {
+                $query->where('year', $request->year);
+            }
         })->withCount('seminar AS seminar')->latest()->get();
         $lecture = User::whereHas('lectureData')->get();
+        $years = StudentData::orderBy('year')->pluck('year')->flatten()->unique()->toArray();
 
-        return view('pages/admin/dataUser/dataUser', compact('students', 'lecture'));
+        return view('pages/admin/dataUser/dataUser', compact('students', 'lecture', 'years'));
     }
     function dataUserDokumen(Request $request)
     {
@@ -157,12 +161,12 @@ class StudentController extends Controller
 
     public function register(StudentRegisterReq $request)
     {
+        DB::beginTransaction();
         $account = User::create([
             ...$request->safe()->only('password', 'email', 'name'),
             'role' => 'student',
         ]);
 
-        DB::beginTransaction();
         $student = new StudentData($request->safe()->except('password', 'email', 'name'));
 
         $student->user()->associate($account);

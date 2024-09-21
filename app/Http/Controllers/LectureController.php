@@ -41,7 +41,7 @@ class LectureController extends Controller
     }
     function dataDosenEdit(Request $request)
     {
-        if ($request->id === null) {
+        if ($request->id === null || $request->id !== auth()->user()->id) {
             abort(404);
         }
 
@@ -53,7 +53,7 @@ class LectureController extends Controller
     }
     function dataDosenAturJadwal(Request $request)
     {
-        if ($request->id === null) {
+        if ($request->id === null || $request->id !== auth()->user()->id) {
             abort(404);
         }
 
@@ -75,6 +75,10 @@ class LectureController extends Controller
 
     public function setSchedule(LectureScheduleAddReq $request)
     {
+        if ($request->id !== auth()->user()->id) {
+            abort(404);
+        }
+
         $user = User::whereKey($request->id)
             ->whereHas('lectureData')
             ->firstOrFail();
@@ -116,7 +120,7 @@ class LectureController extends Controller
 
     public function edit(LectureEditReq $request)
     {
-        if ($request->id === null) {
+        if ($request->id !== auth()->user()->id) {
             abort(404);
         }
 
@@ -160,7 +164,7 @@ class LectureController extends Controller
 
     public function delete(Request $request)
     {
-        if ($request->id === null) {
+        if ($request->id !== auth()->user()->id) {
             abort(404);
         }
 

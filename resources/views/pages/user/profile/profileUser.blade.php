@@ -56,11 +56,11 @@
                                 </label>
                             </div>
                             @if (auth()->user()->studentData->image !== null)
-                            <script>
-                                document.addEventListener('DOMContentLoaded', () => {
-                                    showImage()
-                                });
-                            </script>
+                                <script>
+                                    document.addEventListener('DOMContentLoaded', () => {
+                                        showImage()
+                                    });
+                                </script>
                             @endif
                             <script>
                                 function showImage() {
@@ -104,7 +104,7 @@
                                     </label>
                                     <input name="name" value="{{ auth()->user()->name }}" class="focus:shadow-outline w-full appearance-none rounded border leading-tight text-gray-700 shadow focus:outline-none" id="name" type="text" placeholder="Nama" maxlength="20" required>
                                     @error('name')
-                                    <p>{{ $message }}</p>
+                                        <p>{{ $message }}</p>
                                     @enderror
                                 </div>
                                 <div class="mb-4 w-[50%]">
@@ -113,7 +113,7 @@
                                     </label>
                                     <input name="nim" value="{{ auth()->user()->studentData->nim }}" class="focus:shadow-outline w-full appearance-none rounded border leading-tight text-gray-700 shadow focus:outline-none" id="name" type="text" placeholder="NIM" minlength="" maxlength="20" required>
                                     @error('nim')
-                                    <p>{{ $message }}</p>
+                                        <p>{{ $message }}</p>
                                     @enderror
                                 </div>
                             </div>
@@ -124,7 +124,7 @@
                                     </label>
                                     <input name="academic_adviser" value="{{ auth()->user()->studentData->academic_adviser }}" class="focus:shadow-outline w-full appearance-none rounded border leading-tight text-gray-700 shadow focus:outline-none" id="name" type="text" placeholder="Dosen Wali" maxlength="20" required>
                                     @error('name')
-                                    <p>{{ $message }}</p>
+                                        <p>{{ $message }}</p>
                                     @enderror
                                 </div>
                                 <div class="mb-4 w-[50%]">
@@ -132,13 +132,13 @@
                                         Bidang Keahlian
                                     </label>
                                     <select name="kk" class="focus:shadow-outline w-full appearance-none rounded border leading-tight text-gray-700 shadow focus:outline-none" id="bidangKeahlian" required>
-                                        <option value="" disabled selected>Pilih Bidang Keahlian</option>
-                                        <option value="rplsi">Rekayasa Perangkat Lunak Sistem Informasi</option>
-                                        <option value="aide">Artificial Intelligence dan Data Engineering</option>
-                                        <option value="casper">Keamanan Siber dan Pervasif</option>
+                                        <option value="" disabled>Pilih Bidang Keahlian</option>
+                                        <option value="rplsi" @selected(auth()->user()->studentData->kk === 'rplsi')>Rekayasa Perangkat Lunak Sistem Informasi</option>
+                                        <option value="aide" @selected(auth()->user()->studentData->kk === 'aide')>Artificial Intelligence dan Data Engineering</option>
+                                        <option value="casper" @selected(auth()->user()->studentData->kk === 'casper')>Keamanan Siber dan Pervasif</option>
                                     </select>
                                     @error('kk')
-                                    <p>{{ $message }}</p>
+                                        <p>{{ $message }}</p>
                                     @enderror
                                 </div>
                             </div>
@@ -149,7 +149,7 @@
                                     </label>
                                     <input name="supervisor_1" value="{{ auth()->user()->studentData->supervisor_1 }}" class="focus:shadow-outline w-full appearance-none rounded border leading-tight text-gray-700 shadow focus:outline-none" id="dosenPembimbing1" type="text" placeholder="Dosen Pembimbing 1" maxlength="100" required>
                                     @error('supervisor_1')
-                                    <p>{{ $message }}</p>
+                                        <p>{{ $message }}</p>
                                     @enderror
                                 </div>
                                 <div class="mb-4 w-[50%]">
@@ -158,7 +158,7 @@
                                     </label>
                                     <input name="supervisor_2" value="{{ auth()->user()->studentData->supervisor_2 }}" class="focus:shadow-outline w-full appearance-none rounded border leading-tight text-gray-700 shadow focus:outline-none" id="dosenPembimbing2" type="text" placeholder="Dosen Pembimbing 2" maxlength="100" required>
                                     @error('supervisor_2')
-                                    <p>{{ $message }}</p>
+                                        <p>{{ $message }}</p>
                                     @enderror
                                 </div>
                             </div>
@@ -174,7 +174,7 @@
                                         </label>
                                         <input name="semester" value="{{ auth()->user()->studentData->semester }}" class="focus:shadow-outline w-full appearance-none rounded border leading-tight text-gray-700 shadow focus:outline-none" id="semester" type="text" placeholder="Semester" maxlength="100" required>
                                         @error('semester')
-                                        <p>{{ $message }}</p>
+                                            <p>{{ $message }}</p>
                                         @enderror
                                     </div>
                                 </div>
@@ -184,7 +184,18 @@
                                     </label>
                                     <textarea name="thesis_title" id="" class="text-black-50 h-28 w-full" placeholder="Judul Tugas Akhir">{{ auth()->user()->studentData->thesis_title }}</textarea>
                                     @error('thesis_title')
-                                    <p>{{ $message }}</p>
+                                        <p>{{ $message }}</p>
+                                    @enderror
+                                </div>
+                            </div>
+                            <div class="flex justify-between gap-5">
+                                <div class="mb-4 w-[50%]">
+                                    <label class="mb-2 block text-sm font-bold text-gray-700" for="tahun">
+                                        Tahun Angkatan
+                                    </label>
+                                    <input name="year" value="{{ auth()->user()->studentData->year }}" class="focus:shadow-outline w-full appearance-none rounded border leading-tight text-gray-700 shadow focus:outline-none" id="tahun" type="text" placeholder="Tahun Angkatan" maxlength="20" required>
+                                    @error('year')
+                                        <p>{{ $message }}</p>
                                     @enderror
                                 </div>
                             </div>

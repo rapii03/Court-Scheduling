@@ -23,13 +23,14 @@ class StudentEditReq extends FormRequest
     {
         return [
             'academic_adviser' => 'bail|nullable|string|max:255',
+            'kk' => 'bail|required|string|in:rplsi,aide,casper',
+            'year' => 'bail|required|numeric|integer|digits:4',
             'supervisor_1' => 'bail|required|string|max:255',
             'supervisor_2' => 'bail|required|string|max:255',
             'thesis_title' => 'bail|required|string|max:255',
             'semester' => 'bail|nullable|string|max:2',
             'name' => 'bail|required|string|max:255',
             'nim' => 'bail|required|string|max:255',
-            'kk' => 'bail|required|string|max:255',
             'image' => 'bail|nullable|file|image',
         ];
     }

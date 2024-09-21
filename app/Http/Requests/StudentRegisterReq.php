@@ -23,13 +23,14 @@ class StudentRegisterReq extends FormRequest
     {
         return [
             'email' => 'bail|required|max:255|email|unique:users,email|ends_with:@student.itera.ac.id',
+            'kk' => 'bail|required|string|in:rplsi,aide,casper',
+            'year' => 'bail|required|numeric|integer|digits:4',
             'supervisor_1' => 'bail|required|string|max:255',
             'supervisor_2' => 'bail|required|string|max:255',
             'thesis_title' => 'bail|required|string|max:255',
             'password' => 'bail|required|string|max:255',
             'name' => 'bail|required|string|max:255',
             'nim' => 'bail|required|string|max:255',
-            'kk' => 'bail|required|string|max:255',
         ];
     }
 }
